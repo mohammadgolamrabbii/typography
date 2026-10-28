@@ -72,7 +72,7 @@
   <!-- Google Web Fonts for Live Multi-Script Rendering -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Dela+Gothic+One&family=Fira+Code:wght@400;600&family=Great+Vibes&family=Inter:wght@400;600;800&family=Kaisei+Tokumin:wght@700&family=Kalpurush&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Montserrat:wght@400;700;900&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;700&family=Orbitron:wght@600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Shippori+Mincho:wght@700&family=UnifrakturMaguntia&family=Yuji+Boku&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Cormorant+Infant:ital,wght@0,600;0,700;1,400&family=Dela+Gothic+One&family=Fira+Code:wght@400;600&family=Great+Vibes&family=Inter:wght@400;600;800&family=Kaisei+Tokumin:wght@700&family=Kalpurush&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Montserrat:wght@400;700;900&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;700&family=Orbitron:wght@600;800&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Russo+One&family=Shippori+Mincho:wght@700&family=Stalinist+One&family=UnifrakturMaguntia&family=Yuji+Boku&display=swap" rel="stylesheet">
 
   <style>
     .font-inter { font-family: 'Inter', sans-serif; }
@@ -91,6 +91,10 @@
     .font-shippori { font-family: 'Shippori Mincho', serif; }
     .font-yuji-boku { font-family: 'Yuji Boku', serif; }
     .font-kiwi { font-family: 'Kiwi Maru', sans-serif; }
+    .font-pt-sans { font-family: 'PT Sans', sans-serif; }
+    .font-stalinist { font-family: 'Stalinist One', cursive, sans-serif; }
+    .font-russo { font-family: 'Russo One', sans-serif; }
+    .font-cormorant-infant { font-family: 'Cormorant Infant', serif; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans transition-colors duration-200">
@@ -154,6 +158,7 @@
           <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Language / Script:</label>
           <select id="scriptFilter" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
             <option value="all">🌐 All Languages (All Scripts)</option>
+            <option value="cyrillic">🇷🇺 Cyrillic & Slavic (Кириллица)</option>
             <option value="japanese">🇯🇵 Japanese (日本語)</option>
             <option value="bengali">🇧🇩 Bengali (বাংলা)</option>
             <option value="english">🇬🇧 English & Western (Latin)</option>
@@ -176,7 +181,7 @@
         <div class="sm:text-right">
           <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Total Ecosystem:</label>
           <span class="inline-block px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono font-bold">
-            61,000+ Curated Fonts
+            61,800+ Curated Fonts
           </span>
         </div>
       </div>
@@ -200,11 +205,16 @@
       </div>
 
       <!-- Quick Download Badges Matrix -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 text-center">
-        <a href="https://archive.org/details/open-typography-foundation-japanese-fonts" target="_blank" class="p-3 bg-slate-950/80 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 rounded-xl transition group">
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
+        <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="p-3 bg-slate-950/80 hover:bg-slate-900 border border-slate-800 hover:border-red-500 rounded-xl transition group">
+          <div class="text-xl mb-1">🇷🇺</div>
+          <div class="text-xs font-bold text-white group-hover:text-red-400">Cyrillic Pack</div>
+          <div class="text-[10px] text-slate-400">873+ Pro Fonts</div>
+        </a>
+        <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="p-3 bg-slate-950/80 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 rounded-xl transition group">
           <div class="text-xl mb-1">🇯🇵</div>
           <div class="text-xs font-bold text-white group-hover:text-pink-400">Japanese</div>
-          <div class="text-[10px] text-slate-400">85+ Pro Fonts</div>
+          <div class="text-[10px] text-slate-400">143+ Pro Fonts</div>
         </a>
         <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="p-3 bg-slate-950/80 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 rounded-xl transition group">
           <div class="text-xl mb-1">🇧🇩</div>
@@ -244,6 +254,48 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
     <div id="fontGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
+      <!-- Card: Cyrillic PT Sans (Modern Grotesque) -->
+      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-white">PT Sans (Modern Cyrillic Grotesque)</h3>
+            <p class="text-xs text-slate-400">ParaType • ParaType Free Font License / OFL</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Cyrillic Grotesk</span>
+        </div>
+        <div class="preview-text font-pt-sans text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
+          Съешь же ещё этих мягких французских булок, да выпей чаю.
+        </div>
+        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
+          <span class="text-slate-500 font-mono">02_Modern_Cyrillic_Grotesque</span>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">873+ Fonts Pack ➔</a>
+            <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Cyrillic Stalinist One (Soviet Constructivist Retro) -->
+      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-white">Stalinist One (Soviet Constructivist)</h3>
+            <p class="text-xs text-slate-400">Alexey Kryukov • SIL OFL 1.1</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Soviet Constructivism</span>
+        </div>
+        <div class="preview-text font-stalinist text-2xl py-4 border-y border-slate-800/60 my-2 text-red-400 min-h-[90px] break-words">
+          ВПЕРЁД К ЗВЁЗДАМ! КОНСТРУКТИВИЗМ И АВАНГАРД
+        </div>
+        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
+          <span class="text-slate-500 font-mono">01_Soviet_Constructivist_Retro</span>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">873+ Fonts Pack ➔</a>
+            <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
+          </div>
+        </div>
+      </div>
+
       <!-- Card: Japanese Dela Gothic One (Anime High CTR) -->
       <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="japanese">
         <div class="flex justify-between items-start mb-4">
