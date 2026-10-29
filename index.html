@@ -130,6 +130,27 @@
     .font-zcool { font-family: 'ZCOOL KuaiLe', cursive, sans-serif; }
     .font-mashan { font-family: 'Ma Shan Zheng', cursive, sans-serif; }
 
+    
+    /* Universal No-Scrollbar for Touch & Mobile Devices */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Responsive Mobile Touch Targets */
+    @media (max-width: 640px) {
+      button, a.button-touch {
+        min-height: 38px;
+      }
+      .mobile-stack {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }
+
     /* Light preview specimen mode */
     .preview-canvas-light {
       background-color: #ffffff !important;
@@ -169,8 +190,8 @@
         </div>
       </div>
 
-      <!-- Quick Platform Links -->
-      <div class="flex items-center space-x-2 text-xs font-semibold flex-wrap">
+      <!-- Quick Platform Links (Responsive Horizontal Swiper on Mobile, Inline on Desktop) -->
+      <div class="flex items-center gap-2 text-xs font-semibold overflow-x-auto no-scrollbar py-1 w-full lg:w-auto shrink-0">
         <a href="#downloads-section" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center space-x-1.5 shadow-md">
           <span>⚡</span><span>Archive Downloads</span>
         </a>
@@ -244,9 +265,9 @@
         <!-- Category Filter Pills -->
         <div class="flex items-center gap-1.5 overflow-x-auto pb-3 mb-4 text-xs font-medium no-scrollbar border-b border-slate-800/60">
           <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Filter:</span>
-          <button onclick="filterArchiveCategory('all', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow transition">All 9 Vaults</button>
+          <button onclick="filterArchiveCategory('all', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow transition">All 10 Script Families</button>
           <button onclick="filterArchiveCategory('slavic', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">Slavic / Cyrillic</button>
-          <button onclick="filterArchiveCategory('asian', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">East Asian (JP & KR)</button>
+          <button onclick="filterArchiveCategory('asian', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">East Asian (CJK: CN, JP, KR)</button>
           <button onclick="filterArchiveCategory('south-asia', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">South Asian (Bangla & Hindi)</button>
           <button onclick="filterArchiveCategory('middle-east', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">Middle Eastern</button>
           <button onclick="filterArchiveCategory('europe', this)" class="archive-cat-btn px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">European (German & Latin)</button>
@@ -299,8 +320,8 @@
           <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-rose-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="asian" data-keywords="chinese hanzi simplified traditional song ming hei kai fangsong display pixel 1351">
             <div>
               <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">CJK Trilogy</span>
-                <span class="text-xs font-semibold text-slate-400">1,351 Fonts</span>
+                <span class="text-2xl">🇨🇳</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">1,351+ Pro Fonts</span>
               </div>
               <h3 class="font-bold text-white text-base group-hover:text-rose-400 transition-colors">Chinese 汉字/漢字 (Hanzi)</h3>
               <p class="text-xs text-slate-400 mt-1 line-clamp-2">Complete 6-tier architecture: Song/Ming, Modern Hei, Kai Calligraphy, FangSong, Display & Pixel.</p>
@@ -485,16 +506,16 @@
           </p>
         </div>
 
-        <!-- Platform Tabs -->
-        <div class="flex items-center gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
-          <button id="tabLinux" onclick="setTerminalPlatform('linux')" class="platform-tab px-3 py-1.5 rounded-lg bg-indigo-600 text-white shadow font-bold transition flex items-center gap-1.5">
-            <span>🐧</span><span>Linux / macOS (bash)</span>
+        <!-- Platform Tabs (Responsive labels for mobile screens) -->
+        <div class="flex items-center gap-1 sm:gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs font-semibold w-full sm:w-auto justify-between sm:justify-start">
+          <button id="tabLinux" onclick="setTerminalPlatform('linux')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg bg-indigo-600 text-white shadow font-bold transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>🐧</span><span class="hidden sm:inline">Linux / macOS</span><span class="sm:hidden">Linux</span>
           </button>
-          <button id="tabWindows" onclick="setTerminalPlatform('windows')" class="platform-tab px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1.5">
-            <span>🪟</span><span>Windows (PowerShell)</span>
+          <button id="tabWindows" onclick="setTerminalPlatform('windows')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>🪟</span><span class="hidden sm:inline">Windows</span><span class="sm:hidden">Windows</span>
           </button>
-          <button id="tabGit" onclick="setTerminalPlatform('git')" class="platform-tab px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1.5">
-            <span>📦</span><span>Git Clone</span>
+          <button id="tabGit" onclick="setTerminalPlatform('git')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>📦</span><span class="hidden sm:inline">Git Clone</span><span class="sm:hidden">Git</span>
           </button>
         </div>
       </div>
@@ -502,7 +523,7 @@
       <!-- Quick Script Select Chips -->
       <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 text-xs font-medium no-scrollbar">
         <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Fast Select:</span>
-        <button onclick="setScriptTarget('all')" class="script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition">All 77k+ Fonts</button>
+        <button onclick="setScriptTarget('all')" class="script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition">All 80k+ Fonts</button>
         <button onclick="setScriptTarget('bengali')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇧🇩 Bengali (5k)</button>
         <button onclick="setScriptTarget('chinese')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇨🇳 Chinese (1.3k)</button>
         <button onclick="setScriptTarget('korean')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇰🇷 Korean (1.8k)</button>
@@ -514,14 +535,16 @@
         <button onclick="setScriptTarget('english')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇬🇧 English (30k)</button>
       </div>
 
-      <!-- Command Snippet Bar with Copy Button -->
+      <!-- Command Snippet Bar with Copy Button (Responsive Stacking for small phones) -->
       <div class="relative mt-1">
-        <div class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 font-mono text-xs text-indigo-300 flex items-center justify-between gap-3 overflow-x-auto shadow-inner">
-          <code id="terminalCommandCode" class="select-all whitespace-nowrap">curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash</code>
+        <div class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 sm:px-4 sm:py-3 font-mono text-xs text-indigo-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 shadow-inner">
+          <div class="overflow-x-auto no-scrollbar py-1 flex-1">
+            <code id="terminalCommandCode" class="select-all whitespace-nowrap text-[11px] sm:text-xs">curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash</code>
+          </div>
           <button 
             id="copyTerminalBtn"
             onclick="copyTerminalCommand()"
-            class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition flex items-center gap-1.5 shadow whitespace-nowrap shrink-0"
+            class="w-full sm:w-auto px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold text-xs transition flex items-center justify-center gap-1.5 shadow whitespace-nowrap shrink-0 cursor-pointer"
           >
             <span id="copyTerminalIcon">📋</span>
             <span id="copyTerminalText">Copy Command</span>
@@ -597,6 +620,7 @@
               id="scriptSelector" 
               class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none font-semibold cursor-pointer transition"
             >
+              <option value="chinese">🇨🇳 Chinese (中文 / 汉字)</option>
               <option value="korean" selected>🇰🇷 Korean (한국어)</option>
               <option value="bengali">🇧🇩 Bengali (বাংলা)</option>
               <option value="japanese">🇯🇵 Japanese (日本語)</option>
@@ -605,6 +629,7 @@
               <option value="arabic">🕌 Arabic (العربية)</option>
               <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
               <option value="german">🇩🇪 German (Fraktur)</option>
+              <option value="icons">🎨 Icons & Symbols</option>
             </select>
           </div>
         </div>
