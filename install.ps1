@@ -9,7 +9,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Position = 0)]
-    [ValidateSet("Bengali", "Cyrillic", "Japanese", "English", "Arabic", "Hindi", "German", "All", "Menu")]
+    [ValidateSet("Bengali", "Cyrillic", "Japanese", "Korean", "English", "Arabic", "Hindi", "German", "All", "Menu")]
     [string]$Language = "Menu"
 )
 
@@ -103,13 +103,13 @@ function Broadcast-FontChange {
 
 if ($Language -eq "Menu") {
     Write-Host "`nSelect typography archive to install:" -ForegroundColor White
-    Write-Host " 1) 🇧🇩 Bengali (3,400+ Fonts)"
+    Write-Host " 1) 🇧🇩 Bengali (5,020+ Fonts)"
     Write-Host " 2) 🇷🇺 Cyrillic & Slavic (10,136 Fonts)"
-    Write-Host " 3) 🇯🇵 Japanese / Nihongo (1,100+ Fonts)"
+    Write-Host " 3) 🇯🇵 Japanese / Nihongo (1,509+ Fonts)"
     Write-Host " 4) 🇬🇧 English & Latin (30,800+ Fonts)"
     Write-Host " 5) 🕌 Arabic & Islamic (13,800+ Fonts)"
-    Write-Host " 6) 🇮🇳 Hindi & Devanagari (6,000+ Fonts)"
-    Write-Host " 7) 🇩🇪 German Fraktur (5,400+ Fonts)"
+    Write-Host " 6) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
+    Write-Host " 7) 🇩🇪 German Fraktur (5,504+ Fonts)"
     Write-Host " 8) 🌐 Install ALL Curated Collections (70,000+ Fonts)"
     Write-Host " 0) Exit"
     $choice = Read-Host "`nEnter choice [1-8]"

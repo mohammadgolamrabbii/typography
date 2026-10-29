@@ -44,6 +44,7 @@ declare -A REPOS
 REPOS["bengali"]="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
 REPOS["cyrillic"]="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
 REPOS["japanese"]="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
+REPOS["korean"]="https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
 REPOS["english"]="https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git"
 REPOS["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git"
 REPOS["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git"
@@ -114,20 +115,21 @@ case "${TARGET_LANG,,}" in
         update_font_cache
         ;;
     all)
-        for l in bengali cyrillic japanese english arabic hindi german; do
+        for l in bengali cyrillic japanese korean english arabic hindi german; do
             install_language "$l"
         done
         update_font_cache
         ;;
     *)
         echo -e "\n${BOLD}Select which typography collection to install:${NC}"
-        echo " 1) 🇧🇩 Bengali (3,400+ Fonts)"
+        echo " 1) 🇧🇩 Bengali (5,020+ Fonts)"
         echo " 2) 🇷🇺 Cyrillic & Slavic (10,136 Fonts)"
-        echo " 3) 🇯🇵 Japanese / Nihongo (1,100+ Fonts)"
+        echo " 3) 🇯🇵 Japanese / Nihongo (1,509+ Fonts)"
         echo " 4) 🇬🇧 English & Latin (30,800+ Fonts)"
         echo " 5) 🕌 Arabic & Islamic (13,800+ Fonts)"
-        echo " 6) 🇮🇳 Hindi & Devanagari (6,000+ Fonts)"
-        echo " 7) 🇩🇪 German Fraktur (5,400+ Fonts)"
+        echo " 6) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
+        echo " 8) 🇰🇷 Korean / Hangul (1,863+ Fonts)"
+        echo " 7) 🇩🇪 German Fraktur (5,504+ Fonts)"
         echo " 8) 🌐 Install ALL Curated Collections (70,000+ Fonts)"
         echo " 0) Exit"
         echo ""
@@ -142,7 +144,7 @@ case "${TARGET_LANG,,}" in
             6) install_language "hindi" ;;
             7) install_language "german" ;;
             8)
-                for l in bengali cyrillic japanese english arabic hindi german; do
+                for l in bengali cyrillic japanese korean english arabic hindi german; do
                     install_language "$l"
                 done
                 ;;
