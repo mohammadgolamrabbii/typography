@@ -1,0 +1,19 @@
+{
+  "name": "Open Typography Hub — 80,200+ Free Fonts",
+  "short_name": "OpenFonts",
+  "description": "Permanent Multilingual Typography Mega Archive & Live Specimen Studio curated by Mohammad Golamrabbii for the Open Typography Foundation.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#10b981",
+  "orientation": "any",
+  "categories": ["design", "utilities", "education"],
+  "icons": [
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
