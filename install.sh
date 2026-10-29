@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Open Typography Foundation — Universal Linux / macOS Font Installer
-# Curated by Mohammad Golamrabbii
-# Zero Rate-Limits, Full High-Speed Mirroring, System-Wide Registration
+#  Open Typography Foundation — Universal Linux / macOS Font Fast-Installer
+#  Curated by Mohammad Golamrabbii
+#  Zero Rate-Limits, Full High-Speed Mirroring, Automated Cache Updates
 # ==============================================================================
 
 set -e
@@ -16,6 +16,9 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color
 
 TARGET_LANG="${1:-menu}"
+if [ "$TARGET_LANG" == "--script" ] && [ -n "$2" ]; then
+    TARGET_LANG="$2"
+fi
 
 echo -e "${CYAN}${BOLD}"
 echo "  ___                      _____                                     _           "
@@ -26,7 +29,7 @@ echo " \___/| .__/ \___|_| |_|    |_| \__, | .__/ \___/ \__, |_|  \__,_| .__/|_|
 echo "      |_|                       |___/|_|          |___/          |_|          |___/ "
 echo -e "${NC}"
 echo -e "${YELLOW}  Curated by Mohammad Golamrabbii • Open Typography Foundation${NC}"
-echo -e "${BLUE}  Permanent High-Speed GitHub & Internet Archive Mirrors${NC}"
+echo -e "${BLUE}  Permanent High-Speed GitHub & Internet Archive Mirrors (80,000+ Production Fonts)${NC}"
 echo "=============================================================================="
 
 # Detect font installation directory
@@ -45,10 +48,12 @@ REPOS["bengali"]="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Colle
 REPOS["cyrillic"]="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
 REPOS["japanese"]="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
 REPOS["korean"]="https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
+REPOS["chinese"]="https://github.com/mohammadgolamrabbii/Chinese-Hanzi-Fonts-Archive.git"
 REPOS["english"]="https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git"
 REPOS["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git"
 REPOS["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git"
 REPOS["german"]="https://github.com/mohammadgolamrabbii/German-Fraktur-Fonts-Archive.git"
+REPOS["icons"]="https://github.com/mohammadgolamrabbii/Icons-and-Symbols-Fonts.git"
 
 install_language() {
     local lang="$1"
@@ -98,6 +103,14 @@ case "${TARGET_LANG,,}" in
         install_language "japanese"
         update_font_cache
         ;;
+    korean|hangul)
+        install_language "korean"
+        update_font_cache
+        ;;
+    chinese|hanzi)
+        install_language "chinese"
+        update_font_cache
+        ;;
     english|latin)
         install_language "english"
         update_font_cache
@@ -114,8 +127,12 @@ case "${TARGET_LANG,,}" in
         install_language "german"
         update_font_cache
         ;;
+    icons|symbols)
+        install_language "icons"
+        update_font_cache
+        ;;
     all)
-        for l in bengali cyrillic japanese korean english arabic hindi german; do
+        for l in bengali english arabic cyrillic hindi german korean japanese chinese icons; do
             install_language "$l"
         done
         update_font_cache
@@ -123,28 +140,33 @@ case "${TARGET_LANG,,}" in
     *)
         echo -e "\n${BOLD}Select which typography collection to install:${NC}"
         echo " 1) 🇧🇩 Bengali (5,020+ Fonts)"
-        echo " 2) 🇷🇺 Cyrillic & Slavic (10,136 Fonts)"
-        echo " 3) 🇯🇵 Japanese / Nihongo (1,509+ Fonts)"
-        echo " 4) 🇬🇧 English & Latin (30,800+ Fonts)"
-        echo " 5) 🕌 Arabic & Islamic (13,800+ Fonts)"
-        echo " 6) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
-        echo " 8) 🇰🇷 Korean / Hangul (1,863+ Fonts)"
-        echo " 7) 🇩🇪 German Fraktur (5,504+ Fonts)"
-        echo " 8) 🌐 Install ALL Curated Collections (70,000+ Fonts)"
+        echo " 2) 🇬🇧 English & Latin (30,930+ Fonts)"
+        echo " 3) 🕌 Arabic & Islamic (13,856+ Fonts)"
+        echo " 4) 🇷🇺 Cyrillic & Slavic (10,136+ Fonts)"
+        echo " 5) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
+        echo " 6) 🇩🇪 German Deutsche Schriften (5,504+ Fonts)"
+        echo " 7) 🇰🇷 Korean Hangul (1,863+ Fonts)"
+        echo " 8) 🇯🇵 Japanese Nihongo (1,509+ Fonts)"
+        echo " 9) 🇨🇳 Chinese Hanzi (1,350+ Fonts)"
+        echo " 10) 🎨 Icons & Symbols (1,177+ Fonts)"
+        echo " 11) 🌐 Install ALL Global Collections (80,000+ Fonts)"
         echo " 0) Exit"
         echo ""
-        read -p "Enter choice [1-8]: " choice
+        read -p "Enter choice [1-11]: " choice
 
         case "$choice" in
             1) install_language "bengali" ;;
-            2) install_language "cyrillic" ;;
-            3) install_language "japanese" ;;
-            4) install_language "english" ;;
-            5) install_language "arabic" ;;
-            6) install_language "hindi" ;;
-            7) install_language "german" ;;
-            8)
-                for l in bengali cyrillic japanese korean english arabic hindi german; do
+            2) install_language "english" ;;
+            3) install_language "arabic" ;;
+            4) install_language "cyrillic" ;;
+            5) install_language "hindi" ;;
+            6) install_language "german" ;;
+            7) install_language "korean" ;;
+            8) install_language "japanese" ;;
+            9) install_language "chinese" ;;
+            10) install_language "icons" ;;
+            11)
+                for l in bengali english arabic cyrillic hindi german korean japanese chinese icons; do
                     install_language "$l"
                 done
                 ;;
@@ -158,4 +180,4 @@ esac
 echo -e "\n${GREEN}${BOLD}==============================================================================${NC}"
 echo -e "${GREEN}${BOLD}  INSTALLATION COMPLETE! ALL FONTS READY ACROSS YOUR SYSTEM.${NC}"
 echo -e "${YELLOW}  Curated by Mohammad Golamrabbii for the Open Typography Foundation.${NC}"
-echo -e "${GREEN}${BOLD}==============================================================================${NC}\n"
+echo -e "${GREEN}${BOLD}==============================================================================${NC}"

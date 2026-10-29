@@ -2,14 +2,14 @@
 ==============================================================================
  Open Typography Foundation — Universal Windows PowerShell Font Installer
  Curated by Mohammad Golamrabbii
- Zero Rate-Limits, Full High-Speed Mirroring, System-Wide Registration
+ Zero Rate-Limits, Full High-Speed Mirroring, System-Wide Registration (80,000+ Fonts)
 ==============================================================================
 #>
 
 [CmdletBinding()]
 param (
     [Parameter(Position = 0)]
-    [ValidateSet("Bengali", "Cyrillic", "Japanese", "Korean", "English", "Arabic", "Hindi", "German", "All", "Menu")]
+    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "All", "Menu")]
     [string]$Language = "Menu"
 )
 
@@ -23,7 +23,7 @@ Write-Host "| |_| | |_) |  __/ | | |    | || |_| | |_) | (_) | (_| | | | (_| | |
 Write-Host " \___/| .__/ \___|_| |_|    |_| \__, | .__/ \___/ \__, |_|  \__,_| .__/|_| |_|\__, |" -ForegroundColor Cyan
 Write-Host "      |_|                       |___/|_|          |___/          |_|          |___/ " -ForegroundColor Cyan
 Write-Host "  Curated by Mohammad Golamrabbii • Open Typography Foundation" -ForegroundColor Yellow
-Write-Host "  Permanent High-Speed GitHub & Internet Archive Windows Installer" -ForegroundColor Green
+Write-Host "  Permanent High-Speed GitHub & Internet Archive Windows Installer (80,000+ Production Fonts)" -ForegroundColor Green
 Write-Host "==============================================================================" -ForegroundColor Gray
 
 $UserFontDir = [System.IO.Path]::Combine($env:LOCALAPPDATA, "Microsoft\Windows\Fonts")
@@ -35,12 +35,15 @@ $RegistryPath = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
 
 $Repos = @{
     "Bengali"  = "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
-    "Cyrillic" = "https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
-    "Japanese" = "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
     "English"  = "https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git"
     "Arabic"   = "https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git"
+    "Cyrillic" = "https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
     "Hindi"    = "https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git"
     "German"   = "https://github.com/mohammadgolamrabbii/German-Fraktur-Fonts-Archive.git"
+    "Korean"   = "https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
+    "Japanese" = "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
+    "Chinese"  = "https://github.com/mohammadgolamrabbii/Chinese-Hanzi-Fonts-Archive.git"
+    "Icons"    = "https://github.com/mohammadgolamrabbii/Icons-and-Symbols-Fonts.git"
 }
 
 function Install-FontFamily {
@@ -101,32 +104,40 @@ function Broadcast-FontChange {
     Write-Host "[✔] Windows Font Registry updated across Photoshop, Illustrator, Word, Figma, and all apps!" -ForegroundColor Green
 }
 
+$AllLanguages = @("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons")
+
 if ($Language -eq "Menu") {
     Write-Host "`nSelect typography archive to install:" -ForegroundColor White
-    Write-Host " 1) 🇧🇩 Bengali (5,020+ Fonts)"
-    Write-Host " 2) 🇷🇺 Cyrillic & Slavic (10,136 Fonts)"
-    Write-Host " 3) 🇯🇵 Japanese / Nihongo (1,509+ Fonts)"
-    Write-Host " 4) 🇬🇧 English & Latin (30,800+ Fonts)"
-    Write-Host " 5) 🕌 Arabic & Islamic (13,800+ Fonts)"
-    Write-Host " 6) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
-    Write-Host " 7) 🇩🇪 German Fraktur (5,504+ Fonts)"
-    Write-Host " 8) 🌐 Install ALL Curated Collections (70,000+ Fonts)"
-    Write-Host " 0) Exit"
-    $choice = Read-Host "`nEnter choice [1-8]"
+    Write-Host "  1) 🇧🇩 Bengali (5,020+ Fonts)"
+    Write-Host "  2) 🇬🇧 English & Latin (30,930+ Fonts)"
+    Write-Host "  3) 🕌 Arabic & Islamic (13,856+ Fonts)"
+    Write-Host "  4) 🇷🇺 Cyrillic & Slavic (10,136+ Fonts)"
+    Write-Host "  5) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
+    Write-Host "  6) 🇩🇪 German Deutsche Schriften (5,504+ Fonts)"
+    Write-Host "  7) 🇰🇷 Korean Hangul (1,863+ Fonts)"
+    Write-Host "  8) 🇯🇵 Japanese Nihongo (1,509+ Fonts)"
+    Write-Host "  9) 🇨🇳 Chinese Hanzi (1,350+ Fonts)"
+    Write-Host " 10) 🎨 Icons & Symbols (1,177+ Fonts)"
+    Write-Host " 11) 🌐 Install ALL Global Collections (80,000+ Fonts)"
+    Write-Host "  0) Exit"
+    $choice = Read-Host "`nEnter choice [1-11]"
     
     switch ($choice) {
         "1" { Install-FontFamily "Bengali" }
-        "2" { Install-FontFamily "Cyrillic" }
-        "3" { Install-FontFamily "Japanese" }
-        "4" { Install-FontFamily "English" }
-        "5" { Install-FontFamily "Arabic" }
-        "6" { Install-FontFamily "Hindi" }
-        "7" { Install-FontFamily "German" }
-        "8" { @("Bengali", "Cyrillic", "Japanese", "English", "Arabic", "Hindi", "German") | ForEach-Object { Install-FontFamily $_ } }
+        "2" { Install-FontFamily "English" }
+        "3" { Install-FontFamily "Arabic" }
+        "4" { Install-FontFamily "Cyrillic" }
+        "5" { Install-FontFamily "Hindi" }
+        "6" { Install-FontFamily "German" }
+        "7" { Install-FontFamily "Korean" }
+        "8" { Install-FontFamily "Japanese" }
+        "9" { Install-FontFamily "Chinese" }
+        "10" { Install-FontFamily "Icons" }
+        "11" { $AllLanguages | ForEach-Object { Install-FontFamily $_ } }
         Default { Write-Host "Exited."; exit }
     }
 } elseif ($Language -eq "All") {
-    @("Bengali", "Cyrillic", "Japanese", "English", "Arabic", "Hindi", "German") | ForEach-Object { Install-FontFamily $_ }
+    $AllLanguages | ForEach-Object { Install-FontFamily $_ }
 } else {
     Install-FontFamily $Language
 }
