@@ -45,15 +45,15 @@ mkdir -p "${FONT_DIR}"
 
 declare -A REPOS
 REPOS["bengali"]="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
-REPOS["cyrillic"]="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
+REPOS["cyrillic"]="https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git"
 REPOS["japanese"]="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
 REPOS["korean"]="https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
-REPOS["chinese"]="https://github.com/mohammadgolamrabbii/Chinese-Hanzi-Fonts-Archive.git"
-REPOS["english"]="https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git"
-REPOS["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git"
-REPOS["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git"
-REPOS["german"]="https://github.com/mohammadgolamrabbii/German-Fraktur-Fonts-Archive.git"
-REPOS["icons"]="https://github.com/mohammadgolamrabbii/Icons-and-Symbols-Fonts.git"
+REPOS["chinese"]="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+REPOS["english"]="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
+REPOS["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
+REPOS["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
+REPOS["german"]="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
+REPOS["icons"]="https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
 
 install_language() {
     local lang="$1"

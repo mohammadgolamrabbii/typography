@@ -35,15 +35,23 @@ $RegistryPath = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
 
 $Repos = @{
     "Bengali"  = "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
-    "English"  = "https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git"
-    "Arabic"   = "https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git"
-    "Cyrillic" = "https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git"
-    "Hindi"    = "https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git"
-    "German"   = "https://github.com/mohammadgolamrabbii/German-Fraktur-Fonts-Archive.git"
+    "English"  = "https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
+    "Arabic"   = "https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
+    "Cyrillic" = "https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git"
+    "Hindi"    = "https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
+    "German"   = "https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
     "Korean"   = "https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
     "Japanese" = "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
-    "Chinese"  = "https://github.com/mohammadgolamrabbii/Chinese-Hanzi-Fonts-Archive.git"
-    "Icons"    = "https://github.com/mohammadgolamrabbii/Icons-and-Symbols-Fonts.git"
+    "Chinese"  = "https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+    "Icons"    = "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
+}
+
+$ArchiveZips = @{
+    "Bengali"  = "https://archive.org/download/open-typography-foundation-bangla-fonts/Bangla_Fonts_Mega_Collection_5000_Fonts.zip"
+    "Cyrillic" = "https://archive.org/download/open-typography-foundation-cyrillic-slavic/Cyrillic_Slavic_Mega_Archive_10136_Fonts.zip"
+    "Japanese" = "https://archive.org/download/open-typography-foundation-japanese-fonts/Japanese_Fonts_Mega_Archive_1500_Fonts.zip"
+    "Hindi"    = "https://archive.org/download/open-typography-foundation-hindi-fonts/Hindi_Devanagari_Fonts_Archive.zip"
+    "German"   = "https://archive.org/download/open-typography-foundation-german-fonts/German_Fraktur_Fonts_Archive.zip"
 }
 
 function Install-FontFamily {

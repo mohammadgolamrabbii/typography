@@ -76,7 +76,7 @@
   <!-- Google Web Fonts for Live Multi-Script Rendering -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Baloo+Da+2:wght@400;600;800&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Cormorant+Infant:ital,wght@0,600;0,700;1,400&family=Dela+Gothic+One&family=Do+Hyeon&family=Fira+Code:wght@400;600&family=Galada&family=Great+Vibes&family=Inter:wght@400;600;800&family=Jua&family=Kaisei+Tokumin:wght@700&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Mina:wght@400;700&family=Montserrat:wght@400;700;900&family=Nanum+Pen+Script&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+Bengali:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Orbitron:wght@600;800&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Russo+One&family=Shippori+Mincho:wght@700&family=Stalinist+One&family=UnifrakturMaguntia&family=Yuji+Boku&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Baloo+Da+2:wght@400;600;800&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Cormorant+Infant:ital,wght@0,600;0,700;1,400&family=Dela+Gothic+One&family=Do+Hyeon&family=Fira+Code:wght@400;600&family=Galada&family=Great+Vibes&family=Inter:wght@400;600;800&family=Jua&family=Kaisei+Tokumin:wght@700&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Mina:wght@400;700&family=Montserrat:wght@400;700;900&family=Nanum+Pen+Script&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+Bengali:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Orbitron:wght@600;800&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Russo+One&family=Shippori+Mincho:wght@700&family=Stalinist+One&family=UnifrakturMaguntia&family=Yuji+Boku&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 
   <style>
     /* Cyrillic */
@@ -123,6 +123,12 @@
 
     /* German Fraktur */
     .font-unifraktur { font-family: 'UnifrakturMaguntia', cursive, serif; }
+
+        /* Chinese (Hanzi) */
+    .font-noto-sc { font-family: 'Noto Sans SC', sans-serif; }
+    .font-noto-serif-sc { font-family: 'Noto Serif SC', serif; }
+    .font-zcool { font-family: 'ZCOOL KuaiLe', cursive, sans-serif; }
+    .font-mashan { font-family: 'Ma Shan Zheng', cursive, sans-serif; }
 
     /* Light preview specimen mode */
     .preview-canvas-light {
@@ -672,6 +678,94 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="specimensGrid">
       
+            <!-- Chinese 1: Noto Sans SC (Hei) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Sans SC" data-class="font-noto-sc">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Sans SC (Modern Hei / 黑体)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Hei</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-sc text-xl transition-all border-y border-slate-800/60 my-2">
+            天地玄黄，宇宙洪荒。日月盈昃，辰宿列张。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Simplified Hei • UI & Clean Screen</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 2: Noto Serif SC (Song) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Serif SC" data-class="font-noto-serif-sc">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Serif SC (Classical Song / 宋体)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Song</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-serif-sc text-xl transition-all border-y border-slate-800/60 my-2">
+            寒来暑往，秋收冬藏。闰余成岁，律吕调阳。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Classical Song • Editorial & Literature</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 3: ZCOOL KuaiLe (Playful Cinema Display) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="ZCOOL KuaiLe" data-class="font-zcool">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">ZCOOL KuaiLe (Playful Cinema Display / 快乐体)</h4>
+              <p class="text-[11px] text-slate-400">ZCOOL Network • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Display</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-zcool text-2xl transition-all border-y border-slate-800/60 my-2">
+            云腾致雨，露结为霜。金生丽水，玉出昆冈。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Display Playful • Gaming & Cartoons</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 4: Ma Shan Zheng (Brush Calligraphy) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Ma Shan Zheng" data-class="font-mashan">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Ma Shan Zheng (Expressive Brush / 毛笔楷体)</h4>
+              <p class="text-[11px] text-slate-400">Ma Shan-zheng • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Brush</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-mashan text-2xl transition-all border-y border-slate-800/60 my-2">
+            剑号巨阙，珠称夜光。果珍李柰，菜重芥姜。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Calligraphic Ink • Cultural Poetry</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
       <!-- Korean 1: Noto Sans KR -->
       <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Noto Sans KR" data-class="font-noto-kr">
         <div>
@@ -895,6 +989,7 @@
   <script>
     // Master data
     const langPangrams = {
+      chinese: "天地玄黄，宇宙洪荒。日月盈昃，辰宿列张。寒来暑往，秋收冬藏。",
       korean: "다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.",
       bengali: "আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।",
       japanese: "色は匂へど 散りぬるを 我が世誰ぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず",
@@ -906,6 +1001,12 @@
     };
 
     const fontsByScript = {
+      chinese: [
+        { name: "Noto Sans SC", class: "font-noto-sc", desc: "Modern Hei / 黑体" },
+        { name: "Noto Serif SC", class: "font-noto-serif-sc", desc: "Classical Song / 宋体" },
+        { name: "ZCOOL KuaiLe", class: "font-zcool", desc: "Cinema Playful / 快乐体" },
+        { name: "Ma Shan Zheng", class: "font-mashan", desc: "Expressive Brush / 毛笔楷体" }
+      ],
       korean: [
         { name: "Noto Sans KR", class: "font-noto-kr", desc: "Modern UI Sans" },
         { name: "Noto Serif KR", class: "font-noto-serif-kr", desc: "Literary Myeongjo" },
@@ -1092,20 +1193,20 @@
           cmd = "irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex";
         } else {
           const cap = currentTargetScript.charAt(0).toUpperCase() + currentTargetScript.slice(1);
-          cmd = `irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex -args "-Language ${cap}"`;
+          cmd = `& ([scriptblock]::Create((irm https://mohammadgolamrabbii.github.io/typography/install.ps1))) -Language ${cap}`;
         }
       } else if (currentPlatform === 'git') {
         const repoMap = {
-          korean: "https://github.com/Open-Typography-Foundation/11_Korean_Hangul.git",
           chinese: "https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git",
-          icons: "https://github.com/mohammadgolamrabbii/Icons-and-Symbols-Fonts.git",
+          korean: "https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git",
+          icons: "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git",
           bengali: "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git",
           japanese: "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git",
-          cyrillic: "https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git",
-          hindi: "https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git",
-          german: "https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften.git",
-          english: "https://github.com/Open-Typography-Foundation/2_English_Latin.git",
-          arabic: "https://github.com/Open-Typography-Foundation/3_Arabic_Islamic.git"
+          cyrillic: "https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git",
+          hindi: "https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git",
+          german: "https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git",
+          arabic: "https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git",
+          english: "https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
         };
         cmd = `git clone ${repoMap[currentTargetScript] || "https://github.com/Open-Typography-Foundation/11_Korean_Hangul.git"}`;
       }
