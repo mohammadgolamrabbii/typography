@@ -6,7 +6,7 @@
   <title>Open Typography Hub | 70,000+ Free Fonts & Live Interactive Studio</title>
   <meta name="description" content="Search, live-test, and download 70,000+ verified open-source fonts across 8 writing systems (Cyrillic, Japanese, Bengali, English, Arabic, Hindi, German). Curated by Mohammad Golamrabbii.">
   <meta name="author" content="Mohammad Golamrabbii">
-  <meta name="keywords" content="Mohammad Golamrabbii, Open Typography Foundation, cyrillic fonts, japanese fonts, free fonts, bangla fonts, arabic fonts, hindi fonts, german fonts, english fonts, font search, font tester">
+  <meta name="keywords" content="Mohammad Golamrabbii, Open Typography Foundation, cyrillic fonts, japanese fonts, free fonts, bangla fonts, arabic fonts, hindi fonts, german fonts, english fonts, font search, font tester, terminal font installer">
 
   <!-- Cache Control to ensure instant browser refresh -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mohammadgolamrabbii.github.io/typography/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Open Typography Hub • Mohammad Golamrabbii">
+  <meta name="twitter:title" content="Open Typography Hub — Mohammad Golamrabbii">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -56,8 +56,1210 @@
       }
     ]
   }
-  
-    // Terminal Platform & Language Switcher
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0fdf4', 500: '#22c55e', 600: '#16a34a' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Web Fonts for Live Multi-Script Rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Baloo+Da+2:wght@400;600;800&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Cormorant+Infant:ital,wght@0,600;0,700;1,400&family=Dela+Gothic+One&family=Fira+Code:wght@400;600&family=Galada&family=Great+Vibes&family=Inter:wght@400;600;800&family=Kaisei+Tokumin:wght@700&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Mina:wght@400;700&family=Montserrat:wght@400;700;900&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Serif+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Orbitron:wght@600;800&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Russo+One&family=Shippori+Mincho:wght@700&family=Stalinist+One&family=UnifrakturMaguntia&family=Yuji+Boku&display=swap" rel="stylesheet">
+
+  <style>
+    /* Cyrillic */
+    .font-pt-sans { font-family: 'PT Sans', sans-serif; }
+    .font-stalinist { font-family: 'Stalinist One', cursive, sans-serif; }
+    .font-russo { font-family: 'Russo One', sans-serif; }
+    .font-cormorant-infant { font-family: 'Cormorant Infant', serif; }
+
+    /* Japanese */
+    .font-shippori { font-family: 'Shippori Mincho', serif; }
+    .font-kaisei { font-family: 'Kaisei Tokumin', serif; }
+    .font-dela { font-family: 'Dela Gothic One', cursive, sans-serif; }
+    .font-kiwi { font-family: 'Kiwi Maru', serif; }
+    .font-yuji { font-family: 'Yuji Boku', serif; }
+    .font-mplus-round { font-family: 'M PLUS Rounded 1c', sans-serif; }
+
+    /* Bengali */
+    .font-noto-bangla { font-family: 'Noto Sans Bengali', sans-serif; }
+    .font-noto-serif-bangla { font-family: 'Noto Serif Bengali', serif; }
+    .font-baloo-da { font-family: 'Baloo Da 2', cursive, sans-serif; }
+    .font-galada { font-family: 'Galada', cursive, sans-serif; }
+    .font-mina { font-family: 'Mina', sans-serif; }
+
+    /* English / Latin */
+    .font-inter { font-family: 'Inter', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+    .font-fira-code { font-family: 'Fira Code', monospace; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+    /* Arabic */
+    .font-amiri { font-family: 'Amiri', serif; }
+
+    /* Hindi */
+    .font-noto-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+
+    /* German Fraktur */
+    .font-unifraktur { font-family: 'UnifrakturMaguntia', cursive, serif; }
+
+    /* Light preview specimen mode */
+    .preview-canvas-light {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-color: #e2e8f0 !important;
+    }
+    .preview-canvas-light .text-slate-100,
+    .preview-canvas-light .text-white {
+      color: #0f172a !important;
+    }
+    .preview-canvas-light .preview-text {
+      color: #1e293b !important;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Custom Glassmorphism Accent */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- ==================== HEADER (CLEAN STATIC / NON-STICKY SO ZERO SCROLL OVERLAP) ==================== -->
+  <header class="border-b border-slate-800 bg-slate-950/95 py-3.5 relative z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3.5">
+        <span class="text-3xl">🌐</span>
+        <div>
+          <h1 class="font-black text-xl text-white tracking-tight flex items-center gap-2">
+            Open Typography Hub
+            <span class="text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v3.2 Ultra</span>
+          </h1>
+          <p class="text-xs text-slate-400 font-medium">70,000+ Verified Open Typefaces Across 8 Global Scripts • Curated by Mohammad Golamrabbii</p>
+        </div>
+      </div>
+
+      <!-- Quick Platform Links -->
+      <div class="flex items-center space-x-2 text-xs font-semibold flex-wrap">
+        <a href="#downloads-section" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center space-x-1.5 shadow-md">
+          <span>⚡</span><span>Archive Downloads</span>
+        </a>
+        <a href="#tester-studio" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
+          <span>✍️</span><span>Live Font Tester</span>
+        </a>
+        <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
+          <span>🏛️</span><span>Archive.org</span>
+        </a>
+        <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
+          <span>🐙</span><span>GitHub Org</span>
+        </a>
+        <a href="https://linktr.ee/golamrabbii" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
+          <span>🌟</span><span>Curator</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 1. FULL ARCHIVE DOWNLOADS (REDESIGNED FOR MAXIMUM USER FRIENDLINESS) ==================== -->
+  <section id="downloads-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+    <div class="glass-card border border-amber-500/30 rounded-2xl p-5 sm:p-7 shadow-2xl relative">
+      
+      <!-- Box Header & Controls -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase tracking-wider">
+              🏛️ Official Digital Preservation Mirrors
+            </span>
+            <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Zero Rate-Limits • 100% Free Direct HTTP
+            </span>
+            <span class="text-xs text-cyan-400 font-mono font-bold bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-full">
+              70,000+ Total Fonts
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Full Archive Downloads (Zero Rate-Limits)
+          </h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Permanent high-speed direct HTTP, BitTorrent, and Git mirrors for all 70,000+ production typefaces across 8 script families. Preserved for posterity by <a href="https://linktr.ee/golamrabbii" target="_blank" class="text-amber-400 font-bold hover:underline">Mohammad Golamrabbii</a>.
+          </p>
+        </div>
+
+        <!-- Download Section Action Buttons -->
+        <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
+          <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-md flex items-center gap-1.5">
+            <span>🏛️</span><span>Open Archive.org Hub ➔</span>
+          </a>
+          <button id="toggleDownloadsBtn" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition flex items-center gap-1.5">
+            <span id="toggleDownloadsIcon">⯆</span><span id="toggleDownloadsText">Minimize Box</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible Container for Download Grid -->
+      <div id="downloadsContent" class="transition-all duration-300 mt-5">
+        
+        <!-- ==================== UNIVERSAL TERMINAL 1-CLICK FAST INSTALLER ==================== -->
+        <div class="mb-6 bg-slate-900/90 border border-emerald-500/30 rounded-xl p-4 sm:p-5 shadow-lg">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 text-base">💻</span>
+              <div>
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                  1-Click Terminal Fast-Installers
+                  <span class="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">Zero Root Required</span>
+                </h3>
+                <p class="text-xs text-slate-400">Copy and paste one command into your terminal to automatically download, unpack, and activate fonts.</p>
+              </div>
+            </div>
+
+            <!-- Platform Tabs -->
+            <div class="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs shrink-0">
+              <button id="tabLinux" onclick="setTerminalPlatform('linux')" class="px-3 py-1.5 rounded-lg font-semibold transition-all bg-emerald-500 text-slate-950 shadow-sm flex items-center gap-1.5">
+                <span>🐧</span><span>Linux / macOS (bash)</span>
+              </button>
+              <button id="tabWindows" onclick="setTerminalPlatform('windows')" class="px-3 py-1.5 rounded-lg font-semibold text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
+                <span>🪟</span><span>Windows (PowerShell)</span>
+              </button>
+              <button id="tabGit" onclick="setTerminalPlatform('git')" class="px-3 py-1.5 rounded-lg font-semibold text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
+                <span>📦</span><span>Git Clone</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Script Language Selector Chips for Terminal -->
+          <div class="flex items-center gap-2 mb-3 overflow-x-auto pb-1 text-xs">
+            <span class="text-slate-400 text-xs font-medium shrink-0">Select Script Pack:</span>
+            <button onclick="setTerminalLang('all')" class="term-lang-chip active px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium transition-all shrink-0">All 70k+ Fonts</button>
+            <button onclick="setTerminalLang('bengali')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇧🇩 বাংলা (3,412+)</button>
+            <button onclick="setTerminalLang('japanese')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇯🇵 日本語 (1,500+)</button>
+            <button onclick="setTerminalLang('cyrillic')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇷🇺 Кириллица (10,136+)</button>
+            <button onclick="setTerminalLang('english')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇬🇧 English (30k+)</button>
+            <button onclick="setTerminalLang('arabic')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🕌 العربية (13k+)</button>
+            <button onclick="setTerminalLang('hindi')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇮🇳 हिन्दी (6k+)</button>
+            <button onclick="setTerminalLang('german')" class="term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 font-medium transition-all shrink-0">🇩🇪 Fraktur (5k+)</button>
+          </div>
+
+          <!-- Terminal Box with One-Click Copy -->
+          <div class="relative flex items-center bg-slate-950 rounded-lg border border-slate-800 p-2.5 font-mono text-xs text-emerald-400 group">
+            <span class="text-slate-600 select-none mr-2">$</span>
+            <code id="terminalCmdText" class="flex-1 overflow-x-auto whitespace-nowrap text-emerald-300 selection:bg-emerald-500 selection:text-slate-950 py-0.5">curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash -s -- all</code>
+            <button onclick="copyTerminalCmd()" class="ml-2 px-3 py-1.5 rounded-md bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 font-sans font-semibold text-xs border border-slate-700 transition flex items-center gap-1 shrink-0">
+              <span>📋</span><span id="copyTerminalLabel">Copy Command</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Controls Bar: Archive Search + Filter Tabs -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+          <!-- Archive Search Bar -->
+          <div class="relative w-full md:w-80">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400 text-xs">
+              🔍
+            </span>
+            <input 
+              type="text" 
+              id="archiveSearchInput" 
+              placeholder="Filter archive packs (e.g., 'Cyrillic', 'Bangla', 'Japanese')..." 
+              class="w-full bg-slate-950 border border-slate-700/80 focus:border-amber-400 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none transition font-medium"
+            >
+          </div>
+
+          <!-- Quick Category Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-semibold text-slate-400 mr-1 hidden sm:inline">Filter:</span>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs shadow transition" data-filter="all">
+              All Packs (8)
+            </button>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" data-filter="south-asia">
+              South Asian
+            </button>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" data-filter="east-asia">
+              East Asian
+            </button>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" data-filter="cyrillic">
+              Cyrillic & Slavic
+            </button>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" data-filter="middle-east">
+              Middle Eastern
+            </button>
+            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" data-filter="europe">
+              Western & Symbols
+            </button>
+          </div>
+        </div>
+
+        <!-- 8 Script Family Download Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="archiveCardsGrid">
+          
+          <!-- Card 1: Cyrillic & Slavic -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="cyrillic" data-keywords="cyrillic slavic russian soviet paratype 10136">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇷🇺</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">10,136+ Pro Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Cyrillic & Slavic</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Complete Russian, Soviet constructivist, ParaType, and modern Slavic display typefaces.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>GitHub Mirror</span> ➔
+              </a>
+              <button onclick="quickFilterScript('cyrillic')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Japanese -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="east-asia" data-keywords="japanese nihongo mincho gothic anime manga brush 1500">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇯🇵</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">1,500+ PRO Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Japanese 日本語</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Mincho, Kaku/Maru Gothic, Anime & Manga display, and Edo calligraphy typefaces.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>GitHub Mirror</span> ➔
+              </a>
+              <button onclick="quickFilterScript('japanese')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Bangla -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="south-asia" data-keywords="bangla bengali bijoy unicode ekushey lipighor 3412">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇧🇩</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">3,412+ Verified Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Bangla বাংলা</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Bijoy ANSI classic, modern Unicode, Ekushey, Lipighor, and curated book calligraphy.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>Archive.org</span> ➔
+              </a>
+              <button onclick="quickFilterScript('bengali')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: English & Latin -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="europe" data-keywords="english latin google fonts ofl sans serif display 30886">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇬🇧</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">30,886+ Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">English & Latin</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">11 comprehensive volumes: Modern UI sans, editorial serifs, vintage, and display styles.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation-english-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>11 Volumes</span> ➔
+              </a>
+              <button onclick="quickFilterScript('english')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Arabic & Islamic -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="middle-east" data-keywords="arabic islamic nastaliq kufic naskh thuluth 13856">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🕌</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">13,856+ Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Arabic & Islamic</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">4 comprehensive volumes: Quranic Naskh, classical Thuluth, Diwani, and modern Maghrebi.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation-arabic-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>4 Volumes</span> ➔
+              </a>
+              <button onclick="quickFilterScript('arabic')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6: Hindi & Devanagari -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="south-asia" data-keywords="hindi devanagari sanskrit marathi lohit cdac 6011">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇮🇳</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">6,011+ Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Hindi Devanagari</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Complete CDAC, Lohit, Sahadeva, Sanskrit literature, and modern Indian UI typography.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation-hindi-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>Archive.org</span> ➔
+              </a>
+              <button onclick="quickFilterScript('hindi')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 7: German Fraktur -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="europe" data-keywords="german fraktur blackletter schwabacher textura kanzlei 5002">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🇩🇪</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">5,002+ Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">German Fraktur</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Historical Blackletter, Schwabacher, Textura, and Kanzlei manuscript letterforms.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation-german-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>Archive.org</span> ➔
+              </a>
+              <button onclick="quickFilterScript('german')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 8: Icons & Symbols -->
+          <div class="archive-card bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-xl p-4 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group" data-category="europe" data-keywords="icons symbols fontawesome material nerd fonts 225">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl">🎨</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">225+ Fonts</span>
+              </div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-400 transition-colors">Icons & Symbols</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Curated icon font packages, FontAwesome, Material Icons, and nerd symbol glyphs.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                <span>Archive.org</span> ➔
+              </a>
+              <button onclick="quickFilterScript('english')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
+                <span>⚡ Test</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. LIVE INTERACTIVE FONT TESTING & SEARCH STUDIO ==================== -->
+  <section id="tester-studio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="text-center max-w-3xl mx-auto mb-6">
+      <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase tracking-widest inline-flex items-center gap-1.5">
+        <span>✨</span> Live Interactive Multi-Script Specimen Studio
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mt-2">
+        Test Any Font in Real-Time
+      </h2>
+      <p class="text-sm text-slate-400 mt-1">
+        Search by font name, choose script and typeface, or type custom preview text to inspect letterforms before downloading.
+      </p>
+    </div>
+
+    <!-- Master Studio Control Console -->
+    <div class="glass-card border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl relative mb-8">
+
+      <!-- ================= TIER 1: LIVE SEARCH BAR (USER REQUESTED CORE FEATURE) ================= -->
+      <div class="mb-6 bg-slate-900/80 p-4 rounded-xl border border-emerald-500/30">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
+          <label for="fontSearchInput" class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span>🔍</span> Real-Time Font & Style Search
+          </label>
+          <div class="flex items-center gap-2">
+            <span id="searchStatusBadge" class="text-[11px] font-semibold text-slate-300 bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-700">
+              Showing 21 of 21 Specimens
+            </span>
+            <button id="clearSearchBtn" class="text-xs text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 transition hidden">
+              ✕ Clear Search
+            </button>
+          </div>
+        </div>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400 text-sm">
+            🔍
+          </span>
+          <input 
+            type="text" 
+            id="fontSearchInput" 
+            placeholder="Type font name, tag, author, or style (e.g. 'Nikosh', 'Mincho', 'PT Sans', 'Baloo', 'Dela', 'Gothic', 'Serif', 'Bengali')..." 
+            class="w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-400 transition font-medium"
+          >
+        </div>
+
+        <!-- Popular Search Chips -->
+        <div class="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-1 text-xs">
+          <span class="text-slate-400 text-xs shrink-0 font-medium">Popular:</span>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Bengali">🇧🇩 Bengali</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Japanese">🇯🇵 Japanese</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Cyrillic">🇷🇺 Cyrillic</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Mincho">Mincho</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Gothic">Gothic</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Serif">Serif</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Sans">Sans</button>
+          <button type="button" class="search-chip px-2.5 py-0.5 rounded-md bg-slate-800/80 text-slate-300 hover:text-emerald-300 hover:bg-slate-800 border border-slate-700 transition shrink-0" data-query="Display">Display</button>
+        </div>
+      </div>
+
+      <!-- ================= PREVIEW TEXTAREA AREA ================= -->
+      <div class="mb-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <label for="livePreviewText" class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+              <span>✍️</span> Preview Text (Type freely in any language):
+            </label>
+            <span id="activeFontLabel" class="text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Active Font: Noto Sans Bengali
+            </span>
+          </div>
+
+          <!-- Quick Text Pangrams -->
+          <div class="flex items-center gap-1.5 text-xs flex-wrap">
+            <button type="button" class="pangram-btn px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px]" data-type="default">
+              Default Pangram
+            </button>
+            <button type="button" class="pangram-btn px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px]" data-type="name">
+              Curator Name
+            </button>
+            <button type="button" class="pangram-btn px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px]" data-type="numbers">
+              Numbers & Symbols
+            </button>
+            <button type="button" id="clearTextBtn" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 transition text-[11px]">
+              Clear Text
+            </button>
+          </div>
+        </div>
+
+        <textarea 
+          id="livePreviewText" 
+          rows="3" 
+          class="font-noto-bangla w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-xl p-4 text-white text-lg focus:outline-none transition resize-y font-normal leading-relaxed"
+        >আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।</textarea>
+      </div>
+
+      <!-- ================= TIER 2: SCRIPT SELECTOR + FONT FAMILY SELECTOR + SIZE & STYLES ================= -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center pt-2 border-t border-slate-800/80">
+        
+        <!-- Control 1: Select Script -->
+        <div class="md:col-span-4">
+          <label for="scriptFilter" class="block text-xs font-semibold text-slate-400 mb-1.5">
+            1. Select Language / Script:
+          </label>
+          <div class="relative">
+            <select 
+              id="scriptFilter" 
+              class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2 text-xs text-white focus:outline-none font-semibold cursor-pointer transition"
+            >
+              <option value="all">🌍 All Writing Systems (8 Scripts)</option>
+              <option value="bengali" selected>🇧🇩 Bengali (বাংলা)</option>
+              <option value="japanese">🇯🇵 Japanese (日本語)</option>
+              <option value="cyrillic">🇷🇺 Cyrillic (Кириллица)</option>
+              <option value="english">🇬🇧 English (Latin)</option>
+              <option value="arabic">🕌 Arabic (العربية)</option>
+              <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
+              <option value="german">🇩🇪 Deutsch (German Fraktur)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Control 2: Choose Specific Font (DYNAMICALLY POPULATED) -->
+        <div class="md:col-span-4">
+          <label for="fontFamilyFilter" class="block text-xs font-semibold text-emerald-400 mb-1.5 flex items-center justify-between">
+            <span>2. Choose Specific Font:</span>
+            <span id="fontCountBadge" class="text-[10px] text-slate-400 font-mono">4 FONTS</span>
+          </label>
+          <div class="relative">
+            <select 
+              id="fontFamilyFilter" 
+              class="w-full bg-slate-900 border border-emerald-500/50 focus:border-emerald-400 rounded-xl px-3 py-2 text-xs text-emerald-300 focus:outline-none font-semibold cursor-pointer transition"
+            >
+              <option value="all">✨ All Available Fonts (Grid View)</option>
+              <!-- Options populated dynamically by JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Control 3: Font Size Slider -->
+        <div class="md:col-span-2">
+          <div class="flex justify-between items-center text-xs text-slate-400 mb-1.5">
+            <label for="fontSizeSlider" class="font-semibold">3. Font Size:</label>
+            <span id="fontSizeDisplay" class="font-mono font-bold text-emerald-400">24px</span>
+          </div>
+          <input 
+            type="range" 
+            id="fontSizeSlider" 
+            min="14" 
+            max="72" 
+            value="24" 
+            class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none"
+          >
+        </div>
+
+        <!-- Control 4: Action Tools (Contrast + Reset + Random) -->
+        <div class="md:col-span-2 flex items-center gap-1.5 justify-end">
+          <button 
+            id="toggleContrastBtn" 
+            title="Toggle Light/Dark Contrast"
+            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition flex items-center justify-center gap-1 text-xs"
+          >
+            <span id="contrastIcon">☀️</span><span id="contrastText" class="hidden sm:inline">Light</span>
+          </button>
+          <button 
+            id="randomFontBtn" 
+            title="Test a random typeface"
+            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition flex items-center justify-center gap-1 text-xs"
+          >
+            <span>🎲</span><span class="hidden sm:inline">Random</span>
+          </button>
+          <button 
+            id="resetFiltersBtn" 
+            title="Reset all filters and view defaults"
+            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700 transition text-xs flex items-center gap-1"
+          >
+            <span>↺</span><span class="hidden sm:inline">Reset</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= ACTIVE FONT HERO BANNER (SHOWN WHEN SPECIFIC FONT SELECTED) ================= -->
+    <div id="activeFontBanner" class="hidden mb-8 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/40 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span id="activeFontBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              Cyrillic
+            </span>
+            <span id="activeFontCategory" class="text-xs text-slate-400 font-medium bg-slate-800/80 px-2.5 py-0.5 rounded-full border border-slate-700">
+              Modern Grotesque Sans
+            </span>
+          </div>
+          <h3 id="activeFontTitle" class="text-2xl font-black text-white tracking-tight">
+            PT Sans
+          </h3>
+          <p id="activeFontMeta" class="text-xs text-slate-400 mt-1">
+            Foundry: ParaType • License: SIL OFL 1.1 / Free • Curated in Open Typography Foundation
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a id="activeFontDownloadBtn" href="#" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow flex items-center gap-1.5">
+            <span>⬇️</span><span>Get Font Pack</span>
+          </a>
+          <button id="closeActiveFontBtn" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition">
+            ✕ Back to All
+          </button>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div id="activeFontCanvas" class="p-6 rounded-xl bg-slate-950 border border-slate-800/80 text-2xl text-white leading-relaxed">
+          <!-- Active font hero text -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 3. FONT CARDS CATALOG GRID ==================== -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">📚</span>
+        <h3 class="text-base font-bold text-white">Typography Specimens Grid</h3>
+        <span id="gridVisibleCount" class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+          Showing 21 of 21 specimens
+        </span>
+      </div>
+      <span class="text-xs text-slate-400 hidden sm:inline">Click any card to inspect or test</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="specimensGrid">
+      
+      <!-- ================= CYRILLIC CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="pt-sans" data-script="cyrillic" data-tags="cyrillic russian slavic grotesque paratype sans alexandra korolkova">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">PT Sans</h4>
+              <p class="text-xs text-slate-400">ParaType / Alexandra Korolkova • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🇷🇺 Cyrillic Sans</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-pt-sans text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">Съешь же ещё этих мягких французских булок, да выпей чаю.</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Modern Grotesque Sans</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('pt-sans')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="stalinist-one" data-script="cyrillic" data-tags="cyrillic soviet constructivist retro poster display alexey kryukov headline">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Stalinist One</h4>
+              <p class="text-xs text-slate-400">Alexey Kryukov • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🇷🇺 Soviet Retro</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-stalinist text-lg text-slate-100 leading-relaxed uppercase tracking-wider" contenteditable="true" spellcheck="false">ВПЕРЁД К ЗВЁЗДАМ! СОВЕТСКИЙ ТИПОГРАФСКИЙ СТИЛЬ</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Soviet Constructivist</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('stalinist-one')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="russo-one" data-script="cyrillic" data-tags="cyrillic russian youtube display bold heavy impact headline jovanny lemonad">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Russo One</h4>
+              <p class="text-xs text-slate-400">Jovanny Lemonad • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 YouTube Bold</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-russo text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">ВЫСОКИЙ CTR: ЗАГОЛОВКИ И ПРЕВЬЮ ВИДЕО</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Heavy Impact Display</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('russo-one')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="cormorant-infant" data-script="cyrillic" data-tags="cyrillic russian imperial serif literature christian thalmann classical book">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Cormorant Infant</h4>
+              <p class="text-xs text-slate-400">Christian Thalmann • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🇷🇺 Imperial Serif</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-cormorant-infant text-2xl text-slate-100 leading-relaxed italic" contenteditable="true" spellcheck="false">Классическое изящество русской литературной типографики.</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Imperial Literature Serif</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('cormorant-infant')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= JAPANESE CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="shippori-mincho" data-script="japanese" data-tags="japanese nihongo shippori mincho classical literary serif tokyo font">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Shippori Mincho (しっぽり明朝)</h4>
+              <p class="text-xs text-slate-400">FONTDASU / Tokyo • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">🇯🇵 Literary Mincho</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-shippori text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">美しい日本の活字文化。静けさと気品を宿す古典明朝体。</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Classical Japanese Serif</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('shippori-mincho')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="dela-gothic" data-script="japanese" data-tags="japanese nihongo anime manga dela gothic heavy display poster youtube ctr">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Dela Gothic One (デラゴシック)</h4>
+              <p class="text-xs text-slate-400">artcan / Kana • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🇯🇵 Anime & Manga</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-dela text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">圧倒的インパクト！マンガ・アニメの極太ゴシック体</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Ultra-Heavy Display</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('dela-gothic')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="kaisei-tokumin" data-script="japanese" data-tags="japanese kaisei tokumin edo classical traditional mincho">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Kaisei Tokumin (解星 特民)</h4>
+              <p class="text-xs text-slate-400">FONT1000 / Kaisei • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">🇯🇵 Traditional Edo</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-kaisei text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">いろはにほへと ちりぬるを わかよたれそ つねならむ</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Traditional Edo Mincho</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('kaisei-tokumin')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="kiwi-maru" data-script="japanese" data-tags="japanese kiwi maru rounded gothic warm kawaii gentle friendly">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Kiwi Maru (キウイ丸)</h4>
+              <p class="text-xs text-slate-400">Hiroki Chan • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-pink-500/10 text-pink-400 border border-pink-500/20">🇯🇵 Kawaii Rounded</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-kiwi text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">やわらかな丸みとぬくもり。心地よい手書き風デザイン。</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Rounded Maru Gothic</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('kiwi-maru')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= BENGALI CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="noto-bangla" data-script="bengali" data-tags="bengali bangla noto sans google modern ui clear">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Noto Sans Bengali</h4>
+              <p class="text-xs text-slate-400">Google Fonts / Monotype • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🇧🇩 Modern UI Sans</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-noto-bangla text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Global Standard Sans</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('noto-bangla')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="noto-serif-bangla" data-script="bengali" data-tags="bengali bangla noto serif classic literature rabindranath nazrul book">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Noto Serif Bengali</h4>
+              <p class="text-xs text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-teal-500/10 text-teal-400 border border-teal-500/20">🇧🇩 Literary Classic</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-noto-serif-bangla text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির, জ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর।</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Literature & Publishing Serif</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('noto-serif-bangla')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="baloo-da-2" data-script="bengali" data-tags="bengali bangla baloo da 2 ek type rounded display playful warm">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Baloo Da 2 (বালু দা ২)</h4>
+              <p class="text-xs text-slate-400">Ek Type / Sarang Kulkarni • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🇧🇩 Warm Display Sans</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-baloo-da text-2xl text-slate-100 leading-relaxed font-bold" contenteditable="true" spellcheck="false">বাংলা বর্ণমালার আধুনিক উষ্ণ ও আকর্ষণীয় রূপ।</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">High-CTR Display Typeface</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('baloo-da-2')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="galada" data-script="bengali" data-tags="bengali bangla galada calligraphy handwritten cursive flowing script">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Galada (গলাদা)</h4>
+              <p class="text-xs text-slate-400">Carolina Trebol • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">🇧🇩 Flowing Script</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-galada text-2xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">ঐতিহ্যবাহী বাংলা ক্যালিগ্রাফি ও হস্তলিপির অপূর্ব সমাহার।</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Calligraphic Cursive</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('galada')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ENGLISH / LATIN CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="inter" data-script="english" data-tags="english latin inter rasmus rasmusson ui sans modern product interface">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Inter</h4>
+              <p class="text-xs text-slate-400">Rasmus Andersson • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">🇬🇧 Standard UI Sans</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-inter text-xl text-slate-100 leading-relaxed font-semibold" contenteditable="true" spellcheck="false">The quick brown fox jumps over the lazy dog 1234567890.</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Interface Standard Sans</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('inter')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-english-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="playfair" data-script="english" data-tags="english latin playfair display luxury editorial serif claus eggers sorensen magazine">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Playfair Display</h4>
+              <p class="text-xs text-slate-400">Claus Eggers Sørensen • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🇬🇧 Luxury Editorial</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-playfair text-2xl text-slate-100 leading-relaxed italic font-bold" contenteditable="true" spellcheck="false">Timeless Haute Couture & Classical Editorial Elegance.</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Transitional High-Contrast Serif</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('playfair')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-english-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="bebas-neue" data-script="english" data-tags="english latin bebas neue bold headline condensed display ryoichi tsunekawa impact">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Bebas Neue</h4>
+              <p class="text-xs text-slate-400">Ryoichi Tsunekawa • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🇬🇧 Condensed Headline</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-bebas text-2xl text-slate-100 leading-relaxed tracking-wider" contenteditable="true" spellcheck="false">UNSTOPPABLE HEADLINES & GLOBAL MOVIE POSTERS</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Ultra-Condensed Display Sans</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('bebas-neue')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-english-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="fira-code" data-script="english" data-tags="english latin fira code mozilla nicki horn developer monospace ligatures coding">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Fira Code</h4>
+              <p class="text-xs text-slate-400">Nikita Prokopov / Mozilla • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-violet-500/10 text-violet-400 border border-violet-500/20">🇬🇧 Developer Monospace</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-fira-code text-base text-emerald-400 leading-relaxed" contenteditable="true" spellcheck="false">const fonts = await typography.fetch({ limit: 70000 }); // => OK</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Monospace with Programming Ligatures</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('fira-code')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-english-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ARABIC CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="amiri" data-script="arabic" data-tags="arabic amiri classical naskh quran buraq holy islamic calligraphy khaled hosny">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Amiri (الأميري)</h4>
+              <p class="text-xs text-slate-400">Khaled Hosny • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🕌 Quranic Naskh</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center justify-end" dir="rtl">
+            <p class="preview-text font-amiri text-2xl text-slate-100 leading-relaxed text-right" contenteditable="true" spellcheck="false">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ — إحياء تراث الخط العربي الأصيل</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Classical Quranic Typography</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('amiri')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-arabic-fonts-v1" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= HINDI CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="noto-devanagari" data-script="hindi" data-tags="hindi devanagari sanskrit marathi noto sans devanagari google indian modern">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">Noto Sans Devanagari</h4>
+              <p class="text-xs text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/20">🇮🇳 Devanagari UI</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-noto-devanagari text-xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">सारे जहाँ से अच्छा, हिन्दोस्ताँ हमारा। हम बुलबुलें हैं इसकी, यह गुलसिताँ हमारा।</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Modern Pan-Indian Sans</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('noto-devanagari')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-hindi-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= GERMAN CARDS ================= -->
+      <div class="font-card bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between group" data-id="unifraktur" data-script="german" data-tags="german fraktur unifraktur maguntia blackletter classical gutenberg j helzel">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base group-hover:text-emerald-400 transition-colors">UnifrakturMaguntia</h4>
+              <p class="text-xs text-slate-400">J. Helzel • SIL OFL 1.1</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🇩🇪 German Fraktur</span>
+          </div>
+          <div class="specimen-box mt-3 p-4 bg-slate-950 rounded-xl border border-slate-800/80 min-h-[90px] flex items-center">
+            <p class="preview-text font-unifraktur text-2xl text-slate-100 leading-relaxed" contenteditable="true" spellcheck="false">Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono text-[11px]">Historical Blackletter Fraktur</span>
+          <div class="flex items-center gap-2">
+            <button onclick="activateFont('unifraktur')" class="text-slate-400 hover:text-emerald-400 font-medium transition">⚡ Test in Studio</button>
+            <a href="https://archive.org/details/open-typography-foundation-german-fonts" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300">Get Pack ➔</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-10 mt-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-900">
+        <div>
+          <div class="flex items-center space-x-2 text-white font-bold text-sm mb-1">
+            <span>🌐</span><span>Open Typography Foundation</span>
+          </div>
+          <p class="text-xs text-slate-500 max-w-xl">
+            A non-profit open-source initiative dedicated to digital preservation, democratization, and unrestricted access to world typographic heritage. All 70,000+ fonts are distributed under SIL Open Font License, Apache 2.0, or CC0.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300">
+          <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="hover:text-amber-400 transition flex items-center gap-1">
+            <span>🏛️</span><span>Archive.org</span>
+          </a>
+          <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="hover:text-white transition flex items-center gap-1">
+            <span>🐙</span><span>GitHub Org</span>
+          </a>
+          <a href="https://github.com/mohammadgolamrabbii" target="_blank" class="hover:text-white transition flex items-center gap-1">
+            <span>👤</span><span>Personal GitHub</span>
+          </a>
+          <a href="https://gitlab.com/golamrabbiii" target="_blank" class="hover:text-orange-400 transition flex items-center gap-1">
+            <span>🦊</span><span>GitLab</span>
+          </a>
+          <a href="https://bitbucket.org/golamrabbii" target="_blank" class="hover:text-blue-400 transition flex items-center gap-1">
+            <span>🗑️</span><span>Bitbucket</span>
+          </a>
+          <a href="https://hub.docker.com/u/golamrabbii" target="_blank" class="hover:text-cyan-400 transition flex items-center gap-1">
+            <span>🐳</span><span>Docker Hub</span>
+          </a>
+          <a href="https://linktr.ee/golamrabbii" target="_blank" class="hover:text-emerald-400 transition flex items-center gap-1">
+            <span>🌟</span><span>Linktree</span>
+          </a>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
+        <p>© 2026 Open Typography Foundation. Curated with devotion by <a href="https://linktr.ee/golamrabbii" target="_blank" class="text-slate-300 font-semibold hover:underline">Mohammad Golamrabbii</a>.</p>
+        <p>1-Click Fast Installers for Linux bash & Windows PowerShell active.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ADVANCED INTERACTIVE JAVASCRIPT ==================== -->
+  <script>
+    // Master Font Metadata Catalog for Interactive Studio
+    const FONT_CATALOG = [
+      // Cyrillic
+      { id: 'pt-sans', name: 'PT Sans', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', fontClass: 'font-pt-sans', author: 'ParaType / Alexandra Korolkova', license: 'SIL OFL 1.1', category: 'Modern Grotesque Sans', tags: 'pt sans cyrillic paratype modern grotesque sans', defaultText: 'Съешь же ещё этих мягких французских булок, да выпей чаю.', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive' },
+      { id: 'stalinist-one', name: 'Stalinist One', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', fontClass: 'font-stalinist', author: 'Alexey Kryukov', license: 'SIL OFL 1.1', category: 'Soviet Constructivist Retro', tags: 'stalinist one cyrillic soviet constructivist retro poster display', defaultText: 'ВПЕРЁД К ЗВЁЗДАМ! СОВЕТСКИЙ ТИПОГРАФСКИЙ СТИЛЬ', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive' },
+      { id: 'russo-one', name: 'Russo One', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', fontClass: 'font-russo', author: 'Jovanny Lemonad', license: 'SIL OFL 1.1', category: 'Heavy Impact Display', tags: 'russo one cyrillic youtube bold display headline impact', defaultText: 'ВЫСОКИЙ CTR: ЗАГОЛОВКИ И ПРЕВЬЮ ВИДЕО', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive' },
+      { id: 'cormorant-infant', name: 'Cormorant Infant', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', fontClass: 'font-cormorant-infant', author: 'Christian Thalmann', license: 'SIL OFL 1.1', category: 'Imperial Literature Serif', tags: 'cormorant infant cyrillic russian imperial serif literature', defaultText: 'Классическое изящество русской литературной типографики.', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive' },
+
+      // Japanese
+      { id: 'shippori-mincho', name: 'Shippori Mincho', script: 'japanese', scriptName: '🇯🇵 Japanese', fontClass: 'font-shippori', author: 'FONTDASU / Tokyo', license: 'SIL OFL 1.1', category: 'Classical Japanese Serif', tags: 'shippori mincho japanese classical literary serif', defaultText: '美しい日本の活字文化。静けさと気品を宿す古典明朝体。', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive' },
+      { id: 'dela-gothic', name: 'Dela Gothic One', script: 'japanese', scriptName: '🇯🇵 Japanese', fontClass: 'font-dela', author: 'artcan / Kana', license: 'SIL OFL 1.1', category: 'Anime & Manga Heavy Display', tags: 'dela gothic one japanese anime manga display ctr youtube', defaultText: '圧倒的インパクト！マンガ・アニメの極太ゴシック体', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive' },
+      { id: 'kaisei-tokumin', name: 'Kaisei Tokumin', script: 'japanese', scriptName: '🇯🇵 Japanese', fontClass: 'font-kaisei', author: 'FONT1000 / Kaisei', license: 'SIL OFL 1.1', category: 'Traditional Edo Mincho', tags: 'kaisei tokumin japanese traditional edo mincho', defaultText: 'いろはにほへと ちりぬるを わかよたれそ つねならむ', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive' },
+      { id: 'kiwi-maru', name: 'Kiwi Maru', script: 'japanese', scriptName: '🇯🇵 Japanese', fontClass: 'font-kiwi', author: 'Hiroki Chan', license: 'SIL OFL 1.1', category: 'Rounded Maru Gothic', tags: 'kiwi maru japanese rounded gothic warm friendly kawaii', defaultText: 'やわらかな丸みとぬくもり。心地よい手書き風デザイン。', dir: 'ltr', downloadUrl: 'https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive' },
+
+      // Bengali
+      { id: 'noto-bangla', name: 'Noto Sans Bengali', script: 'bengali', scriptName: '🇧🇩 Bengali', fontClass: 'font-noto-bangla', author: 'Google Fonts / Monotype', license: 'SIL OFL 1.1', category: 'Modern UI Sans', tags: 'noto sans bengali bangla modern ui clear google', defaultText: 'আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts' },
+      { id: 'noto-serif-bangla', name: 'Noto Serif Bengali', script: 'bengali', scriptName: '🇧🇩 Bengali', fontClass: 'font-noto-serif-bangla', author: 'Google Fonts', license: 'SIL OFL 1.1', category: 'Literary Classic Serif', tags: 'noto serif bengali bangla literature book classic', defaultText: 'চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির, জ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts' },
+      { id: 'baloo-da-2', name: 'Baloo Da 2', script: 'bengali', scriptName: '🇧🇩 Bengali', fontClass: 'font-baloo-da', author: 'Ek Type / Sarang Kulkarni', license: 'SIL OFL 1.1', category: 'Warm Display Sans', tags: 'baloo da 2 bengali bangla display warm bold ek type', defaultText: 'বাংলা বর্ণমালার আধুনিক উষ্ণ ও আকর্ষণীয় রূপ।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts' },
+      { id: 'galada', name: 'Galada', script: 'bengali', scriptName: '🇧🇩 Bengali', fontClass: 'font-galada', author: 'Carolina Trebol', license: 'SIL OFL 1.1', category: 'Flowing Script / Cursive', tags: 'galada bengali bangla calligraphy cursive script handwritten', defaultText: 'ঐতিহ্যবাহী বাংলা ক্যালিগ্রাফি ও হস্তলিপির অপূর্ব সমাহার।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts' },
+
+      // English / Latin
+      { id: 'inter', name: 'Inter', script: 'english', scriptName: '🇬🇧 English', fontClass: 'font-inter', author: 'Rasmus Andersson', license: 'SIL OFL 1.1', category: 'Interface Standard Sans', tags: 'inter english latin ui sans rasmus modern clean', defaultText: 'The quick brown fox jumps over the lazy dog 1234567890.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts-v1' },
+      { id: 'playfair', name: 'Playfair Display', script: 'english', scriptName: '🇬🇧 English', fontClass: 'font-playfair', author: 'Claus Eggers Sørensen', license: 'SIL OFL 1.1', category: 'Luxury Editorial Serif', tags: 'playfair display english latin editorial serif luxury', defaultText: 'Timeless Haute Couture & Classical Editorial Elegance.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts-v1' },
+      { id: 'bebas-neue', name: 'Bebas Neue', script: 'english', scriptName: '🇬🇧 English', fontClass: 'font-bebas', author: 'Ryoichi Tsunekawa', license: 'SIL OFL 1.1', category: 'Ultra-Condensed Display Sans', tags: 'bebas neue english latin condensed bold headline impact', defaultText: 'UNSTOPPABLE HEADLINES & GLOBAL MOVIE POSTERS', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts-v1' },
+      { id: 'fira-code', name: 'Fira Code', script: 'english', scriptName: '🇬🇧 English', fontClass: 'font-fira-code', author: 'Nikita Prokopov / Mozilla', license: 'SIL OFL 1.1', category: 'Developer Monospace', tags: 'fira code developer programming monospace ligatures coding', defaultText: 'const fonts = await typography.fetch({ limit: 70000 }); // => OK', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts-v1' },
+
+      // Arabic
+      { id: 'amiri', name: 'Amiri', script: 'arabic', scriptName: '🕌 Arabic', fontClass: 'font-amiri', author: 'Khaled Hosny', license: 'SIL OFL 1.1', category: 'Classical Quranic Naskh', tags: 'amiri arabic islamic naskh quran calligraphy khaled hosny', defaultText: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ — إحياء تراث الخط العربي الأصيل', dir: 'rtl', downloadUrl: 'https://archive.org/details/open-typography-foundation-arabic-fonts-v1' },
+
+      // Hindi
+      { id: 'noto-devanagari', name: 'Noto Sans Devanagari', script: 'hindi', scriptName: '🇮🇳 Hindi', fontClass: 'font-noto-devanagari', author: 'Google Fonts', license: 'SIL OFL 1.1', category: 'Modern Pan-Indian Sans', tags: 'noto sans devanagari hindi indian modern sanskrit google', defaultText: 'सारे जहाँ से अच्छा, हिन्दोस्ताँ हमारा। हम बुलबुलें हैं इसकी, यह गुलसिताँ हमारा।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-hindi-fonts' },
+
+      // German Fraktur
+      { id: 'unifraktur', name: 'UnifrakturMaguntia', script: 'german', scriptName: '🇩🇪 German', fontClass: 'font-unifraktur', author: 'J. Helzel', license: 'SIL OFL 1.1', category: 'Historical Blackletter Fraktur', tags: 'unifraktur maguntia german fraktur blackletter classical', defaultText: 'Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-german-fonts' }
+    ];
+
+    // DOM Elements
+    const searchInput = document.getElementById('fontSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const searchStatusBadge = document.getElementById('searchStatusBadge');
+    const searchChips = document.querySelectorAll('.search-chip');
+    const textInput = document.getElementById('livePreviewText');
+    const clearTextBtn = document.getElementById('clearTextBtn');
+    const scriptFilter = document.getElementById('scriptFilter');
+    const fontFamilyFilter = document.getElementById('fontFamilyFilter');
+    const fontCountBadge = document.getElementById('fontCountBadge');
+    const activeFontLabel = document.getElementById('activeFontLabel');
+    const sizeSlider = document.getElementById('fontSizeSlider');
+    const sizeDisplay = document.getElementById('fontSizeDisplay');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const randomFontBtn = document.getElementById('randomFontBtn');
+    const toggleContrastBtn = document.getElementById('toggleContrastBtn');
+    const contrastIcon = document.getElementById('contrastIcon');
+    const contrastText = document.getElementById('contrastText');
+    const gridVisibleCount = document.getElementById('gridVisibleCount');
+    const fontCards = document.querySelectorAll('.font-card');
+    const previewTexts = document.querySelectorAll('.preview-text');
+
+    // Archive Download Box Elements
+    const toggleDownloadsBtn = document.getElementById('toggleDownloadsBtn');
+    const toggleDownloadsIcon = document.getElementById('toggleDownloadsIcon');
+    const toggleDownloadsText = document.getElementById('toggleDownloadsText');
+    const downloadsContent = document.getElementById('downloadsContent');
+    const archiveCards = document.querySelectorAll('.archive-card');
+    const archiveFilterBtns = document.querySelectorAll('.archive-filter-btn');
+    const archiveSearchInput = document.getElementById('archiveSearchInput');
+
+    // Active Font Specimen Hero Elements
+    const activeFontBanner = document.getElementById('activeFontBanner');
+    const activeFontBadge = document.getElementById('activeFontBadge');
+    const activeFontCategory = document.getElementById('activeFontCategory');
+    const activeFontTitle = document.getElementById('activeFontTitle');
+    const activeFontMeta = document.getElementById('activeFontMeta');
+    const activeFontDownloadBtn = document.getElementById('activeFontDownloadBtn');
+    const activeFontCanvas = document.getElementById('activeFontCanvas');
+    const closeActiveFontBtn = document.getElementById('closeActiveFontBtn');
+
+    let isLightMode = false;
+
+    // ================= 1-CLICK TERMINAL INSTALLER LOGIC =================
     let currentTermPlatform = 'linux';
     let currentTermLang = 'all';
 
@@ -106,8 +1308,8 @@
       document.querySelectorAll('.term-lang-chip').forEach(btn => {
         btn.className = 'term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 hover:bg-slate-700 font-medium transition-all shrink-0';
       });
-      if (event && event.currentTarget) {
-        event.currentTarget.className = 'term-lang-chip active px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 font-medium transition-all shrink-0';
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.className = 'term-lang-chip active px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 font-medium transition-all shrink-0';
       }
       updateTerminalCmd();
     }
@@ -117,1038 +1319,50 @@
       navigator.clipboard.writeText(text).then(() => {
         const label = document.getElementById('copyTerminalLabel');
         const orig = label.textContent;
-        label.textContent = '✔ Copied!';
-        setTimeout(() => { label.textContent = orig; }, 2000);
+        label.textContent = '✔ Copied to Clipboard!';
+        setTimeout(() => { label.textContent = orig; }, 2500);
       });
     }
 
-  </script>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: { 50: '#f0fdf4', 500: '#22c55e', 600: '#16a34a' }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Web Fonts for Live Multi-Script Rendering -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Cinzel:wght@600;800&family=Cormorant+Infant:ital,wght@0,600;0,700;1,400&family=Dela+Gothic+One&family=Fira+Code:wght@400;600&family=Great+Vibes&family=Inter:wght@400;600;800&family=Kaisei+Tokumin:wght@700&family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c:wght@700&family=Montserrat:wght@400;700;900&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Serif+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Orbitron:wght@600;800&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@400;600;800&family=Russo+One&family=Shippori+Mincho:wght@700&family=Stalinist+One&family=UnifrakturMaguntia&family=Yuji+Boku&display=swap" rel="stylesheet">
-
-  <style>
-    /* Cyrillic */
-    .font-pt-sans { font-family: 'PT Sans', sans-serif; }
-    .font-stalinist { font-family: 'Stalinist One', cursive, sans-serif; }
-    .font-russo { font-family: 'Russo One', sans-serif; }
-    .font-cormorant-infant { font-family: 'Cormorant Infant', serif; }
-
-    /* Japanese */
-    .font-dela { font-family: 'Dela Gothic One', cursive, sans-serif; }
-    .font-shippori { font-family: 'Shippori Mincho', serif; }
-    .font-yuji-boku { font-family: 'Yuji Boku', serif; }
-    .font-kiwi { font-family: 'Kiwi Maru', sans-serif; }
-    .font-kaisei { font-family: 'Kaisei Tokumin', serif; }
-    .font-m-plus { font-family: 'M PLUS Rounded 1c', sans-serif; }
-
-    /* Bengali */
-    .font-noto-bangla { font-family: 'Noto Sans Bengali', sans-serif; }
-    .font-noto-serif-bangla { font-family: 'Noto Serif Bengali', serif; }
-
-    /* English / Latin */
-    .font-inter { font-family: 'Inter', sans-serif; }
-    .font-playfair { font-family: 'Playfair Display', serif; }
-    .font-bebas { font-family: 'Bebas Neue', sans-serif; }
-    .font-fira { font-family: 'Fira Code', monospace; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .font-montserrat { font-family: 'Montserrat', sans-serif; }
-    .font-orbitron { font-family: 'Orbitron', sans-serif; }
-    .font-great-vibes { font-family: 'Great Vibes', cursive; }
-
-    /* Arabic, Hindi, German */
-    .font-amiri { font-family: 'Amiri', serif; }
-    .font-poppins-devanagari { font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif; }
-    .font-unifraktur { font-family: 'UnifrakturMaguntia', cursive; }
-
-    /* Light preview specimen mode */
-    .preview-canvas-light {
-      background-color: #ffffff !important;
-      color: #0f172a !important;
-      border-color: #e2e8f0 !important;
-    }
-    .preview-canvas-light .text-slate-100,
-    .preview-canvas-light .text-white {
-      color: #0f172a !important;
-    }
-    .preview-canvas-light .preview-text {
-      color: #1e293b !important;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    /* Custom Glassmorphism Accent */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-  </style>
-</head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">
-
-  <!-- ==================== HEADER (CLEAN STATIC / NON-STICKY SO ZERO SCROLL OVERLAP) ==================== -->
-  <header class="border-b border-slate-800 bg-slate-950/95 py-4 relative z-30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-      <div class="flex items-center space-x-3.5">
-        <span class="text-3xl">🌍</span>
-        <div>
-          <h1 class="font-black text-xl text-white tracking-tight flex items-center gap-2">
-            Open Typography Hub
-            <span class="text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v3.0 Ultra</span>
-          </h1>
-          <p class="text-xs text-slate-400 font-medium">70,000+ Verified Open Typefaces Across 8 Global Scripts • Curated by Mohammad Golamrabbii</p>
-        </div>
-      </div>
-
-      <!-- Quick Platform Links -->
-      <div class="flex items-center space-x-2 text-xs font-semibold flex-wrap">
-        <a href="#downloads-section" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center space-x-1.5 shadow-md">
-          <span>⚡</span><span>Archive Downloads</span>
-        </a>
-        <a href="#tester-studio" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
-          <span>✍️</span><span>Live Font Tester</span>
-        </a>
-        <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
-          <span>🏛️</span><span>Archive.org</span>
-        </a>
-        <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
-          <span>🐙</span><span>GitHub Org</span>
-        </a>
-        <a href="https://linktr.ee/golamrabbii" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
-          <span>🌐</span><span>Curator</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- ==================== 1. FULL ARCHIVE DOWNLOADS (REDESIGNED FOR MAXIMUM USER FRIENDLINESS) ==================== -->
-  <section id="downloads-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-    <div class="glass-card border border-amber-500/30 rounded-2xl p-5 sm:p-7 shadow-2xl relative">
-      
-      <!-- Box Header & Controls -->
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-        <div>
-          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase tracking-wider">
-              🏛️ Official Digital Preservation Mirrors
-            </span>
-            <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Zero Rate-Limits • 100% Free
-            </span>
-            <span class="text-xs text-cyan-400 font-mono font-bold bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-full">
-              70,000+ Total Fonts
-            </span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Full Archive Downloads (Zero Rate-Limits)
-          </h2>
-          <p class="text-sm text-slate-400 mt-1">
-            Permanent high-speed direct HTTP, BitTorrent, and Git mirrors for all 70,000+ production typefaces across 8 script families. Preserved for posterity by <a href="https://linktr.ee/golamrabbii" target="_blank" class="text-amber-400 font-bold hover:underline">Mohammad Golamrabbii</a>.
-          </p>
-        </div>
-
-        <!-- Download Section Action Buttons -->
-        <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
-          <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-md flex items-center gap-1.5">
-            <span>🏛️</span><span>Open Archive.org Hub ➔</span>
-          </a>
-          <button id="toggleDownloadsBtn" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition flex items-center gap-1.5">
-            <span id="toggleDownloadsIcon">▲</span><span id="toggleDownloadsText">Minimize Box</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Collapsible Container for Download Grid -->
-      <div id="downloadsContent" class="transition-all duration-300 mt-5">
-        
-        <!-- Controls Bar: Archive Search + Filter Tabs -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
-          <!-- Archive Search Bar -->
-          <div class="relative w-full md:w-80">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400 text-xs">
-              🔍
-            </span>
-            <input 
-              type="text" 
-              id="archiveSearchInput" 
-              placeholder="Filter archive packs (e.g., 'Cyrillic', 'Bangla', 'Japanese')..." 
-              class="w-full bg-slate-950 border border-slate-700/80 focus:border-amber-400 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none transition font-medium"
-            >
-          </div>
-
-          <!-- Quick Category Filter Tabs -->
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-xs font-semibold text-slate-400 mr-1 hidden sm:inline">Filter:</span>
-            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs shadow transition" data-filter="all">
-              All 8 Packs (70k+)
-            </button>
-            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 font-medium text-xs border border-slate-700 transition" data-filter="mega">
-              🔥 Mega Vaults
-            </button>
-            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 font-medium text-xs border border-slate-700 transition" data-filter="asian">
-              🌏 Asian (Bangla, JP)
-            </button>
-            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 font-medium text-xs border border-slate-700 transition" data-filter="slavic-euro">
-              🇪🇺 Slavic & Euro
-            </button>
-            <button type="button" class="archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 font-medium text-xs border border-slate-700 transition" data-filter="semitic-indic">
-              🕌 Arabic & Indic
-            </button>
-          </div>
-        </div>
-
-        <!-- Sleek Modern Archive Grid -->
-        <div id="archiveCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          
-          <!-- 1. Cyrillic & Slavic -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-red-500/50 transition duration-200 group flex flex-col justify-between" data-category="slavic-euro mega" data-tags="cyrillic slavic russian ukrainian soviet bulgarian serbian 10000 10136">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇷🇺</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-red-500/20 text-red-400 border border-red-500/30">10,136 Verified Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-red-400 transition-colors">Cyrillic & Slavic Mega Vault</h3>
-              <p class="text-xs text-slate-400 mt-1">6 Curated Sub-categories: Soviet Constructivist, Modern Grotesque, Monospace, Literature Serif & Slavic Cursive.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-red-500/15 hover:bg-red-500/30 text-red-300 border border-red-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>⬇️</span><span>GitHub Main Mirror (10k+) ➔</span>
-              </a>
-              <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🏛️ Archive.org Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. English & Latin -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 transition duration-200 group flex flex-col justify-between" data-category="slavic-euro mega" data-tags="english latin western roman geometric grotesque display 30886">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇬🇧</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">30,886+ Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-blue-400 transition-colors">English & Latin (11 Volumes)</h3>
-              <p class="text-xs text-slate-400 mt-1">Geometric, Neo-Grotesk, Luxury Serif, High-CTR Headlines, Monospace Ligatures.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-english-fonts" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-blue-500/15 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>11 High-Speed Vols ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. Arabic & Islamic -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 transition duration-200 group flex flex-col justify-between" data-category="semitic-indic mega" data-tags="arabic islamic naskh kufic thuluth diwani ruqah 13856">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🕌</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">13,856+ Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-amber-400 transition-colors">Arabic & Islamic (4 Volumes)</h3>
-              <p class="text-xs text-slate-400 mt-1">Quranic Naskh, Thuluth, Diwani, Kufic, Ruq'ah, and Modern Arabic UI Typefaces.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-arabic-fonts" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>4 Direct Volumes ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. Hindi & Devanagari -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-orange-500/50 transition duration-200 group flex flex-col justify-between" data-category="semitic-indic" data-tags="hindi devanagari krutidev mangal chanakya sanskrit 6011">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇮🇳</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-orange-500/20 text-orange-400 border border-orange-500/30">6,011+ Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-orange-400 transition-colors">Hindi & Devanagari</h3>
-              <p class="text-xs text-slate-400 mt-1">KrutiDev, Mangal, Chanakya, Kundli, and Modern Unicode Google Web Fonts.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-hindi-devanagari" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-orange-500/15 hover:bg-orange-500/30 text-orange-300 border border-orange-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>Archive.org Direct ZIP ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. German Fraktur -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-yellow-500/50 transition duration-200 group flex flex-col justify-between" data-category="slavic-euro" data-tags="german fraktur blackletter gutenberg schwabacher kanzlei 5002">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇩🇪</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">5,002+ Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-yellow-400 transition-colors">German Fraktur & Blackletter</h3>
-              <p class="text-xs text-slate-400 mt-1">Gutenberg Bibles, Schwabacher, Gebrochene Grotesk & Historical Calligraphy.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-german-fraktur" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-yellow-500/15 hover:bg-yellow-500/30 text-yellow-300 border border-yellow-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>Archive.org Direct ZIP ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/German-Fraktur-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 6. Bengali -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition duration-200 group flex flex-col justify-between" data-category="asian" data-tags="bangla bengali bijoy unicode sutonny bornosoft rupali 2581">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇧🇩</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">3,412+ FONTS</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-emerald-400 transition-colors">Bangla (বাংলা) Archive</h3>
-              <p class="text-xs text-slate-400 mt-1">Complete Unicode, ANSI, Legacy & Calligraphic Bengali Typography Collection.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>Archive.org Direct ZIP ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 7. Japanese -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-pink-500/50 transition duration-200 group flex flex-col justify-between" data-category="asian" data-tags="japanese kanji hiragana katakana mincho gothic maru anime 145">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🇯🇵</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30">145+ Pro Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-pink-400 transition-colors">Japanese (日本語) Pack</h3>
-              <p class="text-xs text-slate-400 mt-1">Mincho, Gothic, Maru Rounded, Anime High-CTR & Traditional Ink Calligraphy.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-pink-500/15 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>⬇️</span><span>GitHub & Archive ➔</span>
-              </a>
-              <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🏛️ Archive.org Mirror
-              </a>
-            </div>
-          </div>
-
-          <!-- 8. Icons & Dingbats -->
-          <div class="archive-card p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition duration-200 group flex flex-col justify-between" data-category="slavic-euro" data-tags="icons symbols dingbats fontawesome webfont feather 225">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="text-2xl">🎨</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30">225+ Fonts</span>
-              </div>
-              <h3 class="font-bold text-white text-sm group-hover:text-purple-400 transition-colors">Icons, Dingbats & Symbols</h3>
-              <p class="text-xs text-slate-400 mt-1">Universal UI glyphs, webfont bundles, game controllers & technical dingbats.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-              <a href="https://archive.org/details/open-typography-foundation-icons-symbols" target="_blank" class="w-full text-center px-3 py-1.5 rounded-lg bg-purple-500/15 hover:bg-purple-500/30 text-purple-300 border border-purple-500/30 text-xs font-bold transition flex items-center justify-center gap-1.5">
-                <span>🏛️</span><span>Archive.org Direct ZIP ➔</span>
-              </a>
-              <a href="https://github.com/mohammadgolamrabbii/Icons-Symbols-Mega-Archive/releases" target="_blank" class="w-full text-center px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-[11px] transition">
-                🐙 GitHub Mirror
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 2. LIVE INTERACTIVE FONT TESTING & SEARCH STUDIO ==================== -->
-  <section id="tester-studio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="text-center mb-6">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-        ✨ Live Interactive Multi-Script Specimen Studio • SIL OFL 1.1 / Apache 2.0 / CC0
-      </span>
-      <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-2">
-        Search & Test Any Font in Real-Time
-      </h2>
-      <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base">
-        Instantly search across 20+ live specimen typefaces, pick writing systems, type custom text, or test contrast before downloading.
-      </p>
-    </div>
-
-    <!-- Main Studio Box -->
-    <div class="glass-card border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl max-w-5xl mx-auto">
-      
-      <!-- ================= TIER 1: LIVE SEARCH BAR (USER REQUESTED FEATURE) ================= -->
-      <div class="mb-5">
-        <label for="fontSearchInput" class="block text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center justify-between">
-          <span class="flex items-center gap-1.5">
-            <span>🔍</span><span>Live Font & Script Search Engine:</span>
-          </span>
-          <span id="searchStatusBadge" class="text-[11px] text-slate-400 font-mono">20 Fonts Ready</span>
-        </label>
-        <div class="relative">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400 text-base">
-            🔎
-          </span>
-          <input 
-            type="text" 
-            id="fontSearchInput" 
-            placeholder="Type any font, script, author or style (e.g., 'Noto', 'Cyrillic', 'Dela', 'PT Sans', 'Bangla', 'Amiri', 'Serif', 'Grotesque')..." 
-            class="w-full bg-slate-950 border-2 border-slate-700/80 focus:border-emerald-500 rounded-xl pl-10 pr-10 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition shadow-inner font-medium"
-          >
-          <button id="clearSearchBtn" class="hidden absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-white transition text-xs font-bold">
-            ✕ Clear
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Language Pangram Pills -->
-      <div class="mb-5">
-        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-          ⚡ 1-Click Script Switcher & Pangrams:
-        </label>
-        <div class="flex flex-wrap gap-2" id="scriptPillList">
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-red-500 text-xs font-semibold text-slate-200 transition" data-script="cyrillic" data-text="Съешь же ещё этих мягких французских булок, да выпей чаю. Вперёд к звёздам!">
-            🇷🇺 Кириллица (Cyrillic 10k+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 text-xs font-semibold text-slate-200 transition" data-script="bengali" data-text="আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস, আমার প্রাণে বাজায় বাঁশি।">
-            🇧🇩 বাংলা (Bengali 2.5k+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-pink-500 text-xs font-semibold text-slate-200 transition" data-script="japanese" data-text="美しい日本の四季と文化。進撃の巨人 • 限界を超えろ！一期一会の心。">
-            🇯🇵 日本語 (Japanese 145+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-blue-500 text-xs font-semibold text-slate-200 transition" data-script="english" data-text="The quick brown fox jumps over the lazy dog. Crafting the world's finest open typography.">
-            🇬🇧 English (Latin 30k+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-amber-500 text-xs font-semibold text-slate-200 transition" data-script="arabic" data-text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ">
-            🕌 العربية (Arabic 13k+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-orange-500 text-xs font-semibold text-slate-200 transition" data-script="hindi" data-text="सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः। वसुधैव कुटुम्बकम्।">
-            🇮🇳 हिन्दी (Hindi 6k+)
-          </button>
-          <button type="button" class="lang-preset px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 hover:border-yellow-500 text-xs font-semibold text-slate-200 transition" data-script="german" data-text="Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Gutenberg Fraktur.">
-            🇩🇪 Deutsch (German 5k+)
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Font Specimen Chips (Dynamic 1-Click Font Selector) -->
-      <div class="mb-5" id="quickFontChipsContainer">
-        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
-          <span>🎯 Quick-Pick Specimen Fonts:</span>
-          <span class="text-[11px] text-emerald-400 font-mono">Click to preview</span>
-        </label>
-        <div id="quickFontChips" class="flex flex-wrap gap-1.5">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-
-      <!-- Custom Preview Textarea -->
-      <div class="mb-5">
-        <div class="flex justify-between items-center mb-1.5">
-          <label for="customTextInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Preview Text (Type freely in any language):
-          </label>
-          <button id="clearTextBtn" class="text-xs text-slate-400 hover:text-white transition">Clear text</button>
-        </div>
-        <textarea id="customTextInput" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-base focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition resize-y font-normal">Type here to test typography in any language... Вперёд к звёздам! • আমাদের ভাষা বাংলা • 進撃の巨人 • اقرأ باسم ربك • सत्यमेव जयते</textarea>
-      </div>
-
-      <!-- ================= TIER 2: SCRIPT SELECTOR + FONT FAMILY SELECTOR + SIZE & STYLE ================= -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end mb-4">
-        
-        <!-- 1. Language / Script Selector -->
-        <div>
-          <label for="scriptFilter" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-            1. Language / Script:
-          </label>
-          <select id="scriptFilter" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 cursor-pointer">
-            <option value="all">🌐 All Languages (All Scripts)</option>
-            <option value="cyrillic">🇷🇺 Cyrillic & Slavic (Кириллица - 10k+)</option>
-            <option value="bengali">🇧🇩 Bengali (বাংলা - 2.5k+)</option>
-            <option value="japanese">🇯🇵 Japanese (日本語 - 145+)</option>
-            <option value="english">🇬🇧 English & Western (Latin - 30k+)</option>
-            <option value="arabic">🕌 Arabic (العربية - 13k+)</option>
-            <option value="hindi">🇮🇳 Hindi (हिन्दी / देवनागरी - 6k+)</option>
-            <option value="german">🇩🇪 German (Deutsche Schriften - 5k+)</option>
-          </select>
-        </div>
-
-        <!-- 2. Specific Font Selector -->
-        <div>
-          <label for="fontFamilyFilter" class="block text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center justify-between">
-            <span>2. Specific Font Family:</span>
-            <span class="text-[10px] text-slate-400 font-mono" id="fontCountBadge">20 Fonts</span>
-          </label>
-          <select id="fontFamilyFilter" class="w-full bg-slate-950 border-2 border-emerald-500/50 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 cursor-pointer font-medium">
-            <option value="all">✨ All Available Fonts (Grid View)</option>
-          </select>
-        </div>
-
-        <!-- 3. Font Size Slider -->
-        <div>
-          <div class="flex justify-between items-center mb-1.5">
-            <label for="fontSizeSlider" class="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              3. Font Size:
-            </label>
-            <span id="fontSizeDisplay" class="text-xs text-emerald-400 font-mono font-bold">36px</span>
-          </div>
-          <input type="range" id="fontSizeSlider" min="16" max="72" value="36" class="w-full accent-emerald-500 cursor-pointer h-2 bg-slate-950 rounded-lg">
-        </div>
-
-        <!-- 4. Contrast & Utility Controls -->
-        <div class="flex items-center gap-2">
-          <button id="randomFontBtn" class="w-1/2 py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 rounded-xl text-xs font-semibold border border-slate-700 transition flex items-center justify-center gap-1 shadow-sm">
-            <span>🎲</span><span>Random</span>
-          </button>
-          <button id="toggleContrastBtn" class="w-1/2 py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs font-semibold border border-slate-700 transition flex items-center justify-center gap-1 shadow-sm">
-            <span id="contrastIcon">☀️</span><span id="contrastText">Light Mode</span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Quick Font Size Presets -->
-      <div class="flex items-center gap-2 pt-2 border-t border-slate-800/80 text-xs text-slate-400 flex-wrap">
-        <span class="font-semibold">Quick Sizes:</span>
-        <button type="button" class="size-preset px-2.5 py-1 rounded-md bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-300" data-size="18">18px</button>
-        <button type="button" class="size-preset px-2.5 py-1 rounded-md bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-300" data-size="24">24px</button>
-        <button type="button" class="size-preset px-2.5 py-1 rounded-md bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-300" data-size="36">36px (Default)</button>
-        <button type="button" class="size-preset px-2.5 py-1 rounded-md bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-300" data-size="48">48px</button>
-        <button type="button" class="size-preset px-2.5 py-1 rounded-md bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-300" data-size="64">64px</button>
-        <button id="resetFiltersBtn" class="ml-auto px-2.5 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 text-xs flex items-center gap-1">
-          <span>🔄</span><span>Reset All Filters</span>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Active Font Hero Specimen (Appears when a specific font is selected) -->
-    <div id="activeFontBanner" class="hidden mt-6 max-w-5xl mx-auto glass-card border-2 border-emerald-500/50 rounded-2xl p-6 shadow-2xl transition-all">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-        <div>
-          <div class="flex items-center gap-2 mb-1">
-            <span id="activeFontBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-              Selected Font
-            </span>
-            <span id="activeFontCategory" class="text-xs text-slate-400 font-mono">Modern Grotesque</span>
-          </div>
-          <h3 id="activeFontTitle" class="text-2xl font-black text-white">Font Name</h3>
-          <p id="activeFontMeta" class="text-xs text-slate-400">Designer / Foundry • License</p>
-        </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <a id="activeFontDownloadBtn" href="#" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 shadow-md">
-            <span>⬇️</span><span>Get Font Pack ➔</span>
-          </a>
-          <button id="closeActiveFontBtn" class="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs border border-slate-700 transition">
-            ✕ Back to Grid
-          </button>
-        </div>
-      </div>
-      <div id="activeFontCanvas" class="text-4xl py-6 text-white min-h-[120px] break-words transition-all font-inter">
-        Active specimen preview
-      </div>
-    </div>
-
-    <!-- Specimens Grid Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 max-w-5xl mx-auto mt-8 mb-4">
-      <div class="flex items-center gap-2">
-        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-          <span>📚</span><span>Typography Specimens Grid</span>
-        </h3>
-        <span id="gridVisibleCount" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-emerald-400 border border-slate-700">
-          Showing 20 of 20 specimens
-        </span>
-      </div>
-      <p class="text-xs text-slate-400">Click any card to inspect or test</p>
-    </div>
-
-    <!-- ================= SPECIMENS GRID (20 DIVERSE TYPEFACES ACROSS 8 SCRIPTS) ================= -->
-    <div id="specimensGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-      
-      <!-- ================= CYRILLIC CARDS ================= -->
-      <!-- Card: PT Sans -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic" data-font="pt-sans" data-name="pt sans" data-tags="cyrillic russian slavic grotesque paratype sans alexandra korolkova vladimir yefimov">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">PT Sans (National Cyrillic Workhorse)</h4>
-            <p class="text-xs text-slate-400">ParaType / ParaGraph • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Cyrillic Sans</span>
-        </div>
-        <div class="preview-text font-pt-sans text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          Съешь же ещё этих мягких французских булок, да выпей чаю.
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">02_Modern_Cyrillic_Grotesque_Sans</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">GitHub (10k+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Stalinist One -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic" data-font="stalinist-one" data-name="stalinist one" data-tags="cyrillic soviet constructivist retro poster alexei vanyashin ussr headline display">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Stalinist One (Soviet Constructivist)</h4>
-            <p class="text-xs text-slate-400">Alexei Vanyashin • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Soviet Constructivist</span>
-        </div>
-        <div class="preview-text font-stalinist text-2xl py-4 border-y border-slate-800/60 my-2 text-amber-400 min-h-[90px] break-words uppercase">
-          ВПЕРЁД К ЗВЁЗДАМ! СОВЕТСКИЙ ПЛАКАТ
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">01_Soviet_Constructivist_Retro_Poster</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">GitHub (10k+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Russo One -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic" data-font="russo-one" data-name="russo one" data-tags="cyrillic russian youtube display bold heavy impact headline jovanny lemonad">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Russo One (High-CTR Display Headline)</h4>
-            <p class="text-xs text-slate-400">Jovanny Lemonad • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Cyrillic Display</span>
-        </div>
-        <div class="preview-text font-russo text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          ШИРОКИЙ ЭКРАН И ЯРКИЕ ЗАГОЛОВКИ
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">05_HighCTR_YouTube_Media_Display</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">GitHub (10k+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Cormorant Infant -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="cyrillic" data-font="cormorant-infant" data-name="cormorant infant" data-tags="cyrillic russian imperial serif literature christian thalmann classical book">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Cormorant Infant (Imperial Literature Serif)</h4>
-            <p class="text-xs text-slate-400">Christian Thalmann • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">🇷🇺 Imperial Serif</span>
-        </div>
-        <div class="preview-text font-cormorant-infant text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words italic">
-          Классическая русская литература и поэзия золотого века.
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">03_Imperial_Classical_Literature_Serif</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">GitHub (10k+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= BENGALI CARDS ================= -->
-      <!-- Card: Noto Sans Bengali -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="bengali" data-font="noto-bangla" data-name="noto sans bengali" data-tags="bangla bengali modern ui sans google monotype">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Noto Sans Bengali (Modern UI Sans)</h4>
-            <p class="text-xs text-slate-400">Google Fonts / Monotype • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🇧🇩 Bengali Sans</span>
-        </div>
-        <div class="preview-text font-noto-bangla text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">Unicode + 1_Unicode</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (3,412+)</a>
-            <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Noto Serif Bengali -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="bengali" data-font="noto-serif-bangla" data-name="noto serif bengali" data-tags="bangla bengali literary classic serif book literature google">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Noto Serif Bengali (Literary Classic)</h4>
-            <p class="text-xs text-slate-400">Google Fonts • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🇧🇩 Bengali Serif</span>
-        </div>
-        <div class="preview-text font-noto-serif-bangla text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির, জ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর।
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">Literature & Publishing</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (3,412+)</a>
-            <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= JAPANESE CARDS ================= -->
-      <!-- Card: Dela Gothic One -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="japanese" data-font="dela" data-name="dela gothic one" data-tags="japanese anime high ctr manga poster headline artakana gothic">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Dela Gothic One (Anime & Manga Display)</h4>
-            <p class="text-xs text-slate-400">Artakana • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20">🇯🇵 Anime High-CTR</span>
-        </div>
-        <div class="preview-text font-dela text-2xl py-4 border-y border-slate-800/60 my-2 text-pink-400 min-h-[90px] break-words">
-          限界を超えろ！最強のタイポグラフィ
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">04_Anime_Manga_HighCTR_Display</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">GitHub (145+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Shippori Mincho -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="japanese" data-font="shippori" data-name="shippori mincho" data-tags="japanese classical mincho literary book tokyo font fontworks">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Shippori Mincho (Classical Literature)</h4>
-            <p class="text-xs text-slate-400">FONTDASU • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20">🇯🇵 Classical Mincho</span>
-        </div>
-        <div class="preview-text font-shippori text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          月日は百代の過客にして、行きかふ年もまた旅人なり。
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">01_Mincho_Classical_Editorial</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">GitHub (145+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Yuji Boku -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="japanese" data-font="yuji-boku" data-name="yuji boku" data-tags="japanese traditional brush calligraphy ink shodou kinsei">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Yuji Boku (Traditional Ink Brush Calligraphy)</h4>
-            <p class="text-xs text-slate-400">Kinsei Douzo • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20">🇯🇵 Ink Brush (書道)</span>
-        </div>
-        <div class="preview-text font-yuji-boku text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          一期一会 • 静寂の中に美を見出す心。
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">05_Traditional_Brush_Calligraphy</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">GitHub (145+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Kiwi Maru -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="japanese" data-font="kiwi" data-name="kiwi maru" data-tags="japanese rounded maru gothic friendly kawaii hirose satoshi">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Kiwi Maru (Friendly Rounded Maru)</h4>
-            <p class="text-xs text-slate-400">Hirose Satoshi • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-pink-500/10 text-pink-400 border border-pink-500/20">🇯🇵 Rounded Maru (丸ゴシック)</span>
-        </div>
-        <div class="preview-text font-kiwi text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          あたたかい日常と、やさしい言葉のフォント。
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">03_Maru_Rounded_Creative</span>
-          <div class="flex items-center gap-3">
-            <a href="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive" target="_blank" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">GitHub (145+) ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= ENGLISH / LATIN CARDS ================= -->
-      <!-- Card: Inter -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="english" data-font="inter" data-name="inter" data-tags="english modern ui neo grotesque sans rasmus andersson">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Inter (Modern UI Neo-Grotesk)</h4>
-            <p class="text-xs text-slate-400">Rasmus Andersson • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">🇬🇧 Modern UI Sans</span>
-        </div>
-        <div class="preview-text font-inter text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          The quick brown fox jumps over the lazy dog.
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">01_Modern_Geometric_NeoGrotesk</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-english-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org Mirror</a>
-            <a href="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Playfair Display -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="english" data-font="playfair" data-name="playfair display" data-tags="english luxury high contrast serif editorial claus eggers sorensen">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Playfair Display (Luxury Editorial Serif)</h4>
-            <p class="text-xs text-slate-400">Claus Eggers Sørensen • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">🇬🇧 Luxury Editorial</span>
-        </div>
-        <div class="preview-text font-playfair text-2xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words italic">
-          High-Fashion, Editorial Elegance & Timeless Craftsmanship.
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">02_Classic_Literature_Luxury_Serif</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-english-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org Mirror</a>
-            <a href="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Orbitron -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="english" data-font="orbitron" data-name="orbitron" data-tags="english cyberpunk sci fi futuristic geometric mcinerney">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Orbitron (Futuristic Cyberpunk)</h4>
-            <p class="text-xs text-slate-400">Matt McInerney • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">🇬🇧 Cyberpunk Sci-Fi</span>
-        </div>
-        <div class="preview-text font-orbitron text-2xl py-4 border-y border-slate-800/60 my-2 text-cyan-400 min-h-[90px] break-words tracking-widest">
-          CYBERNETIC SYSTEM ACTIVE // OPEN TYPOGRAPHY
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">03_HighCTR_YouTube_Display</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-english-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org Mirror</a>
-            <a href="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= ARABIC CARDS ================= -->
-      <!-- Card: Amiri -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="arabic" data-font="amiri" data-name="amiri" data-tags="arabic quranic classical naskh khaled hosny">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Amiri (Quranic Classical Naskh)</h4>
-            <p class="text-xs text-slate-400">Khaled Hosny • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">🕌 Arabic Naskh</span>
-        </div>
-        <div class="preview-text font-amiri text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words text-right" dir="rtl">
-          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">Holy Quran & Classical Naskh</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-arabic-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (13,856+)</a>
-            <a href="https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= HINDI CARDS ================= -->
-      <!-- Card: Poppins Devanagari -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="hindi" data-font="poppins-devanagari" data-name="poppins devanagari" data-tags="hindi devanagari poppins indian type foundry sans geometric">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">Poppins Devanagari (Modern Indian Sans)</h4>
-            <p class="text-xs text-slate-400">Indian Type Foundry • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20">🇮🇳 Hindi Sans</span>
-        </div>
-        <div class="preview-text font-poppins-devanagari text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः।
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">08_Modern_Unicode_Google_Web</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-hindi-devanagari" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (6,011+)</a>
-            <a href="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= GERMAN FRAKTUR CARDS ================= -->
-      <!-- Card: UnifrakturMaguntia -->
-      <div class="font-card bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" data-script="german" data-font="unifraktur" data-name="unifrakturmaguntia" data-tags="german fraktur blackletter gutenberg schwabacher j g machatha">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h4 class="text-lg font-bold text-white">UnifrakturMaguntia (Gutenberg Fraktur)</h4>
-            <p class="text-xs text-slate-400">J. 'Mach' Wust • SIL OFL 1.1</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">🇩🇪 German Fraktur</span>
-        </div>
-        <div class="preview-text font-unifraktur text-3xl py-4 border-y border-slate-800/60 my-2 text-slate-100 min-h-[90px] break-words">
-          Zwölf Boxkämpfer jagen Viktor quer über den Sylter Deich.
-        </div>
-        <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
-          <span class="text-slate-500 font-mono">01_Gutenberg_Historic_Fraktur</span>
-          <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-german-fraktur" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (5,002+)</a>
-            <a href="https://github.com/mohammadgolamrabbii/German-Fraktur-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="border-t border-slate-800/80 bg-slate-950 py-10 mt-16 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="text-lg">🏛️</span>
-        <span class="text-slate-400">Curated by <a href="https://linktr.ee/golamrabbii" target="_blank" class="text-amber-400 font-bold hover:underline">Mohammad Golamrabbii</a> for Open Typography Foundation</span>
-      </div>
-      <div class="flex items-center gap-4 text-slate-400 flex-wrap justify-center">
-        <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="hover:text-white transition">Archive.org Vaults</a>
-        <span>•</span>
-        <a href="https://github.com/Open-Typography-Foundation" target="_blank" class="hover:text-white transition">GitHub Org</a>
-        <span>•</span>
-        <a href="https://gitlab.com/golamrabbiii" target="_blank" class="hover:text-white transition">GitLab</a>
-        <span>•</span>
-        <a href="https://linktr.ee/golamrabbii" target="_blank" class="hover:text-white transition">Socials</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==================== JAVASCRIPT APPLICATION LOGIC ==================== -->
-  <script>
-    // Master Font Metadata Catalog for 20 Interactive Specimens
-    const FONT_CATALOG = [
-      { id: 'pt-sans', name: 'PT Sans', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', category: 'Modern Grotesque Sans', author: 'ParaType', license: 'SIL OFL 1.1', fontClass: 'font-pt-sans', defaultText: 'Съешь же ещё этих мягких французских булок, да выпей чаю.', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive', tags: 'cyrillic russian slavic grotesque paratype sans alexandra korolkova' },
-      { id: 'stalinist-one', name: 'Stalinist One', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', category: 'Soviet Constructivist', author: 'Alexei Vanyashin', license: 'SIL OFL 1.1', fontClass: 'font-stalinist', defaultText: 'ВПЕРЁД К ЗВЁЗДАМ! СОВЕТСКИЙ ПЛАКАТ', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive', tags: 'cyrillic soviet constructivist retro poster alexei vanyashin ussr headline' },
-      { id: 'russo-one', name: 'Russo One', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', category: 'High-CTR YouTube Display', author: 'Jovanny Lemonad', license: 'SIL OFL 1.1', fontClass: 'font-russo', defaultText: 'ШИРОКИЙ ЭКРАН И ЯРКИЕ ЗАГОЛОВКИ', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive', tags: 'cyrillic russian youtube display bold heavy impact headline jovanny lemonad' },
-      { id: 'cormorant-infant', name: 'Cormorant Infant', script: 'cyrillic', scriptName: '🇷🇺 Cyrillic', category: 'Imperial Literature Serif', author: 'Christian Thalmann', license: 'SIL OFL 1.1', fontClass: 'font-cormorant-infant', defaultText: 'Классическая русская литература и поэзия золотого века.', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive', tags: 'cyrillic russian imperial serif literature christian thalmann classical book' },
-      
-      { id: 'noto-bangla', name: 'Noto Sans Bengali', script: 'bengali', scriptName: '🇧🇩 Bengali', category: 'Modern UI Sans', author: 'Google Fonts / Monotype', license: 'SIL OFL 1.1', fontClass: 'font-noto-bangla', defaultText: 'আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts', tags: 'bangla bengali modern ui sans google monotype' },
-      { id: 'noto-serif-bangla', name: 'Noto Serif Bengali', script: 'bengali', scriptName: '🇧🇩 Bengali', category: 'Literary Classic Serif', author: 'Google Fonts', license: 'SIL OFL 1.1', fontClass: 'font-noto-serif-bangla', defaultText: 'চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির, জ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-bangla-fonts', tags: 'bangla bengali literary classic serif book literature google' },
-
-      { id: 'dela', name: 'Dela Gothic One', script: 'japanese', scriptName: '🇯🇵 Japanese', category: 'Anime & Manga Display', author: 'Artakana', license: 'SIL OFL 1.1', fontClass: 'font-dela', defaultText: '限界を超えろ！最強のタイポグラフィ', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive', tags: 'japanese anime high ctr manga poster headline artakana gothic' },
-      { id: 'shippori', name: 'Shippori Mincho', script: 'japanese', scriptName: '🇯🇵 Japanese', category: 'Classical Literature Mincho', author: 'FONTDASU', license: 'SIL OFL 1.1', fontClass: 'font-shippori', defaultText: '月日は百代の過客にして、行きかふ年もまた旅人なり。', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive', tags: 'japanese classical mincho literary book tokyo font fontworks' },
-      { id: 'yuji-boku', name: 'Yuji Boku', script: 'japanese', scriptName: '🇯🇵 Japanese', category: 'Traditional Ink Brush', author: 'Kinsei Douzo', license: 'SIL OFL 1.1', fontClass: 'font-yuji-boku', defaultText: '一期一会 • 静寂の中に美を見出す心。', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive', tags: 'japanese traditional brush calligraphy ink shodou kinsei' },
-      { id: 'kiwi', name: 'Kiwi Maru', script: 'japanese', scriptName: '🇯🇵 Japanese', category: 'Friendly Rounded Maru', author: 'Hirose Satoshi', license: 'SIL OFL 1.1', fontClass: 'font-kiwi', defaultText: 'あたたかい日常と、やさしい言葉のフォント。', dir: 'ltr', downloadUrl: 'https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive', tags: 'japanese rounded maru gothic friendly kawaii hirose satoshi' },
-
-      { id: 'inter', name: 'Inter', script: 'english', scriptName: '🇬🇧 English', category: 'Modern UI Neo-Grotesk', author: 'Rasmus Andersson', license: 'SIL OFL 1.1', fontClass: 'font-inter', defaultText: 'The quick brown fox jumps over the lazy dog.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts', tags: 'english modern ui neo grotesque sans rasmus andersson' },
-      { id: 'playfair', name: 'Playfair Display', script: 'english', scriptName: '🇬🇧 English', category: 'Luxury Editorial Serif', author: 'Claus Eggers Sørensen', license: 'SIL OFL 1.1', fontClass: 'font-playfair', defaultText: 'High-Fashion, Editorial Elegance & Timeless Craftsmanship.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts', tags: 'english luxury high contrast serif editorial claus eggers sorensen' },
-      { id: 'orbitron', name: 'Orbitron', script: 'english', scriptName: '🇬🇧 English', category: 'Cyberpunk Sci-Fi', author: 'Matt McInerney', license: 'SIL OFL 1.1', fontClass: 'font-orbitron', defaultText: 'CYBERNETIC SYSTEM ACTIVE // OPEN TYPOGRAPHY', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-english-fonts', tags: 'english cyberpunk sci fi futuristic geometric mcinerney' },
-
-      { id: 'amiri', name: 'Amiri', script: 'arabic', scriptName: '🕌 Arabic', category: 'Quranic Classical Naskh', author: 'Khaled Hosny', license: 'SIL OFL 1.1', fontClass: 'font-amiri', defaultText: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ', dir: 'rtl', downloadUrl: 'https://archive.org/details/open-typography-foundation-arabic-fonts', tags: 'arabic quranic classical naskh khaled hosny' },
-      { id: 'poppins-devanagari', name: 'Poppins Devanagari', script: 'hindi', scriptName: '🇮🇳 Hindi', category: 'Modern Indian Sans', author: 'Indian Type Foundry', license: 'SIL OFL 1.1', fontClass: 'font-poppins-devanagari', defaultText: 'सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः।', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-hindi-devanagari', tags: 'hindi devanagari poppins indian type foundry sans geometric' },
-      { id: 'unifraktur', name: 'UnifrakturMaguntia', script: 'german', scriptName: '🇩🇪 German', category: 'Gutenberg Fraktur', author: "J. 'Mach' Wust", license: 'SIL OFL 1.1', fontClass: 'font-unifraktur', defaultText: 'Zwölf Boxkämpfer jagen Viktor quer über den Sylter Deich.', dir: 'ltr', downloadUrl: 'https://archive.org/details/open-typography-foundation-german-fraktur', tags: 'german fraktur blackletter gutenberg schwabacher j g machatha' }
-    ];
-
-    // DOM References
-    const searchInput = document.getElementById('fontSearchInput');
-    const clearSearchBtn = document.getElementById('clearSearchBtn');
-    const searchStatusBadge = document.getElementById('searchStatusBadge');
-    const scriptFilter = document.getElementById('scriptFilter');
-    const fontFamilyFilter = document.getElementById('fontFamilyFilter');
-    const fontCountBadge = document.getElementById('fontCountBadge');
-    const sizeSlider = document.getElementById('fontSizeSlider');
-    const sizeDisplay = document.getElementById('fontSizeDisplay');
-    const textInput = document.getElementById('customTextInput');
-    const clearTextBtn = document.getElementById('clearTextBtn');
-    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
-    const randomFontBtn = document.getElementById('randomFontBtn');
-    const toggleContrastBtn = document.getElementById('toggleContrastBtn');
-    const contrastIcon = document.getElementById('contrastIcon');
-    const contrastText = document.getElementById('contrastText');
-    const quickFontChips = document.getElementById('quickFontChips');
-
-    // Archive Box DOM References
-    const toggleDownloadsBtn = document.getElementById('toggleDownloadsBtn');
-    const downloadsContent = document.getElementById('downloadsContent');
-    const toggleDownloadsIcon = document.getElementById('toggleDownloadsIcon');
-    const toggleDownloadsText = document.getElementById('toggleDownloadsText');
-    const archiveSearchInput = document.getElementById('archiveSearchInput');
-    const archiveFilterBtns = document.querySelectorAll('.archive-filter-btn');
-    const archiveCards = document.querySelectorAll('.archive-card');
-
-    // Active Font Specimen Banner DOM References
-    const activeFontBanner = document.getElementById('activeFontBanner');
-    const activeFontBadge = document.getElementById('activeFontBadge');
-    const activeFontCategory = document.getElementById('activeFontCategory');
-    const activeFontTitle = document.getElementById('activeFontTitle');
-    const activeFontMeta = document.getElementById('activeFontMeta');
-    const activeFontCanvas = document.getElementById('activeFontCanvas');
-    const activeFontDownloadBtn = document.getElementById('activeFontDownloadBtn');
-    const closeActiveFontBtn = document.getElementById('closeActiveFontBtn');
-
-    // Cards & Previews
-    const fontCards = document.querySelectorAll('.font-card');
-    const previewTexts = document.querySelectorAll('.preview-text');
-    const gridVisibleCount = document.getElementById('gridVisibleCount');
-    const langPresets = document.querySelectorAll('.lang-preset');
-    const sizePresets = document.querySelectorAll('.size-preset');
-
-    let isLightContrast = false;
-    let isDownloadsCollapsed = false;
-
-    // 1. Toggle Downloads Collapse
+    // ================= ARCHIVE DOWNLOAD BOX COLLAPSE & FILTER =================
     toggleDownloadsBtn.addEventListener('click', () => {
-      isDownloadsCollapsed = !isDownloadsCollapsed;
-      if (isDownloadsCollapsed) {
-        downloadsContent.classList.add('hidden');
-        toggleDownloadsIcon.textContent = '▼';
-        toggleDownloadsText.textContent = 'Expand 8 Archives';
-      } else {
+      const isHidden = downloadsContent.classList.contains('hidden');
+      if (isHidden) {
         downloadsContent.classList.remove('hidden');
-        toggleDownloadsIcon.textContent = '▲';
+        toggleDownloadsIcon.textContent = '⯆';
         toggleDownloadsText.textContent = 'Minimize Box';
+      } else {
+        downloadsContent.classList.add('hidden');
+        toggleDownloadsIcon.textContent = '⯈';
+        toggleDownloadsText.textContent = 'Expand Box';
       }
     });
 
-    // 2. Filter Archive Cards via Search & Category Tabs
-    function updateArchiveCards() {
-      const q = archiveSearchInput.value.toLowerCase().trim();
-      const activeFilterBtn = document.querySelector('.archive-filter-btn.bg-amber-500');
-      const cat = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+    archiveFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        archiveFilterBtns.forEach(b => {
+          b.className = 'archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition';
+        });
+        btn.className = 'archive-filter-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs shadow transition';
+        const filter = btn.getAttribute('data-filter');
+        filterArchiveCards(filter, archiveSearchInput.value);
+      });
+    });
 
+    archiveSearchInput.addEventListener('input', (e) => {
+      const activeBtn = document.querySelector('.archive-filter-btn.bg-amber-500');
+      const filter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+      filterArchiveCards(filter, e.target.value);
+    });
+
+    function filterArchiveCards(category, query) {
+      const q = (query || '').toLowerCase().trim();
       archiveCards.forEach(card => {
-        const cardCats = (card.getAttribute('data-category') || '').split(' ');
-        const cardTags = (card.getAttribute('data-tags') || '').toLowerCase();
-        const cardText = card.textContent.toLowerCase();
-
-        const matchesCat = (cat === 'all' || cardCats.includes(cat));
-        const matchesQuery = (!q || cardTags.includes(q) || cardText.includes(q));
-
-        if (matchesCat && matchesQuery) {
+        const cardCat = card.getAttribute('data-category');
+        const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const matchesCategory = (category === 'all' || cardCat === category);
+        const matchesQuery = (!q || cardKeywords.includes(q));
+        if (matchesCategory && matchesQuery) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
@@ -1156,106 +1370,62 @@
       });
     }
 
-    archiveSearchInput.addEventListener('input', updateArchiveCards);
-
-    archiveFilterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        archiveFilterBtns.forEach(b => {
-          b.className = 'archive-filter-btn px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 font-medium text-xs border border-slate-700 transition';
-        });
-        btn.className = 'archive-filter-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs shadow transition';
-        updateArchiveCards();
-      });
-    });
-
-    // 3. Render Quick-Pick Specimen Font Pills
-    function renderQuickFontChips(script = 'all') {
-      quickFontChips.innerHTML = '';
-      let list = FONT_CATALOG;
-      if (script !== 'all') {
-        list = list.filter(f => f.script === script);
-      }
-      list.forEach(font => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition flex items-center gap-1';
-        chip.innerHTML = `<span>⭐</span><span>${font.name}</span>`;
-        chip.addEventListener('click', () => {
-          fontFamilyFilter.value = font.id;
-          scriptFilter.value = font.script;
-          updateDisplay();
-        });
-        quickFontChips.appendChild(chip);
-      });
+    function quickFilterScript(script) {
+      scriptFilter.value = script;
+      populateFontDropdown(script);
+      updateDisplay();
+      document.getElementById('tester-studio').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // 4. Populate Font Family Dropdown with Search & Category optgroups
-    function populateFontDropdown(script = 'all', query = '') {
-      const currentSelected = fontFamilyFilter.value;
-      fontFamilyFilter.innerHTML = '<option value="all">✨ All Available Fonts (Grid View)</option>';
+    // ================= FONT DROPDOWN POPULATOR =================
+    function populateFontDropdown(selectedScript, filterQuery = '') {
+      fontFamilyFilter.innerHTML = '';
+      const allOption = document.createElement('option');
+      allOption.value = 'all';
+      allOption.textContent = '✨ All Available Fonts (Grid View)';
+      fontFamilyFilter.appendChild(allOption);
 
-      let filtered = FONT_CATALOG;
-      if (script !== 'all') {
-        filtered = filtered.filter(f => f.script === script);
-      }
-      if (query) {
-        const q = query.toLowerCase().trim();
-        filtered = filtered.filter(f => 
-          f.name.toLowerCase().includes(q) ||
-          f.tags.toLowerCase().includes(q) ||
-          f.category.toLowerCase().includes(q) ||
-          f.author.toLowerCase().includes(q) ||
-          f.scriptName.toLowerCase().includes(q)
-        );
-      }
+      const q = filterQuery.toLowerCase().trim();
+      const filtered = FONT_CATALOG.filter(font => {
+        const matchesScript = (selectedScript === 'all' || font.script === selectedScript);
+        const matchesQuery = (!q || font.name.toLowerCase().includes(q) || font.tags.toLowerCase().includes(q) || font.category.toLowerCase().includes(q));
+        return matchesScript && matchesQuery;
+      });
 
-      // Group by script for pristine clarity
-      const groups = {};
       filtered.forEach(font => {
-        if (!groups[font.scriptName]) groups[font.scriptName] = [];
-        groups[font.scriptName].push(font);
+        const opt = document.createElement('option');
+        opt.value = font.id;
+        opt.textContent = `${font.name} (${font.category})`;
+        fontFamilyFilter.appendChild(opt);
       });
 
-      for (const [sName, fonts] of Object.entries(groups)) {
-        const optgroup = document.createElement('optgroup');
-        optgroup.label = `— ${sName} —`;
-        fonts.forEach(font => {
-          const opt = document.createElement('option');
-          opt.value = font.id;
-          opt.textContent = `${font.name} (${font.category})`;
-          optgroup.appendChild(opt);
-        });
-        fontFamilyFilter.appendChild(optgroup);
-      }
-
-      fontCountBadge.textContent = `${filtered.length} Fonts`;
-      searchStatusBadge.textContent = `${filtered.length} Fonts Found`;
-
-      if (filtered.some(f => f.id === currentSelected)) {
-        fontFamilyFilter.value = currentSelected;
-      } else {
-        fontFamilyFilter.value = 'all';
-      }
+      fontCountBadge.textContent = `${filtered.length} FONTS`;
     }
 
-    // 5. Master Filter & Update Engine
+    // ================= DISPLAY & FILTER UPDATE =================
     function updateDisplay() {
       const selectedScript = scriptFilter.value;
       const selectedFontId = fontFamilyFilter.value;
       const searchQuery = searchInput.value.toLowerCase().trim();
-      let visibleCount = 0;
 
+      if (searchQuery) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+
+      let visibleCount = 0;
       fontCards.forEach(card => {
+        const cardId = card.getAttribute('data-id');
         const cardScript = card.getAttribute('data-script');
-        const cardFont = card.getAttribute('data-font');
         const cardTags = (card.getAttribute('data-tags') || '').toLowerCase();
-        const cardName = (card.getAttribute('data-name') || '').toLowerCase();
+        const cardName = card.querySelector('h4').textContent.toLowerCase();
 
         const matchesScript = (selectedScript === 'all' || cardScript === selectedScript);
-        const matchesFont = (selectedFontId === 'all' || cardFont === selectedFontId);
+        const matchesFont = (selectedFontId === 'all' || cardId === selectedFontId);
         const matchesSearch = (!searchQuery || 
           cardTags.includes(searchQuery) || 
-          cardName.includes(searchQuery) ||
+          cardName.includes(searchQuery) || 
           cardScript.includes(searchQuery)
         );
 
@@ -1267,197 +1437,203 @@
         }
       });
 
-      // Update Search Badge & Grid Counter
-      gridVisibleCount.textContent = `Showing ${visibleCount} of ${fontCards.length} specimens`;
+      gridVisibleCount.textContent = `Showing ${visibleCount} of ${FONT_CATALOG.length} specimens`;
       if (searchQuery) {
-        clearSearchBtn.classList.remove('hidden');
-        searchStatusBadge.textContent = `${visibleCount} Matched`;
+        searchStatusBadge.textContent = `${visibleCount} Matched for "${searchQuery}"`;
       } else {
-        clearSearchBtn.classList.add('hidden');
+        searchStatusBadge.textContent = `Showing ${visibleCount} of ${FONT_CATALOG.length} Specimens`;
       }
 
-      // Update Active Font Specimen Hero
+      // If specific font selected in dropdown, activate it in studio
       if (selectedFontId !== 'all') {
-        const fontMeta = FONT_CATALOG.find(f => f.id === selectedFontId);
-        if (fontMeta) {
-          activeFontBanner.classList.remove('hidden');
-          activeFontBadge.textContent = fontMeta.scriptName;
-          activeFontCategory.textContent = fontMeta.category;
-          activeFontTitle.textContent = fontMeta.name;
-          activeFontMeta.textContent = `${fontMeta.author} • ${fontMeta.license}`;
-          activeFontDownloadBtn.href = fontMeta.downloadUrl;
-          
-          activeFontCanvas.className = `text-4xl py-6 text-white min-h-[100px] break-words transition-all ${fontMeta.fontClass}`;
-          activeFontCanvas.dir = fontMeta.dir;
-          activeFontCanvas.style.fontSize = sizeSlider.value + 'px';
-          activeFontCanvas.textContent = textInput.value || fontMeta.defaultText;
+        const fontData = FONT_CATALOG.find(f => f.id === selectedFontId);
+        if (fontData) {
+          applyFontToStudio(fontData);
         }
-      } else {
-        activeFontBanner.classList.add('hidden');
       }
     }
 
-    // 6. Live Search Input
+    // Apply specific font to main tester studio textarea
+    function applyFontToStudio(font) {
+      // Remove previous font classes
+      FONT_CATALOG.forEach(f => {
+        textInput.classList.remove(f.fontClass);
+      });
+      textInput.classList.add(font.fontClass);
+      textInput.dir = font.dir || 'ltr';
+
+      activeFontLabel.textContent = `Active Font: ${font.name} (${font.category})`;
+      activeFontLabel.className = 'text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+
+      // Show Hero Banner
+      activeFontBanner.classList.remove('hidden');
+      activeFontBadge.textContent = font.scriptName;
+      activeFontCategory.textContent = font.category;
+      activeFontTitle.textContent = font.name;
+      activeFontMeta.textContent = `Foundry: ${font.author} • License: ${font.license} • Curated in Open Typography Foundation`;
+      activeFontDownloadBtn.href = font.downloadUrl;
+
+      // Update Hero Canvas font
+      FONT_CATALOG.forEach(f => activeFontCanvas.classList.remove(f.fontClass));
+      activeFontCanvas.classList.add(font.fontClass);
+      activeFontCanvas.dir = font.dir || 'ltr';
+      activeFontCanvas.textContent = textInput.value || font.defaultText;
+    }
+
+    // Activate Font from Specimen Card click
+    function activateFont(fontId) {
+      const font = FONT_CATALOG.find(f => f.id === fontId);
+      if (!font) return;
+
+      scriptFilter.value = font.script;
+      populateFontDropdown(font.script);
+      fontFamilyFilter.value = font.id;
+
+      textInput.value = font.defaultText;
+      applyFontToStudio(font);
+      updateDisplay();
+
+      document.getElementById('tester-studio').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ================= EVENT LISTENERS =================
     searchInput.addEventListener('input', (e) => {
-      const q = e.target.value;
-      populateFontDropdown(scriptFilter.value, q);
-      renderQuickFontChips(scriptFilter.value);
+      populateFontDropdown(scriptFilter.value, e.target.value);
       updateDisplay();
     });
 
     clearSearchBtn.addEventListener('click', () => {
       searchInput.value = '';
-      populateFontDropdown(scriptFilter.value, '');
-      renderQuickFontChips(scriptFilter.value);
+      populateFontDropdown(scriptFilter.value);
       updateDisplay();
       searchInput.focus();
     });
 
-    // 7. Live Preview Text Input
-    textInput.addEventListener('input', (e) => {
-      const val = e.target.value;
-      previewTexts.forEach(pt => {
-        pt.textContent = val.trim() || 'The quick brown fox jumps over the lazy dog.';
-      });
-      if (activeFontCanvas) {
-        activeFontCanvas.textContent = val.trim() || 'Sample text';
-      }
-    });
-
-    clearTextBtn.addEventListener('click', () => {
-      textInput.value = '';
-      textInput.focus();
-      previewTexts.forEach(pt => {
-        pt.textContent = 'Type here to test typography...';
-      });
-      if (activeFontCanvas) {
-        activeFontCanvas.textContent = 'Type here to test typography...';
-      }
-    });
-
-    // 8. Font Size Slider & Presets
-    sizeSlider.addEventListener('input', (e) => {
-      const sz = e.target.value;
-      sizeDisplay.textContent = sz + 'px';
-      previewTexts.forEach(pt => {
-        pt.style.fontSize = sz + 'px';
-      });
-      if (activeFontCanvas) {
-        activeFontCanvas.style.fontSize = sz + 'px';
-      }
-    });
-
-    sizePresets.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const sz = btn.getAttribute('data-size');
-        sizeSlider.value = sz;
-        sizeDisplay.textContent = sz + 'px';
-        previewTexts.forEach(pt => {
-          pt.style.fontSize = sz + 'px';
-        });
-        if (activeFontCanvas) {
-          activeFontCanvas.style.fontSize = sz + 'px';
-        }
-      });
-    });
-
-    // 9. Script Dropdown Change
-    scriptFilter.addEventListener('change', (e) => {
-      const script = e.target.value;
-      populateFontDropdown(script, searchInput.value);
-      renderQuickFontChips(script);
-      updateDisplay();
-    });
-
-    // 10. Font Family Dropdown Change
-    fontFamilyFilter.addEventListener('change', () => {
-      updateDisplay();
-    });
-
-    // 11. Quick Language Pangram Preset Buttons
-    langPresets.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const script = btn.getAttribute('data-script');
-        const text = btn.getAttribute('data-text');
-        
-        scriptFilter.value = script;
-        textInput.value = text;
-        populateFontDropdown(script, searchInput.value);
-        renderQuickFontChips(script);
-        
-        previewTexts.forEach(pt => {
-          pt.textContent = text;
-        });
-
+    searchChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        searchInput.value = chip.getAttribute('data-query');
+        populateFontDropdown(scriptFilter.value, searchInput.value);
         updateDisplay();
       });
     });
 
-    // 12. Contrast Toggle (Light / Dark mode specimen cards)
+    textInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      previewTexts.forEach(p => {
+        p.textContent = val || 'Type something to preview this font...';
+      });
+      activeFontCanvas.textContent = val || 'Type something to preview this font...';
+    });
+
+    clearTextBtn.addEventListener('click', () => {
+      textInput.value = '';
+      previewTexts.forEach(p => p.textContent = 'Type something to preview this font...');
+      activeFontCanvas.textContent = 'Type something to preview this font...';
+      textInput.focus();
+    });
+
+    document.querySelectorAll('.pangram-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-type');
+        const selectedFont = FONT_CATALOG.find(f => f.id === fontFamilyFilter.value);
+        if (type === 'default') {
+          if (selectedFont) {
+            textInput.value = selectedFont.defaultText;
+          } else {
+            const script = scriptFilter.value;
+            const firstOfScript = FONT_CATALOG.find(f => f.script === script) || FONT_CATALOG[0];
+            textInput.value = firstOfScript.defaultText;
+          }
+        } else if (type === 'name') {
+          textInput.value = 'Mohammad Golamrabbii — Open Typography Foundation';
+        } else if (type === 'numbers') {
+          textInput.value = '0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz !@#$%^&*()';
+        }
+        textInput.dispatchEvent(new Event('input'));
+      });
+    });
+
+    sizeSlider.addEventListener('input', (e) => {
+      const size = e.target.value + 'px';
+      sizeDisplay.textContent = size;
+      previewTexts.forEach(p => p.style.fontSize = size);
+      textInput.style.fontSize = size;
+      activeFontCanvas.style.fontSize = Math.min(parseInt(e.target.value) * 1.2, 56) + 'px';
+    });
+
+    scriptFilter.addEventListener('change', (e) => {
+      const script = e.target.value;
+      populateFontDropdown(script, searchInput.value);
+      fontFamilyFilter.value = 'all';
+      activeFontBanner.classList.add('hidden');
+
+      // Set sample text for first font in this script
+      const sample = FONT_CATALOG.find(f => f.script === script);
+      if (sample) {
+        textInput.value = sample.defaultText;
+        applyFontToStudio(sample);
+      }
+      updateDisplay();
+    });
+
+    fontFamilyFilter.addEventListener('change', (e) => {
+      const fontId = e.target.value;
+      if (fontId === 'all') {
+        activeFontBanner.classList.add('hidden');
+        activeFontLabel.textContent = 'Active Font: Grid View';
+      } else {
+        const font = FONT_CATALOG.find(f => f.id === fontId);
+        if (font) {
+          textInput.value = font.defaultText;
+          applyFontToStudio(font);
+        }
+      }
+      updateDisplay();
+    });
+
     toggleContrastBtn.addEventListener('click', () => {
-      isLightContrast = !isLightContrast;
-      fontCards.forEach(card => {
-        if (isLightContrast) {
-          card.classList.add('preview-canvas-light');
+      isLightMode = !isLightMode;
+      const canvases = [textInput, activeFontCanvas, ...document.querySelectorAll('.specimen-box')];
+      canvases.forEach(el => {
+        if (isLightMode) {
+          el.classList.add('preview-canvas-light');
         } else {
-          card.classList.remove('preview-canvas-light');
+          el.classList.remove('preview-canvas-light');
         }
       });
-      if (isLightContrast) {
-        contrastIcon.textContent = '🌙';
-        contrastText.textContent = 'Dark Mode';
-        toggleContrastBtn.classList.add('bg-white', 'text-slate-950');
-      } else {
-        contrastIcon.textContent = '☀️';
-        contrastText.textContent = 'Light Mode';
-        toggleContrastBtn.classList.remove('bg-white', 'text-slate-950');
-      }
+      contrastIcon.textContent = isLightMode ? '🌙' : '☀️';
+      contrastText.textContent = isLightMode ? 'Dark' : 'Light';
     });
 
-    // 13. Random Font Exploration Button
     randomFontBtn.addEventListener('click', () => {
-      const randomIndex = Math.floor(Math.random() * FONT_CATALOG.length);
-      const chosen = FONT_CATALOG[randomIndex];
-      scriptFilter.value = chosen.script;
-      populateFontDropdown(chosen.script, '');
-      fontFamilyFilter.value = chosen.id;
-      textInput.value = chosen.defaultText;
-      previewTexts.forEach(pt => {
-        pt.textContent = chosen.defaultText;
-      });
-      renderQuickFontChips(chosen.script);
-      updateDisplay();
+      const randomFont = FONT_CATALOG[Math.floor(Math.random() * FONT_CATALOG.length)];
+      activateFont(randomFont.id);
     });
 
-    // 14. Reset All Filters
     resetFiltersBtn.addEventListener('click', () => {
-      scriptFilter.value = 'all';
       searchInput.value = '';
-      archiveSearchInput.value = '';
-      sizeSlider.value = 36;
-      sizeDisplay.textContent = '36px';
-      previewTexts.forEach(pt => {
-        pt.style.fontSize = '36px';
-      });
-      populateFontDropdown('all', '');
-      renderQuickFontChips('all');
+      scriptFilter.value = 'all';
+      populateFontDropdown('all');
       fontFamilyFilter.value = 'all';
-      updateArchiveCards();
+      sizeSlider.value = 24;
+      sizeSlider.dispatchEvent(new Event('input'));
+      activeFontBanner.classList.add('hidden');
+      textInput.value = 'আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।';
+      textInput.className = 'font-noto-bangla w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-xl p-4 text-white text-lg focus:outline-none transition resize-y font-normal leading-relaxed';
+      activeFontLabel.textContent = 'Active Font: All Fonts';
       updateDisplay();
     });
 
-    // Close Active Font Hero Banner Button
     closeActiveFontBtn.addEventListener('click', () => {
+      activeFontBanner.classList.add('hidden');
       fontFamilyFilter.value = 'all';
       updateDisplay();
     });
 
-    // Initialization
-    populateFontDropdown('all', '');
-    renderQuickFontChips('all');
-    updateArchiveCards();
+    // Initial Setup
+    populateFontDropdown('bengali');
     updateDisplay();
+    updateTerminalCmd();
   </script>
-
 </body>
 </html>
