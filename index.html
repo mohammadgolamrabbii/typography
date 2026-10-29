@@ -56,6 +56,72 @@
       }
     ]
   }
+  
+    // Terminal Platform & Language Switcher
+    let currentTermPlatform = 'linux';
+    let currentTermLang = 'all';
+
+    const termRepos = {
+      all: 'https://github.com/mohammadgolamrabbii/typography.git',
+      bengali: 'https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git',
+      cyrillic: 'https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive.git',
+      japanese: 'https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git',
+      english: 'https://github.com/mohammadgolamrabbii/English-Latin-Fonts-Archive.git',
+      arabic: 'https://github.com/mohammadgolamrabbii/Arabic-Islamic-Fonts-Archive.git',
+      hindi: 'https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive.git',
+      german: 'https://github.com/mohammadgolamrabbii/German-Fraktur-Fonts-Archive.git'
+    };
+
+    function updateTerminalCmd() {
+      const cmdEl = document.getElementById('terminalCmdText');
+      if (!cmdEl) return;
+      if (currentTermPlatform === 'linux') {
+        cmdEl.textContent = `curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash -s -- ${currentTermLang}`;
+      } else if (currentTermPlatform === 'windows') {
+        const langParam = currentTermLang.charAt(0).toUpperCase() + currentTermLang.slice(1);
+        cmdEl.textContent = `irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex -Language ${langParam}`;
+      } else if (currentTermPlatform === 'git') {
+        cmdEl.textContent = `git clone --depth 1 ${termRepos[currentTermLang] || termRepos.all}`;
+      }
+    }
+
+    function setTerminalPlatform(plat) {
+      currentTermPlatform = plat;
+      ['tabLinux', 'tabWindows', 'tabGit'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.className = 'px-3 py-1.5 rounded-lg font-semibold text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
+        }
+      });
+      const activeId = plat === 'linux' ? 'tabLinux' : (plat === 'windows' ? 'tabWindows' : 'tabGit');
+      const activeBtn = document.getElementById(activeId);
+      if (activeBtn) {
+        activeBtn.className = 'px-3 py-1.5 rounded-lg font-semibold transition-all bg-emerald-500 text-slate-950 shadow-sm flex items-center gap-1.5';
+      }
+      updateTerminalCmd();
+    }
+
+    function setTerminalLang(lang) {
+      currentTermLang = lang;
+      document.querySelectorAll('.term-lang-chip').forEach(btn => {
+        btn.className = 'term-lang-chip px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 hover:bg-slate-700 font-medium transition-all shrink-0';
+      });
+      if (event && event.currentTarget) {
+        event.currentTarget.className = 'term-lang-chip active px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 font-medium transition-all shrink-0';
+      }
+      updateTerminalCmd();
+    }
+
+    function copyTerminalCmd() {
+      const text = document.getElementById('terminalCmdText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const label = document.getElementById('copyTerminalLabel');
+        const orig = label.textContent;
+        label.textContent = '✔ Copied!';
+        setTimeout(() => { label.textContent = orig; }, 2000);
+      });
+    }
+
   </script>
   
   <!-- Tailwind CSS CDN -->
@@ -357,7 +423,7 @@
             <div>
               <div class="flex justify-between items-start mb-2">
                 <span class="text-2xl">🇧🇩</span>
-                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">2,581+ Fonts</span>
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">3,412+ FONTS</span>
               </div>
               <h3 class="font-bold text-white text-sm group-hover:text-emerald-400 transition-colors">Bangla (বাংলা) Archive</h3>
               <p class="text-xs text-slate-400 mt-1">Complete Unicode, ANSI, Legacy & Calligraphic Bengali Typography Collection.</p>
@@ -720,7 +786,7 @@
         <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
           <span class="text-slate-500 font-mono">Unicode + 1_Unicode</span>
           <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (2,581+)</a>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (3,412+)</a>
             <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
           </div>
         </div>
@@ -741,7 +807,7 @@
         <div class="flex justify-between items-center pt-3 text-xs flex-wrap gap-2">
           <span class="text-slate-500 font-mono">Literature & Publishing</span>
           <div class="flex items-center gap-3">
-            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (2,581+)</a>
+            <a href="https://archive.org/details/open-typography-foundation-bangla-fonts" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">🏛️ Archive.org (3,412+)</a>
             <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Archive/releases" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">GitHub ➔</a>
           </div>
         </div>
