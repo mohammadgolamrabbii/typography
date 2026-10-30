@@ -9,7 +9,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Position = 0)]
-    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "Vietnamese", "Thai", "Malay", "Dev", "Dravidian", "African", "Urdu", "All", "Menu")]
+    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "Vietnamese", "Thai", "Malay", "Dev", "Dravidian", "African", "Urdu", "Hebrew", "Greek", "Khmer", "Myanmar", "Sinhala", "Lao", "Tibetan", "Georgian", "Armenian", "Mongolian", "All", "Menu")]
     [string]$Language = "Menu"
 )
 
@@ -51,6 +51,16 @@ $Repos = @{
     "Dravidian"  = "https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
     "African"    = "https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
     "Urdu"       = "https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
+    "Hebrew"     = "https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
+    "Greek"      = "https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
+    "Khmer"      = "https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
+    "Myanmar"    = "https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
+    "Sinhala"    = "https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
+    "Lao"        = "https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
+    "Tibetan"    = "https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
+    "Georgian"   = "https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
+    "Armenian"   = "https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
+    "Mongolian"  = "https://github.com/Open-Typography-Foundation/Mongolian-Hudum-Fonts-Archive.git" 
 }
 
 $ArchiveZips = @{

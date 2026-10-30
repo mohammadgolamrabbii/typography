@@ -61,6 +61,16 @@ REPOS["dev"]="https://github.com/Open-Typography-Foundation/Developer-Coding-Fon
 REPOS["dravidian"]="https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
 REPOS["african"]="https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
 REPOS["urdu"]="https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
+REPOS["hebrew"]="https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
+REPOS["greek"]="https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
+REPOS["khmer"]="https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
+REPOS["myanmar"]="https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
+REPOS["sinhala"]="https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
+REPOS["lao"]="https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
+REPOS["tibetan"]="https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
+REPOS["georgian"]="https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
+REPOS["armenian"]="https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
+REPOS["mongolian"]="https://github.com/Open-Typography-Foundation/Mongolian-Hudum-Fonts-Archive.git" 
 
 install_language() {
     local lang="$1"
