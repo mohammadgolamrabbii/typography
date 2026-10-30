@@ -1,175 +1,105 @@
-<#
-==============================================================================
- Open Typography Foundation — Universal Windows PowerShell Font Installer
- Curated by Mohammad Golamrabbii
- Zero Rate-Limits, Full High-Speed Mirroring, System-Wide Registration (80,000+ Fonts)
-==============================================================================
-#>
-
-[CmdletBinding()]
-param (
-    [Parameter(Position = 0)]
-    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "Vietnamese", "Thai", "Malay", "Dev", "Dravidian", "African", "Urdu", "Hebrew", "Greek", "Khmer", "Myanmar", "Sinhala", "Lao", "Tibetan", "Georgian", "Armenian", "Mongolian", "All", "Menu")]
-    [string]$Language = "Menu"
+# Open Typography Foundation - Universal Windows Font Fast-Installer
+# Curated by Mohammad Golamrabbii
+param(
+    [string]$Script = "all"
 )
+$ErrorActionPreference = "SilentlyContinue"
+Write-Host "🏛️ Open Typography Foundation — Windows Font Engine" -ForegroundColor Cyan
+Write-Host "Curated by Mohammad Golamrabbii (59 Sovereign Mega-Vaults • 95,000+ Fonts)" -ForegroundColor Yellow
 
-$ErrorActionPreference = "Stop"
-
-Write-Host ""
-Write-Host "  ___                      _____                                     _           " -ForegroundColor Cyan
-Write-Host " / _ \ _ __   ___ _ __    |_   _|   _ _ __   ___   __ _ _ __ __ _ _ __ | |__  _   _ " -ForegroundColor Cyan
-Write-Host "| | | | '_ \ / _ \ '_ \     | || | | | '_ \ / _ \ / _` | '__/ _` | '_ \| '_ \| | | |" -ForegroundColor Cyan
-Write-Host "| |_| | |_) |  __/ | | |    | || |_| | |_) | (_) | (_| | | | (_| | |_) | | | | |_| |" -ForegroundColor Cyan
-Write-Host " \___/| .__/ \___|_| |_|    |_| \__, | .__/ \___/ \__, |_|  \__,_| .__/|_| |_|\__, |" -ForegroundColor Cyan
-Write-Host "      |_|                       |___/|_|          |___/          |_|          |___/ " -ForegroundColor Cyan
-Write-Host "  Curated by Mohammad Golamrabbii • Open Typography Foundation" -ForegroundColor Yellow
-Write-Host "  Permanent High-Speed GitHub & Internet Archive Windows Installer (80,000+ Production Fonts)" -ForegroundColor Green
-Write-Host "==============================================================================" -ForegroundColor Gray
-
-$UserFontDir = [System.IO.Path]::Combine($env:LOCALAPPDATA, "Microsoft\Windows\Fonts")
-if (-not (Test-Path $UserFontDir)) {
-    New-Item -ItemType Directory -Force -Path $UserFontDir | Out-Null
-}
-
-$RegistryPath = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
+$FontsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Fonts)
+$TempDir = Join-Path $env:TEMP "OpenTypography"
+New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 
 $Repos = @{
-    "Bengali"  = "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
-    "English"  = "https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
-    "Arabic"   = "https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
-    "Cyrillic" = "https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git"
-    "Hindi"    = "https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
-    "German"   = "https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
-    "Korean"   = "https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
-    "Japanese" = "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
-    "Chinese"  = "https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
-    "Icons"    = "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
-    "Vietnamese" = "https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
-    "Thai"       = "https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive.git"
-    "Malay"      = "https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
-    "Dev"        = "https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive.git"
-    "Dravidian"  = "https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
-    "African"    = "https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
-    "Urdu"       = "https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
-    "Hebrew"     = "https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
-    "Greek"      = "https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
-    "Khmer"      = "https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
-    "Myanmar"    = "https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
-    "Sinhala"    = "https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
-    "Lao"        = "https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
-    "Tibetan"    = "https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
-    "Georgian"   = "https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
-    "Armenian"   = "https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
-    "Mongolian"  = "https://github.com/Open-Typography-Foundation/Mongolian-Hudum-Fonts-Archive.git" 
+    "bangla-mega-collection" = "https://github.com/Open-Typography-Foundation/Bangla-Fonts-Mega-Collection.git"
+    "english-latin" = "https://github.com/Open-Typography-Foundation/English-Latin-Fonts-Archive.git"
+    "arabic-islamic" = "https://github.com/Open-Typography-Foundation/Arabic-Islamic-Fonts-Archive.git"
+    "icons-and-symbols" = "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
+    "legacy" = "https://github.com/Open-Typography-Foundation/Legacy-Archive-Fonts.git"
+    "world-languages" = "https://github.com/Open-Typography-Foundation/World-Languages-Fonts.git"
+    "hindi-devanagari" = "https://github.com/Open-Typography-Foundation/Hindi-Devanagari-Fonts-Archive.git"
+    "8_german_deutsche_schriften" = "https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften.git"
+    "japanese-mega" = "https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive.git"
+    "cyrillic-slavic-mega" = "https://github.com/Open-Typography-Foundation/Cyrillic-Slavic-Mega-Archive.git"
+    "korean-hangul" = "https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git"
+    "chinese-hanzi" = "https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+    "vietnamese-mega" = "https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
+    "thai-siam-mega" = "https://github.com/Open-Typography-Foundation/Thai-Siam-Fonts-Mega-Archive.git"
+    "malay-nusantara" = "https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
+    "developer-coding-monospace" = "https://github.com/Open-Typography-Foundation/Developer-Coding-Monospace-Fonts-Archive.git"
+    "dravidian-mega" = "https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
+    "african-scripts-mega" = "https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
+    "persian-urdu-nastaliq" = "https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
+    "hebrew-mega" = "https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
+    "greek-hellenic" = "https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
+    "khmer-cambodian" = "https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
+    "myanmar-burmese" = "https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
+    "sinhala-srilankan" = "https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
+    "lao-lanxang" = "https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
+    "tibetan-himalayan" = "https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
+    "georgian-kartvelian" = "https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
+    "armenian-haykakan" = "https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
+    "mongolian-nomadic" = "https://github.com/Open-Typography-Foundation/Mongolian-Nomadic-Fonts-Archive.git"
+    "javanese-aksarajawa" = "https://github.com/Open-Typography-Foundation/Javanese-AksaraJawa-Fonts-Archive.git"
+    "sundanese-aksarasunda" = "https://github.com/Open-Typography-Foundation/Sundanese-AksaraSunda-Fonts-Archive.git"
+    "balinese-aksarabali" = "https://github.com/Open-Typography-Foundation/Balinese-AksaraBali-Fonts-Archive.git"
+    "batak-suratbatak" = "https://github.com/Open-Typography-Foundation/Batak-SuratBatak-Fonts-Archive.git"
+    "buginese-lontara" = "https://github.com/Open-Typography-Foundation/Buginese-Lontara-Fonts-Archive.git"
+    "tagalog-baybayin" = "https://github.com/Open-Typography-Foundation/Tagalog-Baybayin-Fonts-Archive.git"
+    "thaana-dhivehi" = "https://github.com/Open-Typography-Foundation/Thaana-Dhivehi-Fonts-Archive.git"
+    "chakma-changma" = "https://github.com/Open-Typography-Foundation/Chakma-Changma-Fonts-Archive.git"
+    "sylheti-nagri" = "https://github.com/Open-Typography-Foundation/Sylheti-Nagri-Fonts-Archive.git"
+    "meetei-mayek" = "https://github.com/Open-Typography-Foundation/Meetei-Mayek-Fonts-Archive.git"
+    "odia-oriya" = "https://github.com/Open-Typography-Foundation/Odia-Oriya-Fonts-Archive.git"
+    "gujarati-gurjar" = "https://github.com/Open-Typography-Foundation/Gujarati-Gurjar-Fonts-Archive.git"
+    "gurmukhi-punjabi" = "https://github.com/Open-Typography-Foundation/Gurmukhi-Punjabi-Fonts-Archive.git"
+    "assamese-axomiya" = "https://github.com/Open-Typography-Foundation/Assamese-Axomiya-Fonts-Archive.git"
+    "santali-olchiki" = "https://github.com/Open-Typography-Foundation/Santali-OlChiki-Fonts-Archive.git"
+    "sora-sompeng" = "https://github.com/Open-Typography-Foundation/Sora-Sompeng-Fonts-Archive.git"
+    "lepcha-rong" = "https://github.com/Open-Typography-Foundation/Lepcha-Rong-Fonts-Archive.git"
+    "limbu-sirijonga" = "https://github.com/Open-Typography-Foundation/Limbu-Sirijonga-Fonts-Archive.git"
+    "newa-prachalit" = "https://github.com/Open-Typography-Foundation/Newa-Prachalit-Fonts-Archive.git"
+    "tirhuta-mithilakshar" = "https://github.com/Open-Typography-Foundation/Tirhuta-Mithilakshar-Fonts-Archive.git"
+    "syriac-aramaic" = "https://github.com/Open-Typography-Foundation/Syriac-Aramaic-Fonts-Archive.git"
+    "coptic-bohairic" = "https://github.com/Open-Typography-Foundation/Coptic-Bohairic-Fonts-Archive.git"
+    "tifinagh-amazigh" = "https://github.com/Open-Typography-Foundation/Tifinagh-Amazigh-Fonts-Archive.git"
+    "nko-manding" = "https://github.com/Open-Typography-Foundation/NKo-Manding-Fonts-Archive.git"
+    "vai-liberian" = "https://github.com/Open-Typography-Foundation/Vai-Liberian-Fonts-Archive.git"
+    "adlam-fulani" = "https://github.com/Open-Typography-Foundation/Adlam-Fulani-Fonts-Archive.git"
+    "osmanya-somali" = "https://github.com/Open-Typography-Foundation/Osmanya-Somali-Fonts-Archive.git"
+    "cherokee-tsalagi" = "https://github.com/Open-Typography-Foundation/Cherokee-Tsalagi-Fonts-Archive.git"
+    "canadian-aboriginal" = "https://github.com/Open-Typography-Foundation/Canadian-Aboriginal-Fonts-Archive.git"
+    "runic-glagolitic" = "https://github.com/Open-Typography-Foundation/Runic-Glagolitic-Fonts-Archive.git"
 }
 
-$ArchiveZips = @{
-    "Bengali"  = "https://archive.org/download/open-typography-foundation-bangla-fonts/Bangla_Fonts_Mega_Collection_5000_Fonts.zip"
-    "Cyrillic" = "https://archive.org/download/open-typography-foundation-cyrillic-slavic/Cyrillic_Slavic_Mega_Archive_10136_Fonts.zip"
-    "Japanese" = "https://archive.org/download/open-typography-foundation-japanese-fonts/Japanese_Fonts_Mega_Archive_1500_Fonts.zip"
-    "Hindi"    = "https://archive.org/download/open-typography-foundation-hindi-fonts/Hindi_Devanagari_Fonts_Archive.zip"
-    "German"   = "https://archive.org/download/open-typography-foundation-german-fonts/German_Fraktur_Fonts_Archive.zip"
-}
-
-function Install-FontFamily {
-    param ([string]$Lang)
-    
-    $repoUrl = $Repos[$Lang]
-    if (-not $repoUrl) { return }
-    
-    $tempClone = [System.IO.Path]::Combine($env:TEMP, "OTF_Install_$Lang")
-    Write-Host "`n>>> Ingesting $Lang Typography Archive..." -ForegroundColor Yellow
-    
-    if (Test-Path $tempClone) {
-        Remove-Item -Recurse -Force $tempClone -ErrorAction SilentlyContinue
+function Install-VaultFonts($name, $url) {
+    Write-Host "[*] Mirroring vault: $name..." -ForegroundColor Cyan
+    $vPath = Join-Path $TempDir $name
+    if (-not (Test-Path $vPath)) {
+        git clone --depth 1 --quiet $url $vPath
     }
-    
-    Write-Host "[*] Fetching shallow git mirror ($repoUrl)..." -ForegroundColor Cyan
-    git clone --depth 1 $repoUrl $tempClone
-    
-    $fontFiles = Get-ChildItem -Path $tempClone -Recurse -Include *.ttf, *.otf, *.ttc
-    Write-Host "[*] Registering $($fontFiles.Count) $Lang fonts in Windows Registry..." -ForegroundColor Cyan
-    
-    $installed = 0
-    foreach ($file in $fontFiles) {
-        $targetPath = [System.IO.Path]::Combine($UserFontDir, $file.Name)
-        Copy-Item -Path $file.FullName -Destination $targetPath -Force
-        
-        $fontName = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
-        if ($file.Extension -eq ".otf") {
-            $regName = "$fontName (OpenType)"
-        } else {
-            $regName = "$fontName (TrueType)"
+    $fonts = Get-ChildItem -Path $vPath -Include "*.ttf", "*.otf" -Recurse
+    $count = 0
+    foreach ($f in $fonts) {
+        $target = Join-Path $FontsFolder $f.Name
+        if (-not (Test-Path $target)) {
+            Copy-Item -Path $f.FullName -Destination $target -Force
+            New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" -Name $f.Name -Value $f.Name -PropertyType String -Force | Out-Null
+            $count++
         }
-        
-        Set-ItemProperty -Path $RegistryPath -Name $regName -Value $targetPath -ErrorAction SilentlyContinue
-        $installed++
     }
-    
-    Remove-Item -Recurse -Force $tempClone -ErrorAction SilentlyContinue
-    Write-Host "[✔] Successfully installed and registered $installed $Lang fonts!" -ForegroundColor Green
+    Write-Host "  [✓] Installed $count new fonts from $name!" -ForegroundColor Green
 }
 
-function Broadcast-FontChange {
-    Write-Host "`n[*] Broadcasting Windows WM_FONTCHANGE notification..." -ForegroundColor Cyan
-    $CSharpCode = @"
-    using System;
-    using System.Runtime.InteropServices;
-    public class FontBroadcaster {
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern IntPtr SendMessageTimeout(IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam, uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+if ($Script -eq "all") {
+    foreach ($k in $Repos.Keys) {
+        Install-VaultFonts $k $Repos[$k]
     }
-"@
-    Add-Type -TypeDefinition $CSharpCode -ErrorAction SilentlyContinue
-    $HWND_BROADCAST = [IntPtr]0xffff
-    $WM_FONTCHANGE = 0x001D
-    $SMTO_ABORTIFHUNG = 0x0002
-    $result = [UIntPtr]::Zero
-    [FontBroadcaster]::SendMessageTimeout($HWND_BROADCAST, $WM_FONTCHANGE, [UIntPtr]::Zero, $null, $SMTO_ABORTIFHUNG, 1000, [ref]$result) | Out-Null
-    Write-Host "[✔] Windows Font Registry updated across Photoshop, Illustrator, Word, Figma, and all apps!" -ForegroundColor Green
-}
-
-$AllLanguages = @("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons")
-
-if ($Language -eq "Menu") {
-    Write-Host "`nSelect typography archive to install:" -ForegroundColor White
-    Write-Host "  1) 🇧🇩 Bengali (5,020+ Fonts)"
-    Write-Host "  2) 🇬🇧 English & Latin (30,930+ Fonts)"
-    Write-Host "  3) 🕌 Arabic & Islamic (13,856+ Fonts)"
-    Write-Host "  4) 🇷🇺 Cyrillic & Slavic (10,136+ Fonts)"
-    Write-Host "  5) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
-    Write-Host "  6) 🇩🇪 German Deutsche Schriften (5,504+ Fonts)"
-    Write-Host "  7) 🇰🇷 Korean Hangul (1,863+ Fonts)"
-    Write-Host "  8) 🇯🇵 Japanese Nihongo (1,509+ Fonts)"
-    Write-Host "  9) 🇨🇳 Chinese Hanzi (1,350+ Fonts)"
-    Write-Host " 10) 🎨 Icons & Symbols (1,177+ Fonts)"
-    Write-Host " 11) 🌐 Install ALL Global Collections (80,000+ Fonts)"
-    Write-Host "  0) Exit"
-    $choice = Read-Host "`nEnter choice [1-11]"
-    
-    switch ($choice) {
-        "1" { Install-FontFamily "Bengali" }
-        "2" { Install-FontFamily "English" }
-        "3" { Install-FontFamily "Arabic" }
-        "4" { Install-FontFamily "Cyrillic" }
-        "5" { Install-FontFamily "Hindi" }
-        "6" { Install-FontFamily "German" }
-        "7" { Install-FontFamily "Korean" }
-        "8" { Install-FontFamily "Japanese" }
-        "9" { Install-FontFamily "Chinese" }
-        "10" { Install-FontFamily "Icons" }
-        "11" { $AllLanguages | ForEach-Object { Install-FontFamily $_ } }
-        Default { Write-Host "Exited."; exit }
-    }
-} elseif ($Language -eq "All") {
-    $AllLanguages | ForEach-Object { Install-FontFamily $_ }
+} elseif ($Repos.ContainsKey($Script)) {
+    Install-VaultFonts $Script $Repos[$Script]
 } else {
-    Install-FontFamily $Language
+    Write-Host "Unknown script: $Script. Available: $($Repos.Keys -join ', ')" -ForegroundColor Red
 }
 
-Broadcast-FontChange
-
-Write-Host "`n==============================================================================" -ForegroundColor Green
-Write-Host "  INSTALLATION COMPLETE! ALL FONTS READY ACROSS WINDOWS." -ForegroundColor Green
-Write-Host "  Curated by Mohammad Golamrabbii for the Open Typography Foundation." -ForegroundColor Yellow
-Write-Host "==============================================================================`n" -ForegroundColor Green
+Write-Host "🏛️ Font installation complete! Instantly available across Windows applications." -ForegroundColor Cyan

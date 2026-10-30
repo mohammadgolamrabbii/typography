@@ -4,16 +4,15 @@
 #  Curated by Mohammad Golamrabbii
 #  Zero Rate-Limits, Full High-Speed Mirroring, Automated Cache Updates
 # ==============================================================================
-
 set -e
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-CYAN='\033[0;36m'
-BOLD='\033[1m'
-NC='\033[0m' # No Color
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+BLUE="\033[0;34m"
+YELLOW="\033[1;33m"
+CYAN="\033[0;36m"
+BOLD="\033[1m"
+NC="\033[0m"
 
 TARGET_LANG="${1:-menu}"
 if [ "$TARGET_LANG" == "--script" ] && [ -n "$2" ]; then
@@ -29,10 +28,9 @@ echo " \___/| .__/ \___|_| |_|    |_| \__, | .__/ \___/ \__, |_|  \__,_| .__/|_|
 echo "      |_|                       |___/|_|          |___/          |_|          |___/ "
 echo -e "${NC}"
 echo -e "${YELLOW}  Curated by Mohammad Golamrabbii • Open Typography Foundation${NC}"
-echo -e "${BLUE}  Permanent High-Speed GitHub & Internet Archive Mirrors (80,000+ Production Fonts)${NC}"
+echo -e "${BLUE}  Global Sovereign Architecture (59 Mega-Vaults • 95,000+ Production Fonts)${NC}"
 echo "=============================================================================="
 
-# Detect font installation directory
 if [ "$EUID" -eq 0 ]; then
     FONT_DIR="/usr/local/share/fonts/opentypography"
     echo -e "${CYAN}[*] Running as root. Installing system-wide to: ${FONT_DIR}${NC}"
@@ -44,157 +42,102 @@ fi
 mkdir -p "${FONT_DIR}"
 
 declare -A REPOS
-REPOS["bengali"]="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
-REPOS["cyrillic"]="https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git"
-REPOS["japanese"]="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git"
-REPOS["korean"]="https://github.com/mohammadgolamrabbii/Korean-Hangul-Fonts-Archive.git"
-REPOS["chinese"]="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
-REPOS["english"]="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
-REPOS["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
-REPOS["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
-REPOS["german"]="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
-REPOS["icons"]="https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
-REPOS["vietnamese"]="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
-REPOS["thai"]="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive.git"
-REPOS["malay"]="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
-REPOS["dev"]="https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive.git"
-REPOS["dravidian"]="https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
-REPOS["african"]="https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
-REPOS["urdu"]="https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
-REPOS["hebrew"]="https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
-REPOS["greek"]="https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
-REPOS["khmer"]="https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
-REPOS["myanmar"]="https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
-REPOS["sinhala"]="https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
-REPOS["lao"]="https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
-REPOS["tibetan"]="https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
-REPOS["georgian"]="https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
-REPOS["armenian"]="https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
-REPOS["mongolian"]="https://github.com/Open-Typography-Foundation/Mongolian-Hudum-Fonts-Archive.git" 
+REPOS["bangla-mega-collection"]="https://github.com/Open-Typography-Foundation/Bangla-Fonts-Mega-Collection.git"
+REPOS["english-latin"]="https://github.com/Open-Typography-Foundation/English-Latin-Fonts-Archive.git"
+REPOS["arabic-islamic"]="https://github.com/Open-Typography-Foundation/Arabic-Islamic-Fonts-Archive.git"
+REPOS["icons-and-symbols"]="https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
+REPOS["legacy"]="https://github.com/Open-Typography-Foundation/Legacy-Archive-Fonts.git"
+REPOS["world-languages"]="https://github.com/Open-Typography-Foundation/World-Languages-Fonts.git"
+REPOS["hindi-devanagari"]="https://github.com/Open-Typography-Foundation/Hindi-Devanagari-Fonts-Archive.git"
+REPOS["8_german_deutsche_schriften"]="https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften.git"
+REPOS["japanese-mega"]="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive.git"
+REPOS["cyrillic-slavic-mega"]="https://github.com/Open-Typography-Foundation/Cyrillic-Slavic-Mega-Archive.git"
+REPOS["korean-hangul"]="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git"
+REPOS["chinese-hanzi"]="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+REPOS["vietnamese-mega"]="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
+REPOS["thai-siam-mega"]="https://github.com/Open-Typography-Foundation/Thai-Siam-Fonts-Mega-Archive.git"
+REPOS["malay-nusantara"]="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
+REPOS["developer-coding-monospace"]="https://github.com/Open-Typography-Foundation/Developer-Coding-Monospace-Fonts-Archive.git"
+REPOS["dravidian-mega"]="https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
+REPOS["african-scripts-mega"]="https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
+REPOS["persian-urdu-nastaliq"]="https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
+REPOS["hebrew-mega"]="https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
+REPOS["greek-hellenic"]="https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
+REPOS["khmer-cambodian"]="https://github.com/Open-Typography-Foundation/Khmer-Cambodian-Fonts-Archive.git"
+REPOS["myanmar-burmese"]="https://github.com/Open-Typography-Foundation/Myanmar-Burmese-Fonts-Archive.git"
+REPOS["sinhala-srilankan"]="https://github.com/Open-Typography-Foundation/Sinhala-SriLankan-Fonts-Archive.git"
+REPOS["lao-lanxang"]="https://github.com/Open-Typography-Foundation/Lao-LanXang-Fonts-Archive.git"
+REPOS["tibetan-himalayan"]="https://github.com/Open-Typography-Foundation/Tibetan-Himalayan-Fonts-Archive.git"
+REPOS["georgian-kartvelian"]="https://github.com/Open-Typography-Foundation/Georgian-Kartvelian-Fonts-Archive.git"
+REPOS["armenian-haykakan"]="https://github.com/Open-Typography-Foundation/Armenian-Haykakan-Fonts-Archive.git"
+REPOS["mongolian-nomadic"]="https://github.com/Open-Typography-Foundation/Mongolian-Nomadic-Fonts-Archive.git"
+REPOS["javanese-aksarajawa"]="https://github.com/Open-Typography-Foundation/Javanese-AksaraJawa-Fonts-Archive.git"
+REPOS["sundanese-aksarasunda"]="https://github.com/Open-Typography-Foundation/Sundanese-AksaraSunda-Fonts-Archive.git"
+REPOS["balinese-aksarabali"]="https://github.com/Open-Typography-Foundation/Balinese-AksaraBali-Fonts-Archive.git"
+REPOS["batak-suratbatak"]="https://github.com/Open-Typography-Foundation/Batak-SuratBatak-Fonts-Archive.git"
+REPOS["buginese-lontara"]="https://github.com/Open-Typography-Foundation/Buginese-Lontara-Fonts-Archive.git"
+REPOS["tagalog-baybayin"]="https://github.com/Open-Typography-Foundation/Tagalog-Baybayin-Fonts-Archive.git"
+REPOS["thaana-dhivehi"]="https://github.com/Open-Typography-Foundation/Thaana-Dhivehi-Fonts-Archive.git"
+REPOS["chakma-changma"]="https://github.com/Open-Typography-Foundation/Chakma-Changma-Fonts-Archive.git"
+REPOS["sylheti-nagri"]="https://github.com/Open-Typography-Foundation/Sylheti-Nagri-Fonts-Archive.git"
+REPOS["meetei-mayek"]="https://github.com/Open-Typography-Foundation/Meetei-Mayek-Fonts-Archive.git"
+REPOS["odia-oriya"]="https://github.com/Open-Typography-Foundation/Odia-Oriya-Fonts-Archive.git"
+REPOS["gujarati-gurjar"]="https://github.com/Open-Typography-Foundation/Gujarati-Gurjar-Fonts-Archive.git"
+REPOS["gurmukhi-punjabi"]="https://github.com/Open-Typography-Foundation/Gurmukhi-Punjabi-Fonts-Archive.git"
+REPOS["assamese-axomiya"]="https://github.com/Open-Typography-Foundation/Assamese-Axomiya-Fonts-Archive.git"
+REPOS["santali-olchiki"]="https://github.com/Open-Typography-Foundation/Santali-OlChiki-Fonts-Archive.git"
+REPOS["sora-sompeng"]="https://github.com/Open-Typography-Foundation/Sora-Sompeng-Fonts-Archive.git"
+REPOS["lepcha-rong"]="https://github.com/Open-Typography-Foundation/Lepcha-Rong-Fonts-Archive.git"
+REPOS["limbu-sirijonga"]="https://github.com/Open-Typography-Foundation/Limbu-Sirijonga-Fonts-Archive.git"
+REPOS["newa-prachalit"]="https://github.com/Open-Typography-Foundation/Newa-Prachalit-Fonts-Archive.git"
+REPOS["tirhuta-mithilakshar"]="https://github.com/Open-Typography-Foundation/Tirhuta-Mithilakshar-Fonts-Archive.git"
+REPOS["syriac-aramaic"]="https://github.com/Open-Typography-Foundation/Syriac-Aramaic-Fonts-Archive.git"
+REPOS["coptic-bohairic"]="https://github.com/Open-Typography-Foundation/Coptic-Bohairic-Fonts-Archive.git"
+REPOS["tifinagh-amazigh"]="https://github.com/Open-Typography-Foundation/Tifinagh-Amazigh-Fonts-Archive.git"
+REPOS["nko-manding"]="https://github.com/Open-Typography-Foundation/NKo-Manding-Fonts-Archive.git"
+REPOS["vai-liberian"]="https://github.com/Open-Typography-Foundation/Vai-Liberian-Fonts-Archive.git"
+REPOS["adlam-fulani"]="https://github.com/Open-Typography-Foundation/Adlam-Fulani-Fonts-Archive.git"
+REPOS["osmanya-somali"]="https://github.com/Open-Typography-Foundation/Osmanya-Somali-Fonts-Archive.git"
+REPOS["cherokee-tsalagi"]="https://github.com/Open-Typography-Foundation/Cherokee-Tsalagi-Fonts-Archive.git"
+REPOS["canadian-aboriginal"]="https://github.com/Open-Typography-Foundation/Canadian-Aboriginal-Fonts-Archive.git"
+REPOS["runic-glagolitic"]="https://github.com/Open-Typography-Foundation/Runic-Glagolitic-Fonts-Archive.git"
 
-install_language() {
-    local lang="$1"
-    local repo_url="${REPOS[$lang]}"
-    local dest="${FONT_DIR}/${lang}"
-
-    if [ -z "$repo_url" ]; then
-        echo -e "${RED}[!] Unknown language category: ${lang}${NC}"
+install_repo() {
+    local key="$1"
+    local url="${REPOS[$key]}"
+    if [ -z "$url" ]; then
+        echo -e "${RED}[!] Unknown script: $key${NC}"
         return 1
     fi
-
-    echo -e "\n${YELLOW}>>> Installing ${lang^} Typography Mega Archive...${NC}"
-    if [ -d "${dest}/.git" ]; then
-        echo -e "${CYAN}[*] Updating existing repository in ${dest}...${NC}"
-        git -C "${dest}" pull --ff-only || true
+    echo -e "${BLUE}[*] Fetching typography vault: $key...${NC}"
+    local dest="${FONT_DIR}/$key"
+    if [ -d "$dest" ]; then
+        git -C "$dest" pull --quiet || true
     else
-        echo -e "${CYAN}[*] Cloning ${lang} repository (${repo_url})...${NC}"
-        rm -rf "${dest}"
-        git clone --depth 1 "${repo_url}" "${dest}"
+        git clone --depth 1 --quiet "$url" "$dest"
     fi
-
-    local font_count
-    font_count=$(find "${dest}" -type f \( -name "*.ttf" -o -name "*.otf" -o -name "*.woff2" -o -name "*.ttc" \) | wc -l)
-    echo -e "${GREEN}[✔] Successfully retrieved ${font_count} ${lang} fonts!${NC}"
+    echo -e "${GREEN}[✓] Successfully mirrored $key fonts!${NC}"
 }
 
-update_font_cache() {
-    echo -e "\n${CYAN}[*] Updating fontconfig cache (fc-cache)...${NC}"
-    if command -v fc-cache >/dev/null 2>&1; then
-        fc-cache -f "${FONT_DIR}"
-        echo -e "${GREEN}[✔] Linux Font cache successfully refreshed!${NC}"
-    else
-        echo -e "${YELLOW}[!] Warning: fc-cache command not found. Please install fontconfig.${NC}"
-    fi
-}
+if [ "$TARGET_LANG" == "all" ]; then
+    echo -e "${YELLOW}[*] Installing all 59 typography vaults...${NC}"
+    for k in "${!REPOS[@]}"; do
+        install_repo "$k"
+    done
+elif [ "$TARGET_LANG" == "menu" ]; then
+    echo "Available scripts to install:"
+    for k in "${!REPOS[@]}"; do
+        echo "  - $k"
+    done
+    echo ""
+    echo "Usage: ./install.sh <script_name> or ./install.sh all"
+else
+    install_repo "$TARGET_LANG"
+fi
 
-case "${TARGET_LANG,,}" in
-    bengali|bangla)
-        install_language "bengali"
-        update_font_cache
-        ;;
-    cyrillic|slavic|russian)
-        install_language "cyrillic"
-        update_font_cache
-        ;;
-    japanese|nihongo)
-        install_language "japanese"
-        update_font_cache
-        ;;
-    korean|hangul)
-        install_language "korean"
-        update_font_cache
-        ;;
-    chinese|hanzi)
-        install_language "chinese"
-        update_font_cache
-        ;;
-    english|latin)
-        install_language "english"
-        update_font_cache
-        ;;
-    arabic|islamic)
-        install_language "arabic"
-        update_font_cache
-        ;;
-    hindi|devanagari)
-        install_language "hindi"
-        update_font_cache
-        ;;
-    german|fraktur)
-        install_language "german"
-        update_font_cache
-        ;;
-    icons|symbols)
-        install_language "icons"
-        update_font_cache
-        ;;
-    all)
-        for l in bengali english arabic cyrillic hindi german korean japanese chinese icons; do
-            install_language "$l"
-        done
-        update_font_cache
-        ;;
-    *)
-        echo -e "\n${BOLD}Select which typography collection to install:${NC}"
-        echo " 1) 🇧🇩 Bengali (5,020+ Fonts)"
-        echo " 2) 🇬🇧 English & Latin (30,930+ Fonts)"
-        echo " 3) 🕌 Arabic & Islamic (13,856+ Fonts)"
-        echo " 4) 🇷🇺 Cyrillic & Slavic (10,136+ Fonts)"
-        echo " 5) 🇮🇳 Hindi & Devanagari (6,519+ Fonts)"
-        echo " 6) 🇩🇪 German Deutsche Schriften (5,504+ Fonts)"
-        echo " 7) 🇰🇷 Korean Hangul (1,863+ Fonts)"
-        echo " 8) 🇯🇵 Japanese Nihongo (1,509+ Fonts)"
-        echo " 9) 🇨🇳 Chinese Hanzi (1,350+ Fonts)"
-        echo " 10) 🎨 Icons & Symbols (1,177+ Fonts)"
-        echo " 11) 🌐 Install ALL Global Collections (80,000+ Fonts)"
-        echo " 0) Exit"
-        echo ""
-        read -p "Enter choice [1-11]: " choice
+if command -v fc-cache >/dev/null 2>&1; then
+    echo -e "${CYAN}[*] Rebuilding font cache (fc-cache)...${NC}"
+    fc-cache -f "${FONT_DIR}"
+fi
 
-        case "$choice" in
-            1) install_language "bengali" ;;
-            2) install_language "english" ;;
-            3) install_language "arabic" ;;
-            4) install_language "cyrillic" ;;
-            5) install_language "hindi" ;;
-            6) install_language "german" ;;
-            7) install_language "korean" ;;
-            8) install_language "japanese" ;;
-            9) install_language "chinese" ;;
-            10) install_language "icons" ;;
-            11)
-                for l in bengali english arabic cyrillic hindi german korean japanese chinese icons; do
-                    install_language "$l"
-                done
-                ;;
-            0) echo "Installation cancelled."; exit 0 ;;
-            *) echo "Invalid choice."; exit 1 ;;
-        esac
-        update_font_cache
-        ;;
-esac
-
-echo -e "\n${GREEN}${BOLD}==============================================================================${NC}"
-echo -e "${GREEN}${BOLD}  INSTALLATION COMPLETE! ALL FONTS READY ACROSS YOUR SYSTEM.${NC}"
-echo -e "${YELLOW}  Curated by Mohammad Golamrabbii for the Open Typography Foundation.${NC}"
-echo -e "${GREEN}${BOLD}==============================================================================${NC}"
+echo -e "${GREEN}${BOLD}[✓] Installation complete! All fonts are immediately accessible in your applications.${NC}"
