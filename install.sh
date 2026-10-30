@@ -56,6 +56,7 @@ REPOS["german"]="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archiv
 REPOS["icons"]="https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
 REPOS["vietnamese"]="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
 REPOS["thai"]="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive.git"
+REPOS["malay"]="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
 
 install_language() {
     local lang="$1"
