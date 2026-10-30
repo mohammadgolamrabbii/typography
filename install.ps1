@@ -9,7 +9,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Position = 0)]
-    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "Vietnamese", "Thai", "Malay", "Dev", "All", "Menu")]
+    [ValidateSet("Bengali", "English", "Arabic", "Cyrillic", "Hindi", "German", "Korean", "Japanese", "Chinese", "Icons", "Vietnamese", "Thai", "Malay", "Dev", "Dravidian", "African", "Urdu", "All", "Menu")]
     [string]$Language = "Menu"
 )
 
@@ -48,6 +48,9 @@ $Repos = @{
     "Thai"       = "https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive.git"
     "Malay"      = "https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
     "Dev"        = "https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive.git"
+    "Dravidian"  = "https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
+    "African"    = "https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
+    "Urdu"       = "https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
 }
 
 $ArchiveZips = @{
