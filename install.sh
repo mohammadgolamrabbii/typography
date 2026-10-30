@@ -2,7 +2,7 @@
 # ==============================================================================
 #  Open Typography Foundation — Universal Linux / macOS Font Fast-Installer
 #  Curated by Mohammad Golamrabbii
-#  Zero Rate-Limits, Full High-Speed Mirroring, Automated Cache Updates
+#  100% Free Public Digital Heritage • 79 Sovereign Vaults • 95,000+ Production Fonts
 # ==============================================================================
 set -e
 
@@ -22,13 +22,13 @@ fi
 echo -e "${CYAN}${BOLD}"
 echo "  ___                      _____                                     _           "
 echo " / _ \ _ __   ___ _ __    |_   _|   _ _ __   ___   __ _ _ __ __ _ _ __ | |__  _   _ "
-echo "| | | | '_ \ / _ \ '_ \     | || | | | '_ \ / _ \ / _\` | '__/ _\` | '_ \| '_ \| | | |"
+echo "| | | | '_ \ / _ \ '_ \     | || | | | '_ \ / _ \ / _` | '__/ _` | '_ \| '_ \| | | |"
 echo "| |_| | |_) |  __/ | | |    | || |_| | |_) | (_) | (_| | | | (_| | |_) | | | | |_| |"
 echo " \___/| .__/ \___|_| |_|    |_| \__, | .__/ \___/ \__, |_|  \__,_| .__/|_| |_|\__, |"
 echo "      |_|                       |___/|_|          |___/          |_|          |___/ "
 echo -e "${NC}"
-echo -e "${YELLOW}  Curated by Mohammad Golamrabbii • Open Typography Foundation${NC}"
-echo -e "${BLUE}  Global Sovereign Architecture (59 Mega-Vaults • 95,000+ Production Fonts)${NC}"
+echo -e "${YELLOW}  Curated by Mohammad Golamrabbii • Open Typography Foundation (100% Free)${NC}"
+echo -e "${BLUE}  Global Sovereign Architecture (79 Mega-Vaults • 95,000+ Production Fonts)${NC}"
 echo "=============================================================================="
 
 if [ "$EUID" -eq 0 ]; then
@@ -101,6 +101,26 @@ REPOS["osmanya-somali"]="https://github.com/Open-Typography-Foundation/Osmanya-S
 REPOS["cherokee-tsalagi"]="https://github.com/Open-Typography-Foundation/Cherokee-Tsalagi-Fonts-Archive.git"
 REPOS["canadian-aboriginal"]="https://github.com/Open-Typography-Foundation/Canadian-Aboriginal-Fonts-Archive.git"
 REPOS["runic-glagolitic"]="https://github.com/Open-Typography-Foundation/Runic-Glagolitic-Fonts-Archive.git"
+REPOS["gothic-ancient"]="https://github.com/Open-Typography-Foundation/Gothic-Ancient-Fonts-Archive.git"
+REPOS["ogham-celtic"]="https://github.com/Open-Typography-Foundation/Ogham-Celtic-Fonts-Archive.git"
+REPOS["old-permic-abur"]="https://github.com/Open-Typography-Foundation/Old-Permic-Abur-Fonts-Archive.git"
+REPOS["old-turkic-orkhon"]="https://github.com/Open-Typography-Foundation/Old-Turkic-Orkhon-Fonts-Archive.git"
+REPOS["old-hungarian-rovas"]="https://github.com/Open-Typography-Foundation/Old-Hungarian-Rovas-Fonts-Archive.git"
+REPOS["south-arabian-musnad"]="https://github.com/Open-Typography-Foundation/South-Arabian-Musnad-Fonts-Archive.git"
+REPOS["phoenician-archaic"]="https://github.com/Open-Typography-Foundation/Phoenician-Archaic-Fonts-Archive.git"
+REPOS["avestan-pahlavi"]="https://github.com/Open-Typography-Foundation/Avestan-Pahlavi-Fonts-Archive.git"
+REPOS["kharosthi-gandhara"]="https://github.com/Open-Typography-Foundation/Kharosthi-Gandhara-Fonts-Archive.git"
+REPOS["brahmi-ashokan"]="https://github.com/Open-Typography-Foundation/Brahmi-Ashokan-Fonts-Archive.git"
+REPOS["cuneiform-mesopotamian"]="https://github.com/Open-Typography-Foundation/Cuneiform-Mesopotamian-Fonts-Archive.git"
+REPOS["egyptian-hieroglyphs"]="https://github.com/Open-Typography-Foundation/Egyptian-Hieroglyphs-Fonts-Archive.git"
+REPOS["linear-a-b-mycenaean"]="https://github.com/Open-Typography-Foundation/Linear-A-B-Mycenaean-Fonts-Archive.git"
+REPOS["tangut-western-xia"]="https://github.com/Open-Typography-Foundation/Tangut-Western-Xia-Fonts-Archive.git"
+REPOS["nushu-women-script"]="https://github.com/Open-Typography-Foundation/Nushu-Women-Script-Fonts-Archive.git"
+REPOS["bassa-vah-liberian"]="https://github.com/Open-Typography-Foundation/Bassa-Vah-Liberian-Fonts-Archive.git"
+REPOS["medefaidrin-nigerian"]="https://github.com/Open-Typography-Foundation/Medefaidrin-Nigerian-Fonts-Archive.git"
+REPOS["mandaic-gnostic"]="https://github.com/Open-Typography-Foundation/Mandaic-Gnostic-Fonts-Archive.git"
+REPOS["samaritan-hebrew"]="https://github.com/Open-Typography-Foundation/Samaritan-Hebrew-Fonts-Archive.git"
+REPOS["hanifi-rohingya"]="https://github.com/Open-Typography-Foundation/Hanifi-Rohingya-Fonts-Archive.git"
 
 install_repo() {
     local key="$1"
@@ -120,7 +140,7 @@ install_repo() {
 }
 
 if [ "$TARGET_LANG" == "all" ]; then
-    echo -e "${YELLOW}[*] Installing all 59 typography vaults...${NC}"
+    echo -e "${YELLOW}[*] Installing all 79 typography vaults...${NC}"
     for k in "${!REPOS[@]}"; do
         install_repo "$k"
     done

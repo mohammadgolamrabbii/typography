@@ -1,11 +1,11 @@
 # Open Typography Foundation - Universal Windows Font Fast-Installer
-# Curated by Mohammad Golamrabbii
+# Curated by Mohammad Golamrabbii (100% Free Public Heritage)
 param(
     [string]$Script = "all"
 )
 $ErrorActionPreference = "SilentlyContinue"
 Write-Host "🏛️ Open Typography Foundation — Windows Font Engine" -ForegroundColor Cyan
-Write-Host "Curated by Mohammad Golamrabbii (59 Sovereign Mega-Vaults • 95,000+ Fonts)" -ForegroundColor Yellow
+Write-Host "Curated by Mohammad Golamrabbii (79 Sovereign Mega-Vaults • 95,000+ Fonts • 100% Free)" -ForegroundColor Yellow
 
 $FontsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Fonts)
 $TempDir = Join-Path $env:TEMP "OpenTypography"
@@ -71,6 +71,26 @@ $Repos = @{
     "cherokee-tsalagi" = "https://github.com/Open-Typography-Foundation/Cherokee-Tsalagi-Fonts-Archive.git"
     "canadian-aboriginal" = "https://github.com/Open-Typography-Foundation/Canadian-Aboriginal-Fonts-Archive.git"
     "runic-glagolitic" = "https://github.com/Open-Typography-Foundation/Runic-Glagolitic-Fonts-Archive.git"
+    "gothic-ancient" = "https://github.com/Open-Typography-Foundation/Gothic-Ancient-Fonts-Archive.git"
+    "ogham-celtic" = "https://github.com/Open-Typography-Foundation/Ogham-Celtic-Fonts-Archive.git"
+    "old-permic-abur" = "https://github.com/Open-Typography-Foundation/Old-Permic-Abur-Fonts-Archive.git"
+    "old-turkic-orkhon" = "https://github.com/Open-Typography-Foundation/Old-Turkic-Orkhon-Fonts-Archive.git"
+    "old-hungarian-rovas" = "https://github.com/Open-Typography-Foundation/Old-Hungarian-Rovas-Fonts-Archive.git"
+    "south-arabian-musnad" = "https://github.com/Open-Typography-Foundation/South-Arabian-Musnad-Fonts-Archive.git"
+    "phoenician-archaic" = "https://github.com/Open-Typography-Foundation/Phoenician-Archaic-Fonts-Archive.git"
+    "avestan-pahlavi" = "https://github.com/Open-Typography-Foundation/Avestan-Pahlavi-Fonts-Archive.git"
+    "kharosthi-gandhara" = "https://github.com/Open-Typography-Foundation/Kharosthi-Gandhara-Fonts-Archive.git"
+    "brahmi-ashokan" = "https://github.com/Open-Typography-Foundation/Brahmi-Ashokan-Fonts-Archive.git"
+    "cuneiform-mesopotamian" = "https://github.com/Open-Typography-Foundation/Cuneiform-Mesopotamian-Fonts-Archive.git"
+    "egyptian-hieroglyphs" = "https://github.com/Open-Typography-Foundation/Egyptian-Hieroglyphs-Fonts-Archive.git"
+    "linear-a-b-mycenaean" = "https://github.com/Open-Typography-Foundation/Linear-A-B-Mycenaean-Fonts-Archive.git"
+    "tangut-western-xia" = "https://github.com/Open-Typography-Foundation/Tangut-Western-Xia-Fonts-Archive.git"
+    "nushu-women-script" = "https://github.com/Open-Typography-Foundation/Nushu-Women-Script-Fonts-Archive.git"
+    "bassa-vah-liberian" = "https://github.com/Open-Typography-Foundation/Bassa-Vah-Liberian-Fonts-Archive.git"
+    "medefaidrin-nigerian" = "https://github.com/Open-Typography-Foundation/Medefaidrin-Nigerian-Fonts-Archive.git"
+    "mandaic-gnostic" = "https://github.com/Open-Typography-Foundation/Mandaic-Gnostic-Fonts-Archive.git"
+    "samaritan-hebrew" = "https://github.com/Open-Typography-Foundation/Samaritan-Hebrew-Fonts-Archive.git"
+    "hanifi-rohingya" = "https://github.com/Open-Typography-Foundation/Hanifi-Rohingya-Fonts-Archive.git"
 }
 
 function Install-VaultFonts($name, $url) {
