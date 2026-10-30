@@ -1,11 +1,11 @@
 # Open Typography Foundation - Universal Windows Font Fast-Installer
-# Curated by Mohammad Golamrabbii (100% Free Public Heritage)
+# Curated by Mohammad Golamrabbii
 param(
     [string]$Script = "all"
 )
 $ErrorActionPreference = "SilentlyContinue"
 Write-Host "🏛️ Open Typography Foundation — Windows Font Engine" -ForegroundColor Cyan
-Write-Host "Curated by Mohammad Golamrabbii (79 Sovereign Mega-Vaults • 95,000+ Fonts • 100% Free)" -ForegroundColor Yellow
+Write-Host "Curated by Mohammad Golamrabbii (100 Sovereign Mega-Vaults • 100,000+ Fonts)" -ForegroundColor Yellow
 
 $FontsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Fonts)
 $TempDir = Join-Path $env:TEMP "OpenTypography"
@@ -91,6 +91,27 @@ $Repos = @{
     "mandaic-gnostic" = "https://github.com/Open-Typography-Foundation/Mandaic-Gnostic-Fonts-Archive.git"
     "samaritan-hebrew" = "https://github.com/Open-Typography-Foundation/Samaritan-Hebrew-Fonts-Archive.git"
     "hanifi-rohingya" = "https://github.com/Open-Typography-Foundation/Hanifi-Rohingya-Fonts-Archive.git"
+    "cham-indigenous" = "https://github.com/Open-Typography-Foundation/Cham-Indigenous-Fonts-Archive.git"
+    "tai-tham-lanna" = "https://github.com/Open-Typography-Foundation/Tai-Tham-Lanna-Fonts-Archive.git"
+    "tai-viet" = "https://github.com/Open-Typography-Foundation/Tai-Viet-Fonts-Archive.git"
+    "kayah-li-karen" = "https://github.com/Open-Typography-Foundation/Kayah-Li-Karen-Fonts-Archive.git"
+    "pahawh-hmong" = "https://github.com/Open-Typography-Foundation/Pahawh-Hmong-Fonts-Archive.git"
+    "ahom-sacred-tai" = "https://github.com/Open-Typography-Foundation/Ahom-Sacred-Tai-Fonts-Archive.git"
+    "modi-historical" = "https://github.com/Open-Typography-Foundation/Modi-Historical-Fonts-Archive.git"
+    "sharada-kashmir" = "https://github.com/Open-Typography-Foundation/Sharada-Kashmir-Fonts-Archive.git"
+    "kaithi-historic" = "https://github.com/Open-Typography-Foundation/Kaithi-Historic-Fonts-Archive.git"
+    "grantha-vedic" = "https://github.com/Open-Typography-Foundation/Grantha-Vedic-Fonts-Archive.git"
+    "takri-himalayan" = "https://github.com/Open-Typography-Foundation/Takri-Himalayan-Fonts-Archive.git"
+    "saurashtra" = "https://github.com/Open-Typography-Foundation/Saurashtra-Fonts-Archive.git"
+    "sogdian-silkroad" = "https://github.com/Open-Typography-Foundation/Sogdian-SilkRoad-Fonts-Archive.git"
+    "aramaic-imperial" = "https://github.com/Open-Typography-Foundation/Aramaic-Imperial-Fonts-Archive.git"
+    "nabataean-palmyrene" = "https://github.com/Open-Typography-Foundation/Nabataean-Palmyrene-Fonts-Archive.git"
+    "cypriot-syllabic" = "https://github.com/Open-Typography-Foundation/Cypriot-Syllabic-Fonts-Archive.git"
+    "anatolian-hieroglyphs" = "https://github.com/Open-Typography-Foundation/Anatolian-Hieroglyphs-Fonts-Archive.git"
+    "bamum-royal" = "https://github.com/Open-Typography-Foundation/Bamum-Royal-Fonts-Archive.git"
+    "mende-kikakui" = "https://github.com/Open-Typography-Foundation/Mende-Kikakui-Fonts-Archive.git"
+    "deseret-phonetic" = "https://github.com/Open-Typography-Foundation/Deseret-Phonetic-Fonts-Archive.git"
+    "osage-indigenous" = "https://github.com/Open-Typography-Foundation/Osage-Indigenous-Fonts-Archive.git"
 }
 
 function Install-VaultFonts($name, $url) {
