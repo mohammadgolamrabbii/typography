@@ -1,20 +1,20 @@
-# 🌐 Open Typography Live Interactive Previewer (61,000+ Verified Fonts)
+# 🌐 Open Typography Live Interactive Previewer (288,288+ Verified Fonts • 100 Sovereign Vaults)
 ### World's Largest Multilingual Open Typography Web Engine & Archive Showcase
 **Founder & Executive Director:** [Mohammad Golamrabbii](https://linktr.ee/golamrabbii) • [Open Typography Foundation](https://github.com/Open-Typography-Foundation)
 
 [![Live Web Previewer](https://img.shields.io/badge/Live_Previewer-mohammadgolamrabbii.github.io%2Ftypography-10B981.svg?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mohammadgolamrabbii.github.io/typography/)
-[![Total Verified Fonts](https://img.shields.io/badge/Total_Typefaces-61,000+_Verified-gold.svg?style=for-the-badge)](#)
-[![Scripts Supported](https://img.shields.io/badge/Writing_Systems-7_Global_Scripts-critical.svg?style=for-the-badge)](#)
+[![Total Verified Fonts](https://img.shields.io/badge/Total_Typefaces-288,288%2B_Verified-gold.svg?style=for-the-badge)](#)
+[![Scripts Supported](https://img.shields.io/badge/Writing_Systems-100_Sovereign_Vaults-critical.svg?style=for-the-badge)](#)
 [![Archive.org](https://img.shields.io/badge/Archive.org-Permanent_Library-000000.svg?style=for-the-badge&logo=internet-archive&logoColor=white)](https://archive.org/details/open-typography-foundation)
 
 ---
 
 ## 🌟 Overview
-The **Open Typography Live Previewer** is a responsive, web-based typography testing and visualization platform engineered by **Mohammad Golamrabbii** for the **Open Typography Foundation**. It enables designers, developers, and institutions to test and download authentic, open-source typefaces directly inside the browser across **7 major global writing systems**.
+The **Open Typography Live Previewer** is a responsive, web-based typography testing and visualization platform engineered by **Mohammad Golamrabbii** for the **Open Typography Foundation**. It enables designers, developers, and institutions to test and download authentic, open-source typefaces directly inside the browser across **100 sovereign writing systems & regional vaults**.
 
 ---
 
-## 🏛️ Script Coverage & Physical Vault Inventory (61,000+ Fonts)
+## 🏛️ Master Vault Inventory (288,288+ Verified Fonts across 100 Sovereign Vaults)
 
 | Script / Region | Total Fonts | Key Representative Families | Permanent Download Mirror |
 | :--- | :---: | :--- | :--- |
