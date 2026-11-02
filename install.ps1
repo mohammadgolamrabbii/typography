@@ -1,7 +1,7 @@
 # ============================================================
 #  Universal Font Installer — GolamRabbii Font Mega-Collection
 #  Generated: 2026-10-30T19:37:47.512716
-#  Total: 177,259 fonts across 100 vaults
+#  Total: 334,627 fonts across 100 vaults
 #  Run as: Set-ExecutionPolicy RemoteSigned; .\install.ps1
 # ============================================================
 
@@ -12,12 +12,12 @@ param(
 
 if ($SystemWide) { $InstallDir = "$env:SystemRoot\Fonts" }
 
-$RepoBase = "https://github.com/GolamRabbii"
+$RepoBase = "https://github.com/Open-Typography-Foundation"
 New-Item -ItemType Directory -Force -Path $InstallDir | Out-Null
 
 Write-Host "╔══════════════════════════════════════════════════╗" -ForegroundColor Cyan
 Write-Host "║  GolamRabbii Font Mega-Collection Installer      ║" -ForegroundColor Cyan
-Write-Host "║  177,259 fonts | 100 vaults                  ║" -ForegroundColor Cyan
+Write-Host "║  334,627 fonts | 100 vaults                  ║" -ForegroundColor Cyan
 Write-Host "╚══════════════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
 

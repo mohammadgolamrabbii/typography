@@ -2,18 +2,18 @@
 # ============================================================
 #  Universal Font Installer — GolamRabbii Font Mega-Collection
 #  Generated: 2026-10-30T19:37:47.512303
-#  Total: 177,259 fonts across 100 vaults
+#  Total: 334,627 fonts across 100 vaults
 # ============================================================
 
 set -e
 
-REPO_BASE="https://github.com/GolamRabbii"
+REPO_BASE="https://github.com/Open-Typography-Foundation"
 INSTALL_DIR="$HOME/.fonts/GolamRabbii"
 mkdir -p "$INSTALL_DIR"
 
 echo "╔══════════════════════════════════════════════════╗"
 echo "║  GolamRabbii Font Mega-Collection Installer      ║"
-echo "║  177,259 fonts | 100 vaults                  ║"
+echo "║  334,627 fonts | 100 vaults                  ║"
 echo "╚══════════════════════════════════════════════════╝"
 echo ""
 
@@ -134,5 +134,5 @@ fi
 
 echo ""
 echo "✅ Installation complete!"
-echo "   177,259 fonts installed to: $INSTALL_DIR"
+echo "   334,627 fonts installed to: $INSTALL_DIR"
 echo "   Restart your applications to use the new fonts."
