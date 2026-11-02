@@ -1,7 +1,7 @@
 # 🏆 GolamRabbii Font Mega-Collection
 ## World's Largest Free & Open-Source Multilingual Font Archive
 
-[![Total Fonts](https://img.shields.io/badge/Total%20Fonts-334,627-gold?style=for-the-badge&logo=font-awesome)](https://github.com/GolamRabbii)
+[![Total Fonts](https://img.shields.io/badge/Total%20Fonts-400,237-gold?style=for-the-badge&logo=font-awesome)](https://github.com/GolamRabbii)
 [![Vaults](https://img.shields.io/badge/Sovereign%20Vaults-100-blue?style=for-the-badge)](https://github.com/GolamRabbii)
 [![Milestone](https://img.shields.io/badge/Milestone-200K%2B%20ACHIEVED-brightgreen?style=for-the-badge)](https://github.com/GolamRabbii)
 [![License](https://img.shields.io/badge/License-100%25%20Free%20%26%20Open--Source-green?style=for-the-badge)](LICENSE)
@@ -15,7 +15,7 @@
 | 10,000 fonts | ✅ Achieved |
 | 50,000 fonts | ✅ Achieved |
 | 100,000 fonts | ✅ Achieved |
-| **200,000 fonts** | **✅ ACHIEVED — 334,627 fonts!** |
+| **200,000 fonts** | **✅ ACHIEVED — 400,237 fonts!** |
 
 ---
 
@@ -23,7 +23,7 @@
 
 | Metric | Value |
 |--------|-------|
-| **Total Fonts** | **334,627** |
+| **Total Fonts** | **400,237** |
 | **Sovereign Vaults** | 100 |
 | **Languages Covered** | 100+ |
 | **Scripts Supported** | 80+ writing systems |
@@ -57,7 +57,7 @@ irm https://raw.githubusercontent.com/GolamRabbii/fonts/main/install.ps1 | iex
 ```
 
 ### Browse Offline
-Open **`font_browser.html`** in any modern browser to explore all 334,627 fonts — no internet required.
+Open **`font_browser.html`** in any modern browser to explore all 400,237 fonts — no internet required.
 
 ---
 
