@@ -1,6 +1,6 @@
 # 🏛️ Open Typography Foundation — Master 100 Sovereign Vaults Index
 **Curated by Mohammad Golamrabbii | 100% Free Public Digital Heritage**
-**Milestone Cross: 100 Sovereign Mega-Vaults • 334,627+ Verified Open-Source Typefaces
+**Milestone Cross: 100 Sovereign Mega-Vaults • 400,237+ Verified Open-Source Typefaces**
 
 ---
 
