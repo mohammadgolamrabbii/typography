@@ -723,12 +723,23 @@ function switchTab(tab) {
   }
 }
 
-// Handle Search Input
+let deepSearchTimer = null;
+
+// Handle Search Input (Instant Core + Auto Deep Fallback)
 function handleSearch() {
   const val = document.getElementById('global-search').value.trim();
   document.getElementById('clear-search-btn').style.display = val ? 'block' : 'none';
   if (currentTab === 'fonts') {
     renderFonts();
+    clearTimeout(deepSearchTimer);
+    if (val.length >= 3) {
+      deepSearchTimer = setTimeout(() => {
+        const count = document.querySelectorAll('.font-card').length;
+        if (count === 0 && !deepSearchActive) {
+          triggerDeepSearch(true);
+        }
+      }, 500);
+    }
   } else {
     renderVaults();
   }
