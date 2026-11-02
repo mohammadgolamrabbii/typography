@@ -1,0 +1,708 @@
+{
+  "totalVaults": 100,
+  "totalIndexedFonts": 382980,
+  "curator": "Mohammad Golamrabbii",
+  "phone": "+880 1923-721637",
+  "vaults": [
+    {
+      "id": "100",
+      "folder": "100_Osage_Indigenous",
+      "script": "🦅 Osage Indigenous (𐒰𐒲𐒳)",
+      "count": 49,
+      "index": "indexes/vault_100.json"
+    },
+    {
+      "id": "10",
+      "folder": "10_Cyrillic_Slavic",
+      "script": "🇷🇺 Cyrillic & Slavic (Кириллица)",
+      "count": 20855,
+      "index": "indexes/vault_10.json"
+    },
+    {
+      "id": "11",
+      "folder": "11_Korean_Hangul",
+      "script": "🇰🇷 Korean (한국어 / Hangul)",
+      "count": 3498,
+      "index": "indexes/vault_11.json"
+    },
+    {
+      "id": "12",
+      "folder": "12_Chinese_Hanzi",
+      "script": "🇨🇳 Chinese Hanzi (汉字 / 漢字)",
+      "count": 2078,
+      "index": "indexes/vault_12.json"
+    },
+    {
+      "id": "13",
+      "folder": "13_Vietnamese_TiengViet",
+      "script": "🇻🇳 Vietnamese Tiếng Việt & Chữ Nôm",
+      "count": 3685,
+      "index": "indexes/vault_13.json"
+    },
+    {
+      "id": "14",
+      "folder": "14_Thai_Siam",
+      "script": "🇹🇭 Thai Siam (ภาษาไทย / Royal Court)",
+      "count": 3689,
+      "index": "indexes/vault_14.json"
+    },
+    {
+      "id": "15",
+      "folder": "15_Malay_Nusantara_ID_MY",
+      "script": "🇮🇩 Malay Nusantara & Jawi Script",
+      "count": 4400,
+      "index": "indexes/vault_15.json"
+    },
+    {
+      "id": "16",
+      "folder": "16_Developer_Coding_Monospace",
+      "script": "💻 Developer & Coding Monospace",
+      "count": 28095,
+      "index": "indexes/vault_16.json"
+    },
+    {
+      "id": "17",
+      "folder": "17_Dravidian_Indic_SouthAsia",
+      "script": "🏛️ Dravidian Indic (Tamil/Telugu/Malayalam)",
+      "count": 2212,
+      "index": "indexes/vault_17.json"
+    },
+    {
+      "id": "18",
+      "folder": "18_African_GeEz_Amharic_Heritage",
+      "script": "🌍 African Ge'ez & Amharic Heritage",
+      "count": 985,
+      "index": "indexes/vault_18.json"
+    },
+    {
+      "id": "19",
+      "folder": "19_Persian_Urdu_Nastaliq",
+      "script": "📜 Persian & Urdu (Nastaliq & Shekasteh)",
+      "count": 1892,
+      "index": "indexes/vault_19.json"
+    },
+    {
+      "id": "01",
+      "folder": "1_Bengali Fonts",
+      "script": "🇧🇩 Bangla & Assamese (বাংলা / অসমীয়া)",
+      "count": 8124,
+      "index": "indexes/vault_01.json"
+    },
+    {
+      "id": "20",
+      "folder": "20_Hebrew_Ivrit_Judaic",
+      "script": "📜 Hebrew (עִבְרִית / Ivrit & Judaic)",
+      "count": 2922,
+      "index": "indexes/vault_20.json"
+    },
+    {
+      "id": "21",
+      "folder": "21_Greek_Hellenic_Polytonic",
+      "script": "🏛️ Greek Hellenic & Polytonic (Ελληνικά)",
+      "count": 7621,
+      "index": "indexes/vault_21.json"
+    },
+    {
+      "id": "22",
+      "folder": "22_Khmer_Cambodian_Angkor",
+      "script": "🇰🇭 Khmer Cambodian (អក្សរខ្មែរ / Angkor)",
+      "count": 2039,
+      "index": "indexes/vault_22.json"
+    },
+    {
+      "id": "23",
+      "folder": "23_Myanmar_Burmese_Pyidaungsu",
+      "script": "🇲🇲 Myanmar Burmese (မြန်မာစာ / Pyidaungsu)",
+      "count": 1420,
+      "index": "indexes/vault_23.json"
+    },
+    {
+      "id": "24",
+      "folder": "24_Sinhala_SriLankan_Lanka",
+      "script": "🇱🇰 Sinhala Sri Lankan (සිංහල / Lanka)",
+      "count": 1360,
+      "index": "indexes/vault_24.json"
+    },
+    {
+      "id": "25",
+      "folder": "25_Lao_LanXang",
+      "script": "🇱🇦 Lao Lan Xang (ພາສາລາວ / Vientiane)",
+      "count": 1856,
+      "index": "indexes/vault_25.json"
+    },
+    {
+      "id": "26",
+      "folder": "26_Tibetan_Himalayan_Bodhi",
+      "script": "🏔️ Tibetan Himalayan (བོད་ཡིག / Bodhi)",
+      "count": 712,
+      "index": "indexes/vault_26.json"
+    },
+    {
+      "id": "27",
+      "folder": "27_Georgian_Kartvelian_Mkhedruli",
+      "script": "🇬🇪 Georgian Kartvelian (ქართული / Caucasus)",
+      "count": 1057,
+      "index": "indexes/vault_27.json"
+    },
+    {
+      "id": "28",
+      "folder": "28_Armenian_Haykakan",
+      "script": "🇦🇲 Armenian Haykakan (Հայերেন / Mesropian)",
+      "count": 1191,
+      "index": "indexes/vault_28.json"
+    },
+    {
+      "id": "29",
+      "folder": "29_Mongolian_Hudum_Nomadic",
+      "script": "🇲🇳 Mongolian Hudum & Bichig (ᠮᠣᠩᠭᠣᠯ)",
+      "count": 136,
+      "index": "indexes/vault_29.json"
+    },
+    {
+      "id": "02",
+      "folder": "2_English_Latin",
+      "script": "🇬🇧 English & Modern Latin",
+      "count": 215510,
+      "index": "indexes/vault_02.json"
+    },
+    {
+      "id": "30",
+      "folder": "30_Javanese_AksaraJawa_Heritage",
+      "script": "🇮🇩 Javanese Aksara Jawa (ꦲꦏ꧀ꦱꦫꦗꦮ)",
+      "count": 66,
+      "index": "indexes/vault_30.json"
+    },
+    {
+      "id": "31",
+      "folder": "31_Sundanese_AksaraSunda_Priangan",
+      "script": "🇮🇩 Sundanese Aksara Sunda (ᮃᮊ᮪ᮞᮛ ᮞᮥᮔ᮪ᮓ)",
+      "count": 42,
+      "index": "indexes/vault_31.json"
+    },
+    {
+      "id": "32",
+      "folder": "32_Balinese_AksaraBali_Dewata",
+      "script": "🇮🇩 Balinese Aksara Bali (ᬅᬓ᭄ᬱᬭᬩᬮᬶ)",
+      "count": 48,
+      "index": "indexes/vault_32.json"
+    },
+    {
+      "id": "33",
+      "folder": "33_Batak_SuratBatak_Toba",
+      "script": "🇮🇩 Batak Surat Batak (ᯘᯮᯒᯖ᯲ ᯅᯖᯄ᯲)",
+      "count": 24,
+      "index": "indexes/vault_33.json"
+    },
+    {
+      "id": "34",
+      "folder": "34_Buginese_Lontara_Makassar",
+      "script": "🇮🇩 Buginese Lontara (ᨒᨚᨈᨑ / Makassar)",
+      "count": 24,
+      "index": "indexes/vault_34.json"
+    },
+    {
+      "id": "35",
+      "folder": "35_Tagalog_Baybayin_Kapampangan",
+      "script": "🇵🇭 Tagalog Baybayin (ᜊᜌ᜔ᜊᜌᜓᜈ᜔ / Kulitan)",
+      "count": 24,
+      "index": "indexes/vault_35.json"
+    },
+    {
+      "id": "36",
+      "folder": "36_Thaana_Dhivehi_Maldivian",
+      "script": "🇲🇻 Thaana Dhivehi (ދިވެހި ތާނަ / Maldives)",
+      "count": 72,
+      "index": "indexes/vault_36.json"
+    },
+    {
+      "id": "37",
+      "folder": "37_Chakma_Changma_AjhaPath",
+      "script": "🇧🇩 Chakma Changma (𑄌𑄋𑄴𑄟𑄧 / Ajhā Pāṭh)",
+      "count": 30,
+      "index": "indexes/vault_37.json"
+    },
+    {
+      "id": "38",
+      "folder": "38_Sylheti_Nagri_Heritage",
+      "script": "🇧🇩 Sylheti Nagri (ꠍꠤꠟꠐꠤ ꠘꠣꠉꠞꠤ / Surma)",
+      "count": 32,
+      "index": "indexes/vault_38.json"
+    },
+    {
+      "id": "39",
+      "folder": "39_Meetei_Mayek_Manipuri",
+      "script": "🇮🇳 Meetei Mayek Manipuri (ꯃꯤꯇꯩ ꯃꯌꯦꯛ)",
+      "count": 119,
+      "index": "indexes/vault_39.json"
+    },
+    {
+      "id": "03",
+      "folder": "3_Arabic_Islamic",
+      "script": "🕌 Arabic, Islamic & Quranic",
+      "count": 29427,
+      "index": "indexes/vault_03.json"
+    },
+    {
+      "id": "40",
+      "folder": "40_Odia_Oriya_Utkala",
+      "script": "🇮🇳 Odia Utkala Lipi (ଓଡ଼ିଆ ଲିପି)",
+      "count": 292,
+      "index": "indexes/vault_40.json"
+    },
+    {
+      "id": "41",
+      "folder": "41_Gujarati_Gurjar_Heritage",
+      "script": "🇮🇳 Gujarati Gurjar Lipi (ગુજરાતી)",
+      "count": 358,
+      "index": "indexes/vault_41.json"
+    },
+    {
+      "id": "42",
+      "folder": "42_Gurmukhi_Punjabi_Khalsa",
+      "script": "🇮🇳 Gurmukhi Punjabi (ਗੁਰਮੁਖੀ ਲਿਪੀ)",
+      "count": 287,
+      "index": "indexes/vault_42.json"
+    },
+    {
+      "id": "43",
+      "folder": "43_Assamese_Axomiya_Lipi",
+      "script": "🇮🇳 Assamese Axomiya (অসমীয়া লিপি)",
+      "count": 494,
+      "index": "indexes/vault_43.json"
+    },
+    {
+      "id": "44",
+      "folder": "44_Santali_OlChiki_Adivasi",
+      "script": "🇮🇳 Santali Ol Chiki (ᱥᱟᱱᱛᱟᱲᱤ ᱚᱞ ᱪᱤᱠᱤ)",
+      "count": 78,
+      "index": "indexes/vault_44.json"
+    },
+    {
+      "id": "45",
+      "folder": "45_Sora_Sompeng_Heritage",
+      "script": "🇮🇳 Sora Sompeng (𑃐𑃦𑃝𑃗 𑃠𑃦𑃖𑃡𑃗)",
+      "count": 78,
+      "index": "indexes/vault_45.json"
+    },
+    {
+      "id": "46",
+      "folder": "46_Lepcha_Rong_Himalayan",
+      "script": "🇮🇳 Lepcha Róng (ᰛᰩᰵ ᰛᰧᰵᰶ / Sikkim)",
+      "count": 32,
+      "index": "indexes/vault_46.json"
+    },
+    {
+      "id": "47",
+      "folder": "47_Limbu_Sirijonga_Kirat",
+      "script": "🇳🇵 Limbu Sirijonga (ᤕᤠᤰᤌᤢᤱ / Kirat)",
+      "count": 32,
+      "index": "indexes/vault_47.json"
+    },
+    {
+      "id": "48",
+      "folder": "48_Newa_Prachalit_Nepal",
+      "script": "🇳🇵 Newa Prachalit (𑐥𑑂𑐬𑐔𑐮𑐶𑐟 𑐣𑐾𑐥𑐵𑐮)",
+      "count": 32,
+      "index": "indexes/vault_48.json"
+    },
+    {
+      "id": "49",
+      "folder": "49_Tirhuta_Mithilakshar_Maithili",
+      "script": "🇮🇳 Tirhuta Mithilakshar (𑒞𑒱𑒩𑒯𑒳𑒞𑒰)",
+      "count": 32,
+      "index": "indexes/vault_49.json"
+    },
+    {
+      "id": "04",
+      "folder": "4_Icons_Symbols",
+      "script": "🎨 Icons, Glyphs & Symbols",
+      "count": 2714,
+      "index": "indexes/vault_04.json"
+    },
+    {
+      "id": "50",
+      "folder": "50_Syriac_Aramaic_Peshitta",
+      "script": "🏛️ Syriac & Aramaic (ܠܫܢܐ ܣܘܪܝܝܐ)",
+      "count": 229,
+      "index": "indexes/vault_50.json"
+    },
+    {
+      "id": "51",
+      "folder": "51_Coptic_Bohairic_Sahidic",
+      "script": "🇪🇬 Coptic Alexandrian (ⲘⲉⲧⲢⲉⲙⲛ̀ⲭⲏⲙⲓ)",
+      "count": 32,
+      "index": "indexes/vault_51.json"
+    },
+    {
+      "id": "52",
+      "folder": "52_Tifinagh_Amazigh_Berber",
+      "script": "🇲🇦 Tifinagh Amazigh (ⵜⵉⴼⵉⵏⴰⵖ / Berber)",
+      "count": 164,
+      "index": "indexes/vault_52.json"
+    },
+    {
+      "id": "53",
+      "folder": "53_NKo_Manding_Heritage",
+      "script": "🇬🇳 N'Ko Manding Literacy (ߒߞߏ)",
+      "count": 56,
+      "index": "indexes/vault_53.json"
+    },
+    {
+      "id": "54",
+      "folder": "54_Vai_Liberian_Syllabary",
+      "script": "🇱🇷 Vai Liberian Syllabary (ꕙꔤ)",
+      "count": 32,
+      "index": "indexes/vault_54.json"
+    },
+    {
+      "id": "55",
+      "folder": "55_Adlam_Fulani_Pulaar",
+      "script": "🇬🇳 ADLaM Fulani Alphabet (𞤀𞤣𞤤𞤢𞤥)",
+      "count": 125,
+      "index": "indexes/vault_55.json"
+    },
+    {
+      "id": "56",
+      "folder": "56_Osmanya_Somali_Heritage",
+      "script": "🇸🇴 Osmanya Somali Script (𐒍𐒘𐒘𐒈)",
+      "count": 32,
+      "index": "indexes/vault_56.json"
+    },
+    {
+      "id": "57",
+      "folder": "57_Cherokee_Tsalagi_Sequoyah",
+      "script": "🇺🇸 Cherokee Tsalagi (ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ)",
+      "count": 143,
+      "index": "indexes/vault_57.json"
+    },
+    {
+      "id": "58",
+      "folder": "58_Canadian_Aboriginal_Syllabics",
+      "script": "🇨🇦 Canadian Aboriginal Syllabics (ᐃᓄᒃᑎᑐᑦ)",
+      "count": 204,
+      "index": "indexes/vault_58.json"
+    },
+    {
+      "id": "59",
+      "folder": "59_Runic_Glagolitic_Ancient",
+      "script": "🏛️ Runic & Glagolitic (ᚠᚢᚦᚨᚱᚲ / Ⰳⰾⰰⰳⱁⰾⰹⱌⰰ)",
+      "count": 50,
+      "index": "indexes/vault_59.json"
+    },
+    {
+      "id": "05",
+      "folder": "5_Legacy_Archive",
+      "script": "🏛️ Legacy PostScript & Type 1",
+      "count": 3339,
+      "index": "indexes/vault_05.json"
+    },
+    {
+      "id": "60",
+      "folder": "60_Gothic_Ancient_Codex",
+      "script": "🏛️ Gothic Ancient Codex (𐌲𐌿𐍄𐌹𐍃𐌺)",
+      "count": 255,
+      "index": "indexes/vault_60.json"
+    },
+    {
+      "id": "61",
+      "folder": "61_Ogham_Celtic_Monumental",
+      "script": "☘️ Ogham Celtic Monumental (᚛ᚑᚌᚐᚋ᚜)",
+      "count": 32,
+      "index": "indexes/vault_61.json"
+    },
+    {
+      "id": "62",
+      "folder": "62_Old_Permic_Abur",
+      "script": "📜 Old Permic Abur (𐍐𐍑𐍒𐍓 / Komi)",
+      "count": 32,
+      "index": "indexes/vault_62.json"
+    },
+    {
+      "id": "63",
+      "folder": "63_Old_Turkic_Orkhon_Runes",
+      "script": "🏹 Old Turkic Orkhon Runes (𐰚𐰇𐰚 𐱅𐰇𐰼𐰰)",
+      "count": 32,
+      "index": "indexes/vault_63.json"
+    },
+    {
+      "id": "64",
+      "folder": "64_Old_Hungarian_Rovas",
+      "script": "🇭🇺 Old Hungarian Rovás (𐲥𐳋𐳓𐳉𐳦)",
+      "count": 32,
+      "index": "indexes/vault_64.json"
+    },
+    {
+      "id": "65",
+      "folder": "65_Old_South_Arabian_Musnad",
+      "script": "🏛️ Old South Arabian Musnad (𐩣𐩯𐩬𐩵)",
+      "count": 32,
+      "index": "indexes/vault_65.json"
+    },
+    {
+      "id": "66",
+      "folder": "66_Phoenician_Archaic",
+      "script": "⚓ Phoenician Archaic (𐤃𐤁𐤓𐤉𐤌)",
+      "count": 32,
+      "index": "indexes/vault_66.json"
+    },
+    {
+      "id": "67",
+      "folder": "67_Avestan_Sacred_Pahlavi",
+      "script": "🔥 Avestan Sacred Script (𐬛𐬍𐬥 𐬛𐬠𐬌𐬭𐬍𐬵)",
+      "count": 62,
+      "index": "indexes/vault_67.json"
+    },
+    {
+      "id": "68",
+      "folder": "68_Kharosthi_Gandhara_SilkRoad",
+      "script": "🏔️ Kharoshthi Gandharan (𐨑𐨪𐨆𐨯𐨠𐨁)",
+      "count": 32,
+      "index": "indexes/vault_68.json"
+    },
+    {
+      "id": "69",
+      "folder": "69_Brahmi_Ashokan_Imperial",
+      "script": "🏛️ Brahmi Ashokan Imperial (𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻)",
+      "count": 32,
+      "index": "indexes/vault_69.json"
+    },
+    {
+      "id": "06",
+      "folder": "6_World_Languages",
+      "script": "🌐 Global Polyglot & Indigenous",
+      "count": 1021,
+      "index": "indexes/vault_06.json"
+    },
+    {
+      "id": "70",
+      "folder": "70_Cuneiform_Sumero_Akkadian",
+      "script": "🏺 Cuneiform Sumero-Akkadian (𒅴𒂠)",
+      "count": 42,
+      "index": "indexes/vault_70.json"
+    },
+    {
+      "id": "71",
+      "folder": "71_Egyptian_Hieroglyphs_Pharaonic",
+      "script": "𓂀 Egyptian Hieroglyphs (𓅓𓂧𓅱𓀁𓊹𓌃)",
+      "count": 32,
+      "index": "indexes/vault_71.json"
+    },
+    {
+      "id": "72",
+      "folder": "72_Linear_A_B_Mycenaean",
+      "script": "🏛️ Linear B Mycenaean (𐀀𐀑𐀂𐀃𐀄)",
+      "count": 42,
+      "index": "indexes/vault_72.json"
+    },
+    {
+      "id": "73",
+      "folder": "73_Tangut_Western_Xia",
+      "script": "📜 Tangut Western Xia (𗼇𗟲)",
+      "count": 32,
+      "index": "indexes/vault_73.json"
+    },
+    {
+      "id": "74",
+      "folder": "74_Nushu_Women_Phonetic",
+      "script": "🌸 Nüshu Women's Script (𛆁𛈬)",
+      "count": 60,
+      "index": "indexes/vault_74.json"
+    },
+    {
+      "id": "75",
+      "folder": "75_Bassa_Vah_Liberian",
+      "script": "🇱🇷 Bassa Vah Indigenous (𖫢𖫦𖫱𖫐𖫧)",
+      "count": 66,
+      "index": "indexes/vault_75.json"
+    },
+    {
+      "id": "76",
+      "folder": "76_Medefaidrin_Nigerian",
+      "script": "🇳🇬 Medefaidrin Nigerian (𖹞𖹫𖹪𖹮𖹠𖹲𖹱𖹭)",
+      "count": 66,
+      "index": "indexes/vault_76.json"
+    },
+    {
+      "id": "77",
+      "folder": "77_Mandaic_Gnostic_Scripture",
+      "script": "🕊️ Mandaic Gnostic (ࡀࡋࡐࡁࡕࡀ)",
+      "count": 32,
+      "index": "indexes/vault_77.json"
+    },
+    {
+      "id": "78",
+      "folder": "78_Samaritan_Hebrew_Archaic",
+      "script": "📜 Samaritan Archaic Hebrew (ࠔࠌࠓࠉࠌ)",
+      "count": 32,
+      "index": "indexes/vault_78.json"
+    },
+    {
+      "id": "79",
+      "folder": "79_Hanifi_Rohingya_National",
+      "script": "🇲🇲 Hanifi Rohingya (𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝)",
+      "count": 66,
+      "index": "indexes/vault_79.json"
+    },
+    {
+      "id": "07",
+      "folder": "7_Hindi_Devanagari",
+      "script": "🇮🇳 Hindi & Classical Devanagari",
+      "count": 12965,
+      "index": "indexes/vault_07.json"
+    },
+    {
+      "id": "80",
+      "folder": "80_Cham_Indigenous",
+      "script": "🏛️ Cham Indigenous (ꨀꨇꨈ)",
+      "count": 143,
+      "index": "indexes/vault_80.json"
+    },
+    {
+      "id": "81",
+      "folder": "81_Tai_Tham_Lanna",
+      "script": "🏮 Tai Tham Lanna (ᨲ᩠ᩅᩫᨾᩮᩬᩥᨦ)",
+      "count": 66,
+      "index": "indexes/vault_81.json"
+    },
+    {
+      "id": "82",
+      "folder": "82_Tai_Viet",
+      "script": "🎋 Tai Viet (ꪀꪁꪂ)",
+      "count": 32,
+      "index": "indexes/vault_82.json"
+    },
+    {
+      "id": "83",
+      "folder": "83_Kayah_Li_Karen",
+      "script": "🏔️ Kayah Li (ꤊꤋꤌ / Karen)",
+      "count": 66,
+      "index": "indexes/vault_83.json"
+    },
+    {
+      "id": "84",
+      "folder": "84_Pahawh_Hmong",
+      "script": "🦅 Pahawh Hmong (𖬀𖬁𖬂)",
+      "count": 32,
+      "index": "indexes/vault_84.json"
+    },
+    {
+      "id": "85",
+      "folder": "85_Ahom_Sacred_Tai",
+      "script": "📜 Ahom Sacred Tai (𑜀𑜁𑜂)",
+      "count": 32,
+      "index": "indexes/vault_85.json"
+    },
+    {
+      "id": "86",
+      "folder": "86_Modi_Historical",
+      "script": "⚔️ Modi Historical (𑘦𑘻𑘚𑘲)",
+      "count": 32,
+      "index": "indexes/vault_86.json"
+    },
+    {
+      "id": "87",
+      "folder": "87_Sharada_Classical",
+      "script": "🏔️ Sharada Kashmir (𑆯𑆳𑆫𑆢𑆳)",
+      "count": 32,
+      "index": "indexes/vault_87.json"
+    },
+    {
+      "id": "88",
+      "folder": "88_Kaithi_Historic",
+      "script": "🏛️ Kaithi Historic (𑂍𑂶𑂟𑂲)",
+      "count": 32,
+      "index": "indexes/vault_88.json"
+    },
+    {
+      "id": "89",
+      "folder": "89_Grantha_Vedic",
+      "script": "🕉️ Grantha Vedic (𑌗𑌨𑍆𑌥)",
+      "count": 42,
+      "index": "indexes/vault_89.json"
+    },
+    {
+      "id": "08",
+      "folder": "8_German_Deutsche_Schriften",
+      "script": "🇩🇪 German Fraktur & Blackletter",
+      "count": 10283,
+      "index": "indexes/vault_08.json"
+    },
+    {
+      "id": "90",
+      "folder": "90_Takri_Himalayan",
+      "script": "🏔️ Takri Himalayan (𑚔𑚭𑚊𑚤𑚯)",
+      "count": 32,
+      "index": "indexes/vault_90.json"
+    },
+    {
+      "id": "91",
+      "folder": "91_Saurashtra",
+      "script": "🏛️ Saurashtra (ꢱꣃꢬꢵꢰ꣄ꢜ꣄ꢬ)",
+      "count": 32,
+      "index": "indexes/vault_91.json"
+    },
+    {
+      "id": "92",
+      "folder": "92_Sogdian_SilkRoad",
+      "script": "🐫 Sogdian Silk Road (𐼰𐼱𐼲)",
+      "count": 42,
+      "index": "indexes/vault_92.json"
+    },
+    {
+      "id": "93",
+      "folder": "93_Imperial_Aramaic",
+      "script": "📜 Imperial Aramaic (𐡀𐡁𐡂)",
+      "count": 32,
+      "index": "indexes/vault_93.json"
+    },
+    {
+      "id": "94",
+      "folder": "94_Nabataean_Palmyrene",
+      "script": "🏛️ Nabataean & Palmyrene (𐢀𐢁𐢂)",
+      "count": 42,
+      "index": "indexes/vault_94.json"
+    },
+    {
+      "id": "95",
+      "folder": "95_Cypriot_Syllabic",
+      "script": "🏺 Cypriot Syllabic (𐠀𐠁𐠂)",
+      "count": 56,
+      "index": "indexes/vault_95.json"
+    },
+    {
+      "id": "96",
+      "folder": "96_Anatolian_Hieroglyphs",
+      "script": "🏛️ Anatolian Hieroglyphic (𔐀𔐁𔐂)",
+      "count": 56,
+      "index": "indexes/vault_96.json"
+    },
+    {
+      "id": "97",
+      "folder": "97_Bamum_Royal",
+      "script": "👑 Bamum Royal (ꚠꚡꚢ)",
+      "count": 66,
+      "index": "indexes/vault_97.json"
+    },
+    {
+      "id": "98",
+      "folder": "98_Mende_Kikakui",
+      "script": "📜 Mende Kikakui (𞠀𞠁𞠂)",
+      "count": 32,
+      "index": "indexes/vault_98.json"
+    },
+    {
+      "id": "99",
+      "folder": "99_Deseret_Phonetic",
+      "script": "🐝 Deseret Phonetic (𐐔𐐯𐑅𐐨𐑉𐐯𐐻)",
+      "count": 32,
+      "index": "indexes/vault_99.json"
+    },
+    {
+      "id": "09",
+      "folder": "9_Japanese_Nihongo",
+      "script": "🇯🇵 Japanese (日本語 / Kanji & Kana)",
+      "count": 2608,
+      "index": "indexes/vault_09.json"
+    }
+  ]
+}
