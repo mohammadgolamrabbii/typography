@@ -1,0 +1,27 @@
+# Robots.txt for Open Typography Foundation
+User-agent: *
+Allow: /
+
+# Grant explicit permissions for AI Answer Engines & Search Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://mohammadgolamrabbii.github.io/typography/sitemap.xml
