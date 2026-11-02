@@ -1,13 +1,13 @@
 # 🏛️ Open Typography Foundation — Master 100 Sovereign Vaults Index
 **Curated by Mohammad Golamrabbii | 100% Free Public Digital Heritage**
-**Milestone Cross: 100 Sovereign Mega-Vaults • 400,237+ Verified Open-Source Typefaces**
+**Milestone Cross: 100 Sovereign Mega-Vaults • 500,337+ Verified Open-Source Typefaces**
 
 ---
 
 | Vault ID | Folder Name | Sovereign System / Script | Verified Fonts | Primary GitHub Mirror | Permanent Archive.org Mirror |
 | :---: | :--- | :--- | :---: | :--- | :--- |
 | 01 | 1_Bengali Fonts | 🇧🇩 **Bangla & Assamese (বাংলা / অসমীয়া)** | 8,124 | [Bangla-Fonts-Mega-Collection](https://github.com/Open-Typography-Foundation/Bangla-Fonts-Mega-Collection) | 🏛️ [Bangla & Assamese](https://archive.org/details/open-typography-foundation-bangla-fonts) |
-| 02 | 2_English_Latin | 🇬🇧 **English & Modern Latin** | 252,767 | [English-Latin-Fonts-Archive](https://github.com/Open-Typography-Foundation/English-Latin-Fonts-Archive) | 🏛️ [English & Latin (11 Vols)](https://archive.org/details/open-typography-foundation-english-fonts) |
+| 02 | 2_English_Latin | 🇬🇧 **English & Modern Latin** | 332,867 | [English-Latin-Fonts-Archive](https://github.com/Open-Typography-Foundation/English-Latin-Fonts-Archive) | 🏛️ [English & Latin (11 Vols)](https://archive.org/details/open-typography-foundation-english-fonts) |
 | 03 | 3_Arabic_Islamic | 🕌 **Arabic, Islamic & Quranic** | 29,427 | [Arabic-Islamic-Fonts-Archive](https://github.com/Open-Typography-Foundation/Arabic-Islamic-Fonts-Archive) | 🏛️ [Arabic & Islamic (4 Vols)](https://archive.org/details/open-typography-foundation-arabic-fonts) |
 | 04 | 4_Icons_Symbols | 🎨 **Icons, Glyphs & Symbols** | 2,714 | [Icons-and-Symbols-Fonts](https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts) | 🏛️ [Icons & Symbols](https://archive.org/details/open-typography-foundation-icons-symbols) |
 | 05 | 5_Legacy_Archive | 🏛️ **Legacy PostScript & Type 1** | 3,339 | [Legacy-Archive-Fonts](https://github.com/Open-Typography-Foundation/Legacy-Archive-Fonts) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
@@ -21,7 +21,7 @@
 | 13 | 13_Vietnamese_TiengViet | 🇻🇳 **Vietnamese Tiếng Việt & Chữ Nôm** | 3,685 | [Vietnamese-Fonts-Mega-Archive](https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
 | 14 | 14_Thai_Siam | 🇹🇭 **Thai Siam (ภาษาไทย / Royal Court)** | 3,689 | [Thai-Siam-Fonts-Mega-Archive](https://github.com/Open-Typography-Foundation/Thai-Siam-Fonts-Mega-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
 | 15 | 15_Malay_Nusantara_ID_MY | 🇮🇩 **Malay Nusantara & Jawi Script** | 4,400 | [Malay-Nusantara-Fonts-Archive](https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
-| 16 | 16_Developer_Coding_Monospace | 💻 **Developer & Coding Monospace** | 8,095 | [Developer-Coding-Monospace-Fonts-Archive](https://github.com/Open-Typography-Foundation/Developer-Coding-Monospace-Fonts-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
+| 16 | 16_Developer_Coding_Monospace | 💻 **Developer & Coding Monospace** | 28,095 | [Developer-Coding-Monospace-Fonts-Archive](https://github.com/Open-Typography-Foundation/Developer-Coding-Monospace-Fonts-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
 | 17 | 17_Dravidian_Indic_SouthAsia | 🏛️ **Dravidian Indic (Tamil/Telugu/Malayalam)** | 2,212 | [Dravidian-Fonts-Mega-Archive](https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
 | 18 | 18_African_GeEz_Amharic_Heritage | 🌍 **African Ge'ez & Amharic Heritage** | 985 | [African-Scripts-Mega-Archive](https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |
 | 19 | 19_Persian_Urdu_Nastaliq | 📜 **Persian & Urdu (Nastaliq & Shekasteh)** | 1,892 | [Persian-Urdu-Nastaliq-Fonts-Archive](https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive) | 📦 [Foundation Central Hub](https://archive.org/details/open-typography-foundation) |

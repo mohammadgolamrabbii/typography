@@ -1,7 +1,7 @@
 {
-  "total_fonts": 400237,
+  "total_fonts": 500337,
   "total_vaults": 100,
-  "timestamp": "2026-11-02T08:47:47.141023Z",
+  "timestamp": "2026-11-02T18:21:36.538002",
   "vaults": [
     {
       "name": "1_Bengali Fonts",
@@ -9,7 +9,7 @@
     },
     {
       "name": "2_English_Latin",
-      "count": 252767
+      "count": 332867
     },
     {
       "name": "3_Arabic_Islamic",
@@ -65,7 +65,7 @@
     },
     {
       "name": "16_Developer_Coding_Monospace",
-      "count": 8095
+      "count": 28095
     },
     {
       "name": "17_Dravidian_Indic_SouthAsia",
