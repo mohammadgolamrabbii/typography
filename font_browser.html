@@ -161,6 +161,274 @@
     }
   ]
 }
+
+// === STUDIO & CDN JAVASCRIPT ENGINE ===
+let studioState = {
+  fontName: 'NotoSansOsage',
+  fontUrl: '',
+  weight: 'normal',
+  italic: false,
+  initialized: false
+};
+
+function initStudio() {
+  if (studioState.initialized) return;
+  const select = document.getElementById('studio-font-select');
+  if (!select) return;
+
+  select.innerHTML = '';
+  FONT_CATALOG.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f.name;
+    opt.textContent = `${f.name} (${f.script.split(' ')[0]} - Vault #${f.vaultId})`;
+    opt.dataset.url = f.downloadUrl || '';
+    if (f.name === studioState.fontName) opt.selected = true;
+    select.appendChild(opt);
+  });
+
+  studioState.initialized = true;
+  onStudioFontChange();
+}
+
+function onStudioFontChange() {
+  const select = document.getElementById('studio-font-select');
+  if (!select) return;
+  const selectedOpt = select.options[select.selectedIndex];
+  if (selectedOpt) {
+    studioState.fontName = selectedOpt.value;
+    studioState.fontUrl = selectedOpt.dataset.url || '';
+    document.getElementById('studio-current-font-name').textContent = studioState.fontName;
+    if (studioState.fontUrl) {
+      ensureFontLoaded(studioState.fontName, studioState.fontUrl);
+    }
+  }
+  updateStudioPreview();
+}
+
+function setStudioWeight(w) {
+  studioState.weight = w;
+  document.getElementById('btn-weight-normal').classList.toggle('active', w === 'normal');
+  document.getElementById('btn-weight-bold').classList.toggle('active', w === 'bold');
+  updateStudioPreview();
+}
+
+function toggleStudioItalic() {
+  studioState.italic = !studioState.italic;
+  document.getElementById('btn-weight-italic').classList.toggle('active', studioState.italic);
+  updateStudioPreview();
+}
+
+function openInStudio(fontName, fontUrl) {
+  studioState.fontName = fontName;
+  studioState.fontUrl = fontUrl;
+  switchTab('studio');
+  initStudio();
+  const select = document.getElementById('studio-font-select');
+  if (select) {
+    select.value = fontName;
+    document.getElementById('studio-current-font-name').textContent = fontName;
+  }
+  if (fontUrl) {
+    ensureFontLoaded(fontName, fontUrl);
+  }
+  updateStudioPreview();
+  window.scrollTo({ top: document.getElementById('studio-view').offsetTop - 60, behavior: 'smooth' });
+}
+
+function updateStudioPreview() {
+  const text = document.getElementById('studio-text')?.value || 'OpenTypography';
+  const fontSize = parseInt(document.getElementById('studio-font-size')?.value || '64', 10);
+  const letterSpacing = parseInt(document.getElementById('studio-letter-spacing')?.value || '2', 10);
+  const color1 = document.getElementById('studio-color-1')?.value || '#10b981';
+  const color2 = document.getElementById('studio-color-2')?.value || '#38bdf8';
+  const isGradient = document.getElementById('studio-gradient-toggle')?.checked || false;
+  const angle = parseInt(document.getElementById('studio-gradient-angle')?.value || '45', 10);
+  const isTransparent = document.getElementById('studio-transparent-bg')?.checked || false;
+  const bgColor = document.getElementById('studio-bg-color')?.value || '#0f172a';
+  const padding = parseInt(document.getElementById('studio-padding')?.value || '40', 10);
+
+  // Update UI value labels
+  if (document.getElementById('studio-size-val')) document.getElementById('studio-size-val').textContent = fontSize + 'px';
+  if (document.getElementById('studio-spacing-val')) document.getElementById('studio-spacing-val').textContent = letterSpacing + 'px';
+  if (document.getElementById('studio-angle-val')) document.getElementById('studio-angle-val').textContent = angle + '°';
+  if (document.getElementById('studio-padding-val')) document.getElementById('studio-padding-val').textContent = padding + 'px';
+
+  document.getElementById('studio-gradient-controls').style.display = isGradient ? 'block' : 'none';
+  document.getElementById('studio-bg-color-wrap').style.display = isTransparent ? 'none' : 'flex';
+
+  // Calculate approximate text bounding box
+  const approxCharWidth = fontSize * 0.65 + letterSpacing;
+  const textWidth = Math.max(text.length * approxCharWidth, 100);
+  const textHeight = fontSize * 1.35;
+  const svgWidth = Math.round(textWidth + (padding * 2));
+  const svgHeight = Math.round(textHeight + (padding * 2));
+
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return;
+
+  svg.setAttribute('width', svgWidth);
+  svg.setAttribute('height', svgHeight);
+  svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+
+  const fillAttr = isGradient ? 'url(#logo-grad)' : color1;
+  const fontStyle = studioState.italic ? 'italic' : 'normal';
+  const fontWeight = studioState.weight;
+
+  let defs = '';
+  if (isGradient) {
+    const rad = (angle * Math.PI) / 180;
+    const x1 = Math.round(50 - Math.cos(rad) * 50) + '%';
+    const y1 = Math.round(50 - Math.sin(rad) * 50) + '%';
+    const x2 = Math.round(50 + Math.cos(rad) * 50) + '%';
+    const y2 = Math.round(50 + Math.sin(rad) * 50) + '%';
+    defs = `<defs>
+      <linearGradient id="logo-grad" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">
+        <stop offset="0%" stop-color="${color1}"/>
+        <stop offset="100%" stop-color="${color2}"/>
+      </linearGradient>
+    </defs>`;
+  }
+
+  const bgRect = isTransparent ? '' : `<rect width="100%" height="100%" fill="${bgColor}" rx="12"/>`;
+  const textX = Math.round(svgWidth / 2);
+  const textY = Math.round((svgHeight / 2) + (fontSize * 0.35));
+
+  svg.innerHTML = `
+    ${defs}
+    ${bgRect}
+    <text x="${textX}" y="${textY}" 
+          text-anchor="middle"
+          fill="${fillAttr}"
+          font-family="'${studioState.fontName}', sans-serif"
+          font-size="${fontSize}px"
+          font-weight="${fontWeight}"
+          font-style="${fontStyle}"
+          letter-spacing="${letterSpacing}px">${escapeHtml(text)}</text>
+  `;
+}
+
+function getSvgMarkup() {
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return '';
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(svg);
+}
+
+function downloadLogoSvg() {
+  const markup = getSvgMarkup();
+  const blob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo.svg`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Vector .SVG downloaded successfully!');
+}
+
+function downloadLogoPng() {
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return;
+  const markup = new XMLSerializer().serializeToString(svg);
+  const svgBlob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(svgBlob);
+
+  const img = new Image();
+  img.onload = function() {
+    const scale = 3; // 300 DPI high-res scale
+    const canvas = document.createElement('canvas');
+    canvas.width = svg.getAttribute('width') * scale;
+    canvas.height = svg.getAttribute('height') * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, 0, 0);
+
+    canvas.toBlob(blob => {
+      const pngUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = pngUrl;
+      const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo-300dpi.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(pngUrl);
+      URL.revokeObjectURL(url);
+      showToast('High-Res 300 DPI Transparent .PNG downloaded!');
+    });
+  };
+  img.src = url;
+}
+
+function copySvgCode() {
+  const markup = getSvgMarkup();
+  navigator.clipboard.writeText(markup).then(() => {
+    showToast('SVG Markup copied to clipboard!');
+  }).catch(() => {
+    showToast('Failed to copy');
+  });
+}
+
+function openStudioFontCdn() {
+  openCdnModal(studioState.fontName, studioState.fontUrl);
+}
+
+// === WEBFONT CSS CDN MODAL ENGINE ===
+function openCdnModal(fontName, fontUrl) {
+  const cleanName = fontName.replace(/[^a-zA-Z0-9_-]/g, '');
+  const cdnUrl = fontUrl || `https://raw.githubusercontent.com/Open-Typography-Foundation/100-Sovereign-Fonts-Vaults/main/fonts/${cleanName}.ttf`;
+
+  document.getElementById('cdn-modal-font-name').textContent = fontName;
+
+  // 1. @import
+  const importSnippet = `/* In your CSS file */
+@import url('${cdnUrl}');`;
+  document.getElementById('snippet-import').textContent = importSnippet;
+
+  // 2. @font-face
+  const fontFaceSnippet = `@font-face {
+  font-family: '${fontName}';
+  src: url('${cdnUrl}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}`;
+  document.getElementById('snippet-fontface').textContent = fontFaceSnippet;
+
+  // 3. Class Usage
+  const usageSnippet = `.custom-typography {
+  font-family: '${fontName}', sans-serif;
+  font-display: swap;
+}`;
+  document.getElementById('snippet-usage').textContent = usageSnippet;
+
+  document.getElementById('cdn-modal').style.display = 'flex';
+}
+
+function closeCdnModal() {
+  document.getElementById('cdn-modal').style.display = 'none';
+}
+
+function copySnippet(elementId) {
+  const text = document.getElementById(elementId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Code snippet copied to clipboard!');
+  });
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const msgEl = document.getElementById('toast-msg');
+  if (!toast || !msgEl) return;
+  msgEl.textContent = msg;
+  toast.style.display = 'flex';
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 2800);
+}
+
 </script>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>"><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
@@ -716,6 +984,325 @@
   }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  /* === LOGO & WORDMARK STUDIO STYLES === */
+  .studio-view {
+    display: none;
+    max-width: 1400px;
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .studio-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    min-height: 650px;
+  }
+  @media (max-width: 980px) {
+    .studio-grid { grid-template-columns: 1fr; }
+  }
+  .studio-sidebar {
+    background: #0b0f19;
+    border-right: 1px solid var(--border);
+    padding: 1.75rem;
+    overflow-y: auto;
+    max-height: 85vh;
+  }
+  .studio-sidebar h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .studio-group {
+    margin-bottom: 1.25rem;
+  }
+  .studio-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .studio-input, .studio-select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    background: #111827;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .studio-input:focus, .studio-select:focus {
+    border-color: var(--accent);
+  }
+  .studio-range {
+    width: 100%;
+    accent-color: var(--accent);
+  }
+  .studio-btn-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .studio-toggle-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: #111827;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .studio-toggle-btn.active {
+    background: var(--accent);
+    color: #0b0f19;
+    border-color: var(--accent);
+  }
+  .color-picker-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .color-swatch-input {
+    -webkit-appearance: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+  }
+  .color-swatch-input::-webkit-color-swatch-wrapper { padding: 0; }
+  .color-swatch-input::-webkit-color-swatch { border: 1px solid var(--border); border-radius: 8px; }
+
+  /* Canvas Area */
+  .studio-canvas-area {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: #060911;
+  }
+  .studio-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .studio-preview-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    border-radius: 12px;
+    border: 1px dashed #334155;
+    position: relative;
+    overflow: hidden;
+    background-color: #0d1322;
+    background-image: linear-gradient(45deg, #131b2e 25%, transparent 25%), 
+                      linear-gradient(-45deg, #131b2e 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #131b2e 75%), 
+                      linear-gradient(-45deg, transparent 75%, #131b2e 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  #logo-svg-preview {
+    max-width: 95%;
+    max-height: 90%;
+    transition: transform 0.2s ease;
+  }
+  .studio-actions-footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .btn-export-svg {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  .btn-export-svg:hover { transform: translateY(-1px); opacity: 0.95; }
+  .btn-export-png {
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.15s;
+  }
+  .btn-export-png:hover { transform: translateY(-1px); }
+  .btn-copy-svg {
+    background: #1e293b;
+    border: 1px solid var(--border);
+    color: #e2e8f0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .btn-copy-svg:hover { background: #334155; }
+
+  /* Additional Card Action Buttons */
+  .action-btn-studio {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  .action-btn-studio:hover {
+    background: rgba(16, 185, 129, 0.3);
+  }
+  .action-btn-cdn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+  .action-btn-cdn:hover {
+    background: rgba(56, 189, 248, 0.3);
+  }
+
+  /* Modal Styles */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #1e293b;
+  }
+  .modal-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .modal-close-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal-close-btn:hover { color: #fff; }
+  .modal-body {
+    padding: 1.5rem;
+  }
+  .code-block-wrap {
+    margin-bottom: 1.5rem;
+  }
+  .code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .code-block-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94a3b8;
+  }
+  .copy-code-btn {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #38bdf8;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .copy-code-btn:hover { background: #334155; }
+  .code-snippet {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #f1f5f9;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  /* Floating Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #10b981;
+    color: #0b0f19;
+    font-weight: 700;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10001;
+    animation: toastIn 0.25s ease-out;
+  }
+  @keyframes toastIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
 </style>
 </head>
 <body>
@@ -754,6 +1341,9 @@
 <div class="tabs-container">
   <button class="tab-btn active" id="tab-fonts" onclick="switchTab('fonts')">
     🔤 Search & Download Fonts (ফন্ট সার্চ ও একক ডাউনলোড)
+  </button>
+  <button class="tab-btn" id="tab-studio" onclick="switchTab('studio')">
+    🎨 Logo & SVG Studio (লোগো ও এসভিজি এক্সপোর্টার)
   </button>
   <button class="tab-btn" id="tab-vaults" onclick="switchTab('vaults')">
     🏛️ Browse 100 Sovereign Vaults (১০০টি সভরিন ভল্ট)
@@ -811,6 +1401,132 @@
 
   <!-- View 2: 100 Sovereign Vaults Grid -->
   <div id="vaults-view" class="vaults-grid" style="display: none;"></div>
+
+<!-- Studio View: Logo SVG & High-Res PNG Generator -->
+<div id="studio-view" class="studio-view">
+  <div class="studio-grid">
+    <!-- Sidebar Controls -->
+    <div class="studio-sidebar">
+      <h3>🎨 Logo & Wordmark Studio</h3>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.4;">
+        Design crystal-clear vector logos using 500,000+ open-source typefaces. Export scalable SVG or transparent 300 DPI PNG with 1 click.
+      </p>
+
+      <div class="studio-group">
+        <label class="studio-label">Brand / Logo Text</label>
+        <input type="text" id="studio-text" class="studio-input" value="OpenTypography" oninput="updateStudioPreview()">
+      </div>
+
+      <div class="studio-group">
+        <label class="studio-label">Select Typeface</label>
+        <select id="studio-font-select" class="studio-select" onchange="onStudioFontChange()">
+          <!-- Populated dynamically via JS -->
+        </select>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-label">
+          <span>Font Size</span>
+          <span id="studio-size-val">64px</span>
+        </div>
+        <input type="range" id="studio-font-size" class="studio-range" min="24" max="160" value="64" oninput="updateStudioPreview()">
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-label">
+          <span>Letter Spacing</span>
+          <span id="studio-spacing-val">2px</span>
+        </div>
+        <input type="range" id="studio-letter-spacing" class="studio-range" min="-5" max="30" value="2" oninput="updateStudioPreview()">
+      </div>
+
+      <div class="studio-group">
+        <label class="studio-label">Text Style</label>
+        <div class="studio-btn-group">
+          <button type="button" class="studio-toggle-btn active" id="btn-weight-normal" onclick="setStudioWeight('normal')">Normal</button>
+          <button type="button" class="studio-toggle-btn" id="btn-weight-bold" onclick="setStudioWeight('bold')">Bold</button>
+          <button type="button" class="studio-toggle-btn" id="btn-weight-italic" onclick="toggleStudioItalic()">Italic</button>
+        </div>
+      </div>
+
+      <div class="studio-group">
+        <label class="studio-label">Fill Color & Gradients</label>
+        <div class="color-picker-row" style="margin-bottom: 0.5rem;">
+          <input type="color" id="studio-color-1" class="color-swatch-input" value="#10b981" oninput="updateStudioPreview()">
+          <span style="font-size: 0.85rem; color: #fff;">Primary Color</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+          <input type="checkbox" id="studio-gradient-toggle" onchange="updateStudioPreview()">
+          <label for="studio-gradient-toggle" style="font-size: 0.85rem; color: var(--muted); cursor: pointer;">Enable Gradient Fill</label>
+        </div>
+        <div id="studio-gradient-controls" style="display: none; margin-top: 0.75rem;">
+          <div class="color-picker-row">
+            <input type="color" id="studio-color-2" class="color-swatch-input" value="#38bdf8" oninput="updateStudioPreview()">
+            <span style="font-size: 0.85rem; color: #fff;">Gradient Secondary Color</span>
+          </div>
+          <div style="margin-top: 0.5rem;">
+            <div class="studio-label"><span>Angle</span><span id="studio-angle-val">45°</span></div>
+            <input type="range" id="studio-gradient-angle" class="studio-range" min="0" max="360" value="45" oninput="updateStudioPreview()">
+          </div>
+        </div>
+      </div>
+
+      <div class="studio-group">
+        <label class="studio-label">Canvas Background</label>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <input type="checkbox" id="studio-transparent-bg" checked onchange="updateStudioPreview()">
+          <label for="studio-transparent-bg" style="font-size: 0.85rem; color: #fff; cursor: pointer;">Transparent Background (PNG / SVG)</label>
+        </div>
+        <div id="studio-bg-color-wrap" style="display: none;" class="color-picker-row">
+          <input type="color" id="studio-bg-color" class="color-swatch-input" value="#0f172a" oninput="updateStudioPreview()">
+          <span style="font-size: 0.85rem; color: #fff;">Solid Background Color</span>
+        </div>
+      </div>
+
+      <div class="studio-group">
+        <div class="studio-label">
+          <span>Canvas Padding</span>
+          <span id="studio-padding-val">40px</span>
+        </div>
+        <input type="range" id="studio-padding" class="studio-range" min="10" max="100" value="40" oninput="updateStudioPreview()">
+      </div>
+    </div>
+
+    <!-- Live Preview & Export Toolbar -->
+    <div class="studio-canvas-area">
+      <div class="studio-toolbar">
+        <div>
+          <span style="color: #fff; font-weight: 700; font-size: 1.1rem;" id="studio-current-font-name">Selected Font</span>
+          <span id="studio-font-status" style="font-size: 0.8rem; color: #10b981; margin-left: 0.5rem;">● Vector Loaded</span>
+        </div>
+        <div>
+          <button class="action-btn action-btn-cdn" onclick="openStudioFontCdn()" style="font-size: 0.85rem;">
+            ⚡ Get WebFont CSS
+          </button>
+        </div>
+      </div>
+
+      <div class="studio-preview-box">
+        <svg id="logo-svg-preview" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rendered live by JavaScript -->
+        </svg>
+      </div>
+
+      <div class="studio-actions-footer">
+        <button class="btn-export-svg" onclick="downloadLogoSvg()">
+          ⬇️ Download Vector .SVG
+        </button>
+        <button class="btn-export-png" onclick="downloadLogoPng()">
+          ⬇️ Download Transparent .PNG (300 DPI)
+        </button>
+        <button class="btn-copy-svg" onclick="copySvgCode()">
+          📋 Copy SVG Code
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <div id="toast">Copied to clipboard!</div>
@@ -931,20 +1647,22 @@ function norm(str) {
 function switchTab(tab) {
   currentTab = tab;
   document.getElementById('tab-fonts').classList.toggle('active', tab === 'fonts');
+  document.getElementById('tab-studio').classList.toggle('active', tab === 'studio');
   document.getElementById('tab-vaults').classList.toggle('active', tab === 'vaults');
   
   document.getElementById('fonts-view').style.display = tab === 'fonts' ? 'grid' : 'none';
+  document.getElementById('studio-view').style.display = tab === 'studio' ? 'block' : 'none';
   document.getElementById('vaults-view').style.display = tab === 'vaults' ? 'grid' : 'none';
-  document.getElementById('filter-pills-row').style.display = tab === 'fonts' ? 'flex' : 'none';
-  document.getElementById('preview-size-ctrl').style.display = tab === 'fonts' ? 'flex' : 'none';
 
-  const input = document.getElementById('global-search');
+  document.querySelector('.search-area').style.display = tab === 'studio' ? 'none' : 'block';
+
   if (tab === 'fonts') {
-    input.placeholder = "Search any font name across 500,337 fonts (e.g. Kalpurush, Hind Siliguri, SolaimanLipi, Siyam Rupali, Inter, Fira Code, Roboto)...";
     renderFonts();
-  } else {
-    input.placeholder = "Search across 100 vaults by number or language (e.g. Bengali, Arabic, Latin, Monospace, Coptic)...";
+  } else if (tab === 'vaults') {
     renderVaults();
+  } else if (tab === 'studio') {
+    initStudio();
+    updateStudioPreview();
   }
 }
 
@@ -1400,5 +2118,54 @@ function escapeHtml(str) {
 // Initial load
 renderFonts();
 </script>
+
+<!-- WebFont CSS CDN Snippet Modal -->
+<div id="cdn-modal" class="modal-backdrop" onclick="if(event.target === this) closeCdnModal()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>⚡ 1-Click WebFont CSS Generator</h3>
+      <button class="modal-close-btn" onclick="closeCdnModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0; margin-bottom: 1.25rem;">
+        Use <strong id="cdn-modal-font-name" style="color: var(--accent);">Font</strong> directly in any website or web application without hosting files manually.
+      </p>
+
+      <!-- Snippet 1: CSS @import -->
+      <div class="code-block-wrap">
+        <div class="code-block-header">
+          <span class="code-block-title">Option 1: CSS @import (Paste at top of your stylesheet)</span>
+          <button class="copy-code-btn" onclick="copySnippet('snippet-import')">📋 Copy</button>
+        </div>
+        <pre class="code-snippet" id="snippet-import"></pre>
+      </div>
+
+      <!-- Snippet 2: Direct @font-face -->
+      <div class="code-block-wrap">
+        <div class="code-block-header">
+          <span class="code-block-title">Option 2: Direct CSS @font-face Rule</span>
+          <button class="copy-code-btn" onclick="copySnippet('snippet-fontface')">📋 Copy</button>
+        </div>
+        <pre class="code-snippet" id="snippet-fontface"></pre>
+      </div>
+
+      <!-- Snippet 3: CSS Class Usage -->
+      <div class="code-block-wrap" style="margin-bottom: 0;">
+        <div class="code-block-header">
+          <span class="code-block-title">Option 3: CSS Class Usage Rule</span>
+          <button class="copy-code-btn" onclick="copySnippet('snippet-usage')">📋 Copy</button>
+        </div>
+        <pre class="code-snippet" id="snippet-usage"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Toast Notification -->
+<div id="toast" class="toast">
+  <span>✓</span>
+  <span id="toast-msg">Copied to clipboard!</span>
+</div>
+
 </body>
 </html>
