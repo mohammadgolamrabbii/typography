@@ -1035,6 +1035,76 @@
     to { transform: translateY(0); opacity: 1; }
   }
 
+
+  /* Accessibility: Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  /* Floating Back to Top Button */
+  .back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: #10b981;
+    color: #0b0f19;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .back-to-top-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: #34d399;
+  }
+  /* Global Preview Text Bar */
+  .global-preview-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+    background: #0b0f19;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.5rem 0.85rem;
+  }
+  .global-preview-input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  .global-preview-input::placeholder {
+    color: #64748b;
+  }
+  .kbd-shortcut {
+    font-size: 0.72rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
 </style>
 </head>
 <body>
@@ -1085,12 +1155,28 @@
 
 <!-- Search & Filtering Area -->
 <div class="search-area">
-  <div class="search-box-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="global-search" class="search-input" 
+  <form role="search" class="search-box-wrap" onsubmit="event.preventDefault(); handleSearch();">
+    <label for="global-search" class="sr-only">Search across 500,337 fonts by name, script, or language</label>
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="global-search" class="search-input" 
+           name="q"
            placeholder="Search any font name across 500,337 fonts (e.g. Kalpurush, Hind Siliguri, SolaimanLipi, Siyam Rupali, Inter, Fira Code, Roboto)..." 
+           aria-label="Search any font name across 500,000 fonts"
+           autocomplete="off"
+           autocapitalize="none"
+           spellcheck="false"
            oninput="handleSearch()">
-    <button id="clear-search-btn" class="clear-btn" onclick="clearSearch()">✕</button>
+    <span class="kbd-shortcut" title="Press / to search" aria-hidden="true">/</span>
+    <button type="button" id="clear-search-btn" class="clear-btn" onclick="clearSearch()" aria-label="Clear search query">✕</button>
+  </form>
+
+  <!-- Global Custom Sample Text Bar -->
+  <div class="global-preview-wrap" title="Change preview sample text across all fonts simultaneously">
+    <span style="font-size: 0.85rem; color: #10b981; font-weight: 700;">✍️ Test Text:</span>
+    <input type="text" id="global-preview-input" class="global-preview-input" 
+           placeholder="Type custom text here to preview across ALL fonts simultaneously (e.g., your brand or company name)..."
+           oninput="handleGlobalPreviewChange(this.value)">
+    <button type="button" class="size-btn" onclick="resetGlobalPreview()" title="Reset to default specimens">Reset</button>
   </div>
 
   <!-- Quick Filter Pills for Font Search -->
@@ -1110,7 +1196,7 @@
   </div>
 
   <div class="search-options-row">
-    <span id="results-count">Showing matching fonts...</span>
+    <span id="results-count" aria-live="polite">Showing matching fonts...</span>
     <button class="deep-toggle-btn" id="deep-search-btn" onclick="triggerDeepSearch()" title="Search all 382,980+ raw fonts across all 100 vaults">
       🌐 Search Entire 500k Archive
     </button>
@@ -2125,6 +2211,53 @@ function showToast(msg) {
 
 
 
+
+// === GLOBAL PREVIEW & KEYBOARD SHORTCUTS UX ===
+let customGlobalSampleText = '';
+
+function handleGlobalPreviewChange(val) {
+  customGlobalSampleText = val.trim();
+  document.querySelectorAll('.specimen-box').forEach(box => {
+    if (customGlobalSampleText) {
+      box.textContent = customGlobalSampleText;
+    } else {
+      const fontName = box.dataset.font;
+      const fontItem = FONT_CATALOG.find(f => f.name === fontName);
+      box.textContent = fontItem ? fontItem.sampleText : 'The quick brown fox jumps over the lazy dog';
+    }
+  });
+}
+
+function resetGlobalPreview() {
+  const inp = document.getElementById('global-preview-input');
+  if (inp) inp.value = '';
+  handleGlobalPreviewChange('');
+}
+
+// Keyboard shortcut: Press '/' to focus search box
+window.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+    const searchInput = document.getElementById('global-search');
+    if (searchInput) {
+      searchInput.focus();
+      searchInput.select();
+    }
+  }
+});
+
+// Back to Top button scroll listener
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  if (window.scrollY > 400) {
+    btn.style.display = 'flex';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+
+
 // Initial load
 renderFonts();
 </script>
@@ -2177,5 +2310,6 @@ renderFonts();
   <span id="toast-msg">Copied to clipboard!</span>
 </div>
 
+<button type="button" id="back-to-top" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top" title="Back to top">↑</button>
 </body>
 </html>
