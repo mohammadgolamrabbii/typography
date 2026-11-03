@@ -5,8 +5,8 @@
   <meta name="google-site-verification" content="LipUqzpXWiU1HXmequ9IXblU1sXef7enON362FBO6D4" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Fonts Download — 500,337+ Free Open-Source Fonts & Bengali Fonts | Open Typography Foundation</title>
-<meta name="description" content="Download 500,337+ free fonts across 100 languages. Search Bengali fonts (Kalpurush, Hind Siliguri, SolaimanLipi), coding fonts (Fira Code), Arabic, and Latin with instant live specimen testing and direct TTF download. Curated by Mohammad Golamrabbii.">
+<title>Free Fonts Download — 500,000+ Open-Source Fonts</title>
+<meta name="description" content="Download 500,000+ free open-source fonts across 100 scripts. Instant live specimen testing, in-browser Vector Logo Studio, and 1-click WebFont CSS CDN.">
 <meta name="keywords" content="free font, free fonts, download free fonts, bengali fonts, bangla font, free bangla font, kalpurush font download, hind siliguri font download, coding fonts, programming fonts, fira code download, open source fonts, 500k fonts, mohammad golamrabbii, open typography foundation">
 <meta name="author" content="Mohammad Golamrabbii">
 <link rel="canonical" href="https://mohammadgolamrabbii.github.io/typography/font_browser.html">
@@ -161,274 +161,6 @@
     }
   ]
 }
-
-// === STUDIO & CDN JAVASCRIPT ENGINE ===
-let studioState = {
-  fontName: 'NotoSansOsage',
-  fontUrl: '',
-  weight: 'normal',
-  italic: false,
-  initialized: false
-};
-
-function initStudio() {
-  if (studioState.initialized) return;
-  const select = document.getElementById('studio-font-select');
-  if (!select) return;
-
-  select.innerHTML = '';
-  FONT_CATALOG.forEach(f => {
-    const opt = document.createElement('option');
-    opt.value = f.name;
-    opt.textContent = `${f.name} (${f.script.split(' ')[0]} - Vault #${f.vaultId})`;
-    opt.dataset.url = f.downloadUrl || '';
-    if (f.name === studioState.fontName) opt.selected = true;
-    select.appendChild(opt);
-  });
-
-  studioState.initialized = true;
-  onStudioFontChange();
-}
-
-function onStudioFontChange() {
-  const select = document.getElementById('studio-font-select');
-  if (!select) return;
-  const selectedOpt = select.options[select.selectedIndex];
-  if (selectedOpt) {
-    studioState.fontName = selectedOpt.value;
-    studioState.fontUrl = selectedOpt.dataset.url || '';
-    document.getElementById('studio-current-font-name').textContent = studioState.fontName;
-    if (studioState.fontUrl) {
-      ensureFontLoaded(studioState.fontName, studioState.fontUrl);
-    }
-  }
-  updateStudioPreview();
-}
-
-function setStudioWeight(w) {
-  studioState.weight = w;
-  document.getElementById('btn-weight-normal').classList.toggle('active', w === 'normal');
-  document.getElementById('btn-weight-bold').classList.toggle('active', w === 'bold');
-  updateStudioPreview();
-}
-
-function toggleStudioItalic() {
-  studioState.italic = !studioState.italic;
-  document.getElementById('btn-weight-italic').classList.toggle('active', studioState.italic);
-  updateStudioPreview();
-}
-
-function openInStudio(fontName, fontUrl) {
-  studioState.fontName = fontName;
-  studioState.fontUrl = fontUrl;
-  switchTab('studio');
-  initStudio();
-  const select = document.getElementById('studio-font-select');
-  if (select) {
-    select.value = fontName;
-    document.getElementById('studio-current-font-name').textContent = fontName;
-  }
-  if (fontUrl) {
-    ensureFontLoaded(fontName, fontUrl);
-  }
-  updateStudioPreview();
-  window.scrollTo({ top: document.getElementById('studio-view').offsetTop - 60, behavior: 'smooth' });
-}
-
-function updateStudioPreview() {
-  const text = document.getElementById('studio-text')?.value || 'OpenTypography';
-  const fontSize = parseInt(document.getElementById('studio-font-size')?.value || '64', 10);
-  const letterSpacing = parseInt(document.getElementById('studio-letter-spacing')?.value || '2', 10);
-  const color1 = document.getElementById('studio-color-1')?.value || '#10b981';
-  const color2 = document.getElementById('studio-color-2')?.value || '#38bdf8';
-  const isGradient = document.getElementById('studio-gradient-toggle')?.checked || false;
-  const angle = parseInt(document.getElementById('studio-gradient-angle')?.value || '45', 10);
-  const isTransparent = document.getElementById('studio-transparent-bg')?.checked || false;
-  const bgColor = document.getElementById('studio-bg-color')?.value || '#0f172a';
-  const padding = parseInt(document.getElementById('studio-padding')?.value || '40', 10);
-
-  // Update UI value labels
-  if (document.getElementById('studio-size-val')) document.getElementById('studio-size-val').textContent = fontSize + 'px';
-  if (document.getElementById('studio-spacing-val')) document.getElementById('studio-spacing-val').textContent = letterSpacing + 'px';
-  if (document.getElementById('studio-angle-val')) document.getElementById('studio-angle-val').textContent = angle + '°';
-  if (document.getElementById('studio-padding-val')) document.getElementById('studio-padding-val').textContent = padding + 'px';
-
-  document.getElementById('studio-gradient-controls').style.display = isGradient ? 'block' : 'none';
-  document.getElementById('studio-bg-color-wrap').style.display = isTransparent ? 'none' : 'flex';
-
-  // Calculate approximate text bounding box
-  const approxCharWidth = fontSize * 0.65 + letterSpacing;
-  const textWidth = Math.max(text.length * approxCharWidth, 100);
-  const textHeight = fontSize * 1.35;
-  const svgWidth = Math.round(textWidth + (padding * 2));
-  const svgHeight = Math.round(textHeight + (padding * 2));
-
-  const svg = document.getElementById('logo-svg-preview');
-  if (!svg) return;
-
-  svg.setAttribute('width', svgWidth);
-  svg.setAttribute('height', svgHeight);
-  svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
-
-  const fillAttr = isGradient ? 'url(#logo-grad)' : color1;
-  const fontStyle = studioState.italic ? 'italic' : 'normal';
-  const fontWeight = studioState.weight;
-
-  let defs = '';
-  if (isGradient) {
-    const rad = (angle * Math.PI) / 180;
-    const x1 = Math.round(50 - Math.cos(rad) * 50) + '%';
-    const y1 = Math.round(50 - Math.sin(rad) * 50) + '%';
-    const x2 = Math.round(50 + Math.cos(rad) * 50) + '%';
-    const y2 = Math.round(50 + Math.sin(rad) * 50) + '%';
-    defs = `<defs>
-      <linearGradient id="logo-grad" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">
-        <stop offset="0%" stop-color="${color1}"/>
-        <stop offset="100%" stop-color="${color2}"/>
-      </linearGradient>
-    </defs>`;
-  }
-
-  const bgRect = isTransparent ? '' : `<rect width="100%" height="100%" fill="${bgColor}" rx="12"/>`;
-  const textX = Math.round(svgWidth / 2);
-  const textY = Math.round((svgHeight / 2) + (fontSize * 0.35));
-
-  svg.innerHTML = `
-    ${defs}
-    ${bgRect}
-    <text x="${textX}" y="${textY}" 
-          text-anchor="middle"
-          fill="${fillAttr}"
-          font-family="'${studioState.fontName}', sans-serif"
-          font-size="${fontSize}px"
-          font-weight="${fontWeight}"
-          font-style="${fontStyle}"
-          letter-spacing="${letterSpacing}px">${escapeHtml(text)}</text>
-  `;
-}
-
-function getSvgMarkup() {
-  const svg = document.getElementById('logo-svg-preview');
-  if (!svg) return '';
-  return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(svg);
-}
-
-function downloadLogoSvg() {
-  const markup = getSvgMarkup();
-  const blob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo.svg`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('Vector .SVG downloaded successfully!');
-}
-
-function downloadLogoPng() {
-  const svg = document.getElementById('logo-svg-preview');
-  if (!svg) return;
-  const markup = new XMLSerializer().serializeToString(svg);
-  const svgBlob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(svgBlob);
-
-  const img = new Image();
-  img.onload = function() {
-    const scale = 3; // 300 DPI high-res scale
-    const canvas = document.createElement('canvas');
-    canvas.width = svg.getAttribute('width') * scale;
-    canvas.height = svg.getAttribute('height') * scale;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(scale, scale);
-    ctx.drawImage(img, 0, 0);
-
-    canvas.toBlob(blob => {
-      const pngUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = pngUrl;
-      const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
-      a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo-300dpi.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(pngUrl);
-      URL.revokeObjectURL(url);
-      showToast('High-Res 300 DPI Transparent .PNG downloaded!');
-    });
-  };
-  img.src = url;
-}
-
-function copySvgCode() {
-  const markup = getSvgMarkup();
-  navigator.clipboard.writeText(markup).then(() => {
-    showToast('SVG Markup copied to clipboard!');
-  }).catch(() => {
-    showToast('Failed to copy');
-  });
-}
-
-function openStudioFontCdn() {
-  openCdnModal(studioState.fontName, studioState.fontUrl);
-}
-
-// === WEBFONT CSS CDN MODAL ENGINE ===
-function openCdnModal(fontName, fontUrl) {
-  const cleanName = fontName.replace(/[^a-zA-Z0-9_-]/g, '');
-  const cdnUrl = fontUrl || `https://raw.githubusercontent.com/Open-Typography-Foundation/100-Sovereign-Fonts-Vaults/main/fonts/${cleanName}.ttf`;
-
-  document.getElementById('cdn-modal-font-name').textContent = fontName;
-
-  // 1. @import
-  const importSnippet = `/* In your CSS file */
-@import url('${cdnUrl}');`;
-  document.getElementById('snippet-import').textContent = importSnippet;
-
-  // 2. @font-face
-  const fontFaceSnippet = `@font-face {
-  font-family: '${fontName}';
-  src: url('${cdnUrl}') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}`;
-  document.getElementById('snippet-fontface').textContent = fontFaceSnippet;
-
-  // 3. Class Usage
-  const usageSnippet = `.custom-typography {
-  font-family: '${fontName}', sans-serif;
-  font-display: swap;
-}`;
-  document.getElementById('snippet-usage').textContent = usageSnippet;
-
-  document.getElementById('cdn-modal').style.display = 'flex';
-}
-
-function closeCdnModal() {
-  document.getElementById('cdn-modal').style.display = 'none';
-}
-
-function copySnippet(elementId) {
-  const text = document.getElementById(elementId).textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    showToast('Code snippet copied to clipboard!');
-  });
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  const msgEl = document.getElementById('toast-msg');
-  if (!toast || !msgEl) return;
-  msgEl.textContent = msg;
-  toast.style.display = 'flex';
-  setTimeout(() => {
-    toast.style.display = 'none';
-  }, 2800);
-}
-
 </script>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>"><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
@@ -1313,6 +1045,7 @@ function showToast(msg) {
 
 <header>
   <h1>🏛️ Open Typography Foundation</h1>
+  <h2 class="seo-h2-sub" style="font-size: 1.1rem; color: #10b981; font-weight: 600; margin-top: 0.35rem; margin-bottom: 0.75rem;">Free Fonts Download — 500,337+ Verified Multilingual Open-Source Typefaces</h2>
   <div class="subtitle">
     Curated & Architected by <strong>Mohammad Golamrabbii</strong> • 100% Free Public Digital Heritage
   </div>
@@ -1598,6 +1331,14 @@ function showToast(msg) {
 </section>
 
 <footer>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1rem; font-size: 0.85rem;">
+    <a href="https://github.com/Open-Typography-Foundation/100-Sovereign-Fonts-Vaults/blob/main/LICENSE" target="_blank" rel="noopener">⚖️ Open Font Licenses (SIL OFL)</a> •
+    <a href="https://github.com/Open-Typography-Foundation" target="_blank" rel="noopener">🏛️ GitHub Organization</a> •
+    <a href="https://www.producthunt.com/products/open-typography-foundation" target="_blank" rel="noopener">🚀 Product Hunt Launch</a> •
+    <a href="https://archive.org/details/open-typography-foundation" target="_blank" rel="noopener">💾 Archive.org Public Backup</a> •
+    <a href="https://opensourcefont.hashnode.dev" target="_blank" rel="noopener">📰 Engineering Blog</a> •
+    <a href="https://github.com/mohammadgolamrabbii" target="_blank" rel="noopener">👤 Curator: Mohammad Golamrabbii</a>
+  </div>
   <p><strong>Open Typography Foundation</strong> — Curated by <a href="https://github.com/mohammadgolamrabbii" target="_blank">Mohammad Golamrabbii</a></p>
   <p style="margin-top: 0.5rem; font-size: 0.8rem;">
     Permanent Digital Heritage Archive: <a href="https://archive.org/details/open-typography-foundation" target="_blank">Archive.org Hub</a> • 
@@ -2114,6 +1855,275 @@ function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
+
+// === STUDIO & CDN JAVASCRIPT ENGINE ===
+let studioState = {
+  fontName: 'NotoSansOsage',
+  fontUrl: '',
+  weight: 'normal',
+  italic: false,
+  initialized: false
+};
+
+function initStudio() {
+  if (studioState.initialized) return;
+  const select = document.getElementById('studio-font-select');
+  if (!select) return;
+
+  select.innerHTML = '';
+  FONT_CATALOG.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f.name;
+    opt.textContent = `${f.name} (${f.script.split(' ')[0]} - Vault #${f.vaultId})`;
+    opt.dataset.url = f.downloadUrl || '';
+    if (f.name === studioState.fontName) opt.selected = true;
+    select.appendChild(opt);
+  });
+
+  studioState.initialized = true;
+  onStudioFontChange();
+}
+
+function onStudioFontChange() {
+  const select = document.getElementById('studio-font-select');
+  if (!select) return;
+  const selectedOpt = select.options[select.selectedIndex];
+  if (selectedOpt) {
+    studioState.fontName = selectedOpt.value;
+    studioState.fontUrl = selectedOpt.dataset.url || '';
+    document.getElementById('studio-current-font-name').textContent = studioState.fontName;
+    if (studioState.fontUrl) {
+      ensureFontLoaded(studioState.fontName, studioState.fontUrl);
+    }
+  }
+  updateStudioPreview();
+}
+
+function setStudioWeight(w) {
+  studioState.weight = w;
+  document.getElementById('btn-weight-normal').classList.toggle('active', w === 'normal');
+  document.getElementById('btn-weight-bold').classList.toggle('active', w === 'bold');
+  updateStudioPreview();
+}
+
+function toggleStudioItalic() {
+  studioState.italic = !studioState.italic;
+  document.getElementById('btn-weight-italic').classList.toggle('active', studioState.italic);
+  updateStudioPreview();
+}
+
+function openInStudio(fontName, fontUrl) {
+  studioState.fontName = fontName;
+  studioState.fontUrl = fontUrl;
+  switchTab('studio');
+  initStudio();
+  const select = document.getElementById('studio-font-select');
+  if (select) {
+    select.value = fontName;
+    document.getElementById('studio-current-font-name').textContent = fontName;
+  }
+  if (fontUrl) {
+    ensureFontLoaded(fontName, fontUrl);
+  }
+  updateStudioPreview();
+  window.scrollTo({ top: document.getElementById('studio-view').offsetTop - 60, behavior: 'smooth' });
+}
+
+function updateStudioPreview() {
+  const text = document.getElementById('studio-text')?.value || 'OpenTypography';
+  const fontSize = parseInt(document.getElementById('studio-font-size')?.value || '64', 10);
+  const letterSpacing = parseInt(document.getElementById('studio-letter-spacing')?.value || '2', 10);
+  const color1 = document.getElementById('studio-color-1')?.value || '#10b981';
+  const color2 = document.getElementById('studio-color-2')?.value || '#38bdf8';
+  const isGradient = document.getElementById('studio-gradient-toggle')?.checked || false;
+  const angle = parseInt(document.getElementById('studio-gradient-angle')?.value || '45', 10);
+  const isTransparent = document.getElementById('studio-transparent-bg')?.checked || false;
+  const bgColor = document.getElementById('studio-bg-color')?.value || '#0f172a';
+  const padding = parseInt(document.getElementById('studio-padding')?.value || '40', 10);
+
+  // Update UI value labels
+  if (document.getElementById('studio-size-val')) document.getElementById('studio-size-val').textContent = fontSize + 'px';
+  if (document.getElementById('studio-spacing-val')) document.getElementById('studio-spacing-val').textContent = letterSpacing + 'px';
+  if (document.getElementById('studio-angle-val')) document.getElementById('studio-angle-val').textContent = angle + '°';
+  if (document.getElementById('studio-padding-val')) document.getElementById('studio-padding-val').textContent = padding + 'px';
+
+  document.getElementById('studio-gradient-controls').style.display = isGradient ? 'block' : 'none';
+  document.getElementById('studio-bg-color-wrap').style.display = isTransparent ? 'none' : 'flex';
+
+  // Calculate approximate text bounding box
+  const approxCharWidth = fontSize * 0.65 + letterSpacing;
+  const textWidth = Math.max(text.length * approxCharWidth, 100);
+  const textHeight = fontSize * 1.35;
+  const svgWidth = Math.round(textWidth + (padding * 2));
+  const svgHeight = Math.round(textHeight + (padding * 2));
+
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return;
+
+  svg.setAttribute('width', svgWidth);
+  svg.setAttribute('height', svgHeight);
+  svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+
+  const fillAttr = isGradient ? 'url(#logo-grad)' : color1;
+  const fontStyle = studioState.italic ? 'italic' : 'normal';
+  const fontWeight = studioState.weight;
+
+  let defs = '';
+  if (isGradient) {
+    const rad = (angle * Math.PI) / 180;
+    const x1 = Math.round(50 - Math.cos(rad) * 50) + '%';
+    const y1 = Math.round(50 - Math.sin(rad) * 50) + '%';
+    const x2 = Math.round(50 + Math.cos(rad) * 50) + '%';
+    const y2 = Math.round(50 + Math.sin(rad) * 50) + '%';
+    defs = `<defs>
+      <linearGradient id="logo-grad" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">
+        <stop offset="0%" stop-color="${color1}"/>
+        <stop offset="100%" stop-color="${color2}"/>
+      </linearGradient>
+    </defs>`;
+  }
+
+  const bgRect = isTransparent ? '' : `<rect width="100%" height="100%" fill="${bgColor}" rx="12"/>`;
+  const textX = Math.round(svgWidth / 2);
+  const textY = Math.round((svgHeight / 2) + (fontSize * 0.35));
+
+  svg.innerHTML = `
+    ${defs}
+    ${bgRect}
+    <text x="${textX}" y="${textY}" 
+          text-anchor="middle"
+          fill="${fillAttr}"
+          font-family="'${studioState.fontName}', sans-serif"
+          font-size="${fontSize}px"
+          font-weight="${fontWeight}"
+          font-style="${fontStyle}"
+          letter-spacing="${letterSpacing}px">${escapeHtml(text)}</text>
+  `;
+}
+
+function getSvgMarkup() {
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return '';
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(svg);
+}
+
+function downloadLogoSvg() {
+  const markup = getSvgMarkup();
+  const blob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo.svg`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Vector .SVG downloaded successfully!');
+}
+
+function downloadLogoPng() {
+  const svg = document.getElementById('logo-svg-preview');
+  if (!svg) return;
+  const markup = new XMLSerializer().serializeToString(svg);
+  const svgBlob = new Blob([markup], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(svgBlob);
+
+  const img = new Image();
+  img.onload = function() {
+    const scale = 3; // 300 DPI high-res scale
+    const canvas = document.createElement('canvas');
+    canvas.width = svg.getAttribute('width') * scale;
+    canvas.height = svg.getAttribute('height') * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, 0, 0);
+
+    canvas.toBlob(blob => {
+      const pngUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = pngUrl;
+      const textClean = (document.getElementById('studio-text')?.value || 'logo').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      a.download = `${textClean}-${studioState.fontName.toLowerCase()}-logo-300dpi.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(pngUrl);
+      URL.revokeObjectURL(url);
+      showToast('High-Res 300 DPI Transparent .PNG downloaded!');
+    });
+  };
+  img.src = url;
+}
+
+function copySvgCode() {
+  const markup = getSvgMarkup();
+  navigator.clipboard.writeText(markup).then(() => {
+    showToast('SVG Markup copied to clipboard!');
+  }).catch(() => {
+    showToast('Failed to copy');
+  });
+}
+
+function openStudioFontCdn() {
+  openCdnModal(studioState.fontName, studioState.fontUrl);
+}
+
+// === WEBFONT CSS CDN MODAL ENGINE ===
+function openCdnModal(fontName, fontUrl) {
+  const cleanName = fontName.replace(/[^a-zA-Z0-9_-]/g, '');
+  const cdnUrl = fontUrl || `https://raw.githubusercontent.com/Open-Typography-Foundation/100-Sovereign-Fonts-Vaults/main/fonts/${cleanName}.ttf`;
+
+  document.getElementById('cdn-modal-font-name').textContent = fontName;
+
+  // 1. @import
+  const importSnippet = `/* In your CSS file */
+@import url('${cdnUrl}');`;
+  document.getElementById('snippet-import').textContent = importSnippet;
+
+  // 2. @font-face
+  const fontFaceSnippet = `@font-face {
+  font-family: '${fontName}';
+  src: url('${cdnUrl}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}`;
+  document.getElementById('snippet-fontface').textContent = fontFaceSnippet;
+
+  // 3. Class Usage
+  const usageSnippet = `.custom-typography {
+  font-family: '${fontName}', sans-serif;
+  font-display: swap;
+}`;
+  document.getElementById('snippet-usage').textContent = usageSnippet;
+
+  document.getElementById('cdn-modal').style.display = 'flex';
+}
+
+function closeCdnModal() {
+  document.getElementById('cdn-modal').style.display = 'none';
+}
+
+function copySnippet(elementId) {
+  const text = document.getElementById(elementId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Code snippet copied to clipboard!');
+  });
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const msgEl = document.getElementById('toast-msg');
+  if (!toast || !msgEl) return;
+  msgEl.textContent = msg;
+  toast.style.display = 'flex';
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 2800);
+}
+
+
 
 // Initial load
 renderFonts();
