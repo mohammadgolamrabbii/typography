@@ -1699,6 +1699,13 @@ window.loadMoreFonts = function() {
 };
 
 // Render Font Cards with Direct Single Font Download & Specimen Preview
+
+  function checkRtlDirection(text, script) {
+    const isRtl = /[؀-ۿݐ-ݿ֐-׿ﭐ-﷿ﹰ-﻿]/.test(text) || 
+                  ['arabic', 'urdu', 'hebrew', 'persian', '3_Arabic_Islamic', '19_Persian_Urdu_Nastaliq', '20_Hebrew_Ivrit_Judaic'].includes(script);
+    return isRtl ? 'rtl' : 'ltr';
+  }
+
 function renderFonts() {
   const queryRaw = document.getElementById('global-search').value.toLowerCase().trim();
   const queryNorm = norm(queryRaw);
@@ -2200,7 +2207,15 @@ function openCdnModal(fontName, fontUrl) {
   document.getElementById('cdn-modal').style.display = 'flex';
 }
 
-function closeCdnModal() {
+
+  // WCAG Keyboard Escape Listener
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      if (typeof closeCdnModal === 'function') closeCdnModal();
+    }
+  });
+
+  function closeCdnModal() {
   document.getElementById('cdn-modal').style.display = 'none';
 }
 

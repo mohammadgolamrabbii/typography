@@ -1,11 +1,13 @@
 // Open Typography Foundation — Service Worker
 // Enables Offline Caching and Progressive Web App Installation (PWA)
-const CACHE_NAME = 'opentypography-cache-v1';
+const CACHE_NAME = 'opentypography-cache-v2';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
+  './font_browser.html',
   './manifest.json',
-  './icon-512.svg'
+  './icon-512.svg',
+  './DMCA.md'
 ];
 
 self.addEventListener('install', (event) => {
@@ -18,22 +20,19 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
       );
     }).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
+  // Network first with cache fallback
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request).catch(() => caches.match('./index.html'));
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
     })
   );
 });

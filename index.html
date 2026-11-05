@@ -234,9 +234,9 @@
         <div>
           <h1 class="font-black text-xl text-white tracking-tight flex items-center gap-2">
             Open Typography Hub
-            <span class="text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v3.5 Ultra</span>
+            <span class="text-[10px] tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30">Official Sovereign Archive</span>
           </h1>
-          <p class="text-xs text-slate-400 font-medium">100,000+ Verified Open Typefaces Across 100 Global Sovereign Mega-Vaults • Curated by Mohammad Golamrabbii</p>
+          <p class="text-xs text-slate-400 font-medium">500,337+ Verified Open Typefaces Across 100 Global Sovereign Mega-Vaults • Curated by Mohammad Golamrabbii</p>
         </div>
       </div>
 
@@ -276,11 +276,11 @@
               <span>🏛️</span> INTERNET ARCHIVE & GITHUB OFFICIAL MIRRORS
             </span>
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              Zero Rate-Limits
+              Distributed Mirrors
             </span>
           </div>
           <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
-            Full Archive Downloads (Zero Rate-Limits)
+            Full Archive Downloads (High-Speed Distributed Public Mirrors)
           </h2>
           <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl">
             Permanent high-speed direct HTTP, BitTorrent, and Git mirrors for all <strong>500,337+</strong> verified open-source typefaces across 100 sovereign script vaults. Preserved for posterity by <strong class="text-amber-400 font-semibold">Mohammad Golamrabbii</strong>.
@@ -1120,7 +1120,7 @@
           <span>📚</span> Typography Specimens Grid
         </h3>
         <span id="specimenCountBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-mono font-semibold border border-emerald-500/20">
-          Showing 25 of 25 specimens
+          Showing 27 of 27 specimens
         </span>
       </div>
       <p class="text-xs text-slate-400">Click any card to inspect or test in the preview canvas.</p>
@@ -1578,7 +1578,7 @@
       malay: "Sumpah Pemuda: Satu Nusa, Satu Bangsa, Satu Bahasa. Burung kutilang berkicau riang menari-nari di atas dahan permata nusantara.",
       thai: "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน จงฝ่าฟันพัฒนาวิชาการ อย่าล้างผลาญฤๅเข่นฆ่าบีฑาใคร",
       vietnamese: "Tôi yêu tiếng nước tôi từ khi mới ra đời, người ơi. Việt Nam quê hương ta đẹp lắm, rừng vàng biển bạc đất phì nhiêu.",
-      chinese: "天地玄黄，宇宙洪荒。日月盈昃，辰宿列张。寒来暑往，秋收冬藏。",
+      chinese: "视野所及，每个人的生活都值得被记录。天地玄黄，宇宙洪荒。(Modern Hanzi Specimen)",
       korean: "다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.",
       bengali: "আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।",
       japanese: "色は匂へど 散りぬるを 我が世誰ぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず",
@@ -1661,6 +1661,28 @@
     let currentPlatform = 'linux';
 
     // Installer Security Mode Logic
+    
+    // Hero Search Handler
+    function handleHeroSearch(e) {
+      e.preventDefault();
+      const q = (document.getElementById('heroSearchInput')?.value || '').trim();
+      window.location.href = 'font_browser.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+    }
+
+    // Global Toast Notification
+    function showToast(msg) {
+      let toast = document.getElementById('global-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'global-toast';
+        toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 22px;border-radius:9999px;font-size:13px;font-weight:bold;z-index:9999;box-shadow:0 10px 25px rgba(0,0,0,0.5);transition:opacity 0.3s;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+    }
+
     let currentInstallerMode = 'express';
 
     function setInstallerMode(mode) {
