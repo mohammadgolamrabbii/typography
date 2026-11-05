@@ -2,11 +2,12 @@
 #  🛡️ Universal Font Installer — Open Typography Foundation
 #  Curated by Mohammad Golamrabbii | 500,337+ Sovereign Fonts
 #  Usage (Express): irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex
-#  Usage (Secure):  Invoke-WebRequest ...; Get-FileHash ...; .\install.ps1
+#  Usage (Script):  & ([scriptblock]::Create((irm https://mohammadgolamrabbii.github.io/typography/install.ps1))) -TargetScript english
 # ============================================================
 
 param(
     [string]$InstallDir = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts",
+    [Alias("Language", "Script")]
     [string]$TargetScript = "all",
     [switch]$SystemWide,
     [switch]$Force,
@@ -26,11 +27,12 @@ Write-Host "║  Curated by Mohammad Golamrabbii | Free & Open-Source (SIL OFL) 
 Write-Host "╚══════════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
 
+$TargetScript = $TargetScript.ToLower()
 Write-Host "→ Installation Target : $InstallDir" -ForegroundColor Yellow
-Write-Host "→ Target Vault Filter : $TargetScript" -ForegroundColor Yellow
+Write-Host "→ Target Script Vault : $TargetScript" -ForegroundColor Yellow
 Write-Host "→ System Privileges   : $(if ($SystemWide) { 'System-Wide (Administrator)' } else { 'User-Space (No Admin Required)' })" -ForegroundColor Yellow
 
-# Interactive Confirmation Prompt (Security Guard against accidental runs)
+# Interactive Confirmation Prompt
 $isInteractive = [Environment]::UserInteractive -and (-not $Force) -and (-not $Yes) -and (-not $NonInteractive)
 if ($isInteractive) {
     Write-Host ""
@@ -62,15 +64,29 @@ public class FontManager {
 }
 "@ -ErrorAction SilentlyContinue
 
-$RepoBase = "https://github.com/Open-Typography-Foundation"
-$vaults = @(
-    "1_Bengali Fonts", "2_English_Latin", "3_Arabic_Islamic", "7_Hindi_Devanagari",
-    "8_German_Deutsche_Schriften", "9_Japanese_Nihongo", "10_Cyrillic_Slavic",
-    "11_Korean_Hangul", "12_Chinese_Hanzi", "16_Developer_Coding_Monospace"
-)
+$RepoMap = @{
+    "bengali"   = "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
+    "english"   = "https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
+    "arabic"    = "https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
+    "hindi"     = "https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
+    "german"    = "https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
+    "japanese"  = "https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive.git"
+    "cyrillic"  = "https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive.git"
+    "korean"    = "https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git"
+    "chinese"   = "https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+    "dev"       = "https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive.git"
+    "icons"     = "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
+}
+
+$targetUrls = @()
+if ($TargetScript -ne "all" -and $RepoMap.ContainsKey($TargetScript)) {
+    $targetUrls += $RepoMap[$TargetScript]
+} else {
+    foreach ($val in $RepoMap.Values) { $targetUrls += $val }
+}
 
 Write-Host ""
-Write-Host "→ Connecting to Open Typography Foundation vaults..." -ForegroundColor Cyan
+Write-Host "→ Connecting to verified open-source typography vaults..." -ForegroundColor Cyan
 
 $tempExtract = "$env:TEMP\OpenTypography_Install"
 New-Item -ItemType Directory -Force -Path $tempExtract | Out-Null
@@ -79,11 +95,12 @@ $installed = 0
 $regPath = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
 if ($SystemWide) { $regPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" }
 
-foreach ($vault in $vaults) {
-    Write-Host "  → Synchronizing $vault ..." -ForegroundColor DarkGray
-    $dest = Join-Path $tempExtract $vault
+foreach ($url in $targetUrls) {
+    $vaultName = [System.IO.Path]::GetFileNameWithoutExtension($url)
+    Write-Host "  → Synchronizing $vaultName ..." -ForegroundColor DarkGray
+    $dest = Join-Path $tempExtract $vaultName
     if (-not (Test-Path $dest)) {
-        & git clone --depth=1 "$RepoBase/$vault" $dest 2>$null
+        & git clone --depth=1 "$url" $dest 2>$null
     }
     
     $fonts = Get-ChildItem -Path $dest -Recurse -Include "*.ttf", "*.otf" -ErrorAction SilentlyContinue

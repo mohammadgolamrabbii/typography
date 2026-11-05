@@ -249,14 +249,14 @@
 
       <!-- Quick Platform Links (Responsive Horizontal Swiper on Mobile, Inline on Desktop) -->
       <div class="flex items-center gap-2 text-xs font-semibold overflow-x-auto no-scrollbar py-1 w-full lg:w-auto shrink-0">
+        <a href="#terminal-section" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
+          <span>💻</span><span>Terminal Fast-Install</span>
+        </a>
         <a href="#tester-studio" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
           <span>🎨</span><span>Live Font Tester</span>
         </a>
         <a href="#downloads-section" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center space-x-1.5 shadow-md">
           <span>⚡</span><span>Archive Downloads</span>
-        </a>
-        <a href="#terminal-section" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
-          <span>💻</span><span>Terminal Fast-Install</span>
         </a>
         <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
           <span>🏛️</span><span>Archive.org</span>
@@ -271,7 +271,88 @@
     </div>
   </header>
 
-  <!-- ==================== 1. LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER ==================== -->
+  <!-- ==================== 1. UNIVERSAL 1-CLICK TERMINAL FAST-INSTALL BAR ==================== -->
+  <section id="terminal-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+      
+      <!-- Top Title and Badges -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+              💻 DEVELOPER & FAST-USER TOOLKIT
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              Direct Auto-Install to OS
+            </span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
+            Universal Terminal Installer Bar
+          </h3>
+          <!-- Security Mode Selector -->
+          <div class="inline-flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs mt-2">
+            <button id="modeExpressBtn" onclick="setInstallerMode('express')" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold transition flex items-center gap-1 cursor-pointer">
+              <span>⚡</span> Express 1-Liner
+            </button>
+            <button id="modeSecureBtn" onclick="setInstallerMode('secure')" class="px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer">
+              <span>🛡️</span> Verified Secure (Audit &amp; SHA-256)
+            </button>
+          </div>
+          <p class="text-xs text-slate-300 mt-0.5">
+            Download and install entire vaults directly into your OS font directory (<code>/usr/share/fonts</code> or <code>%LOCALAPPDATA%\Microsoft\Windows\Fonts</code>).
+          </p>
+        </div>
+
+        <!-- Platform Tabs (Responsive labels for mobile screens) -->
+        <div class="flex items-center gap-1 sm:gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs font-semibold w-full sm:w-auto justify-between sm:justify-start">
+          <button id="tabLinux" onclick="setTerminalPlatform('linux')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg bg-indigo-600 text-white shadow font-bold transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>🐧</span><span class="hidden sm:inline">Linux / macOS</span><span class="sm:hidden">Linux</span>
+          </button>
+          <button id="tabWindows" onclick="setTerminalPlatform('windows')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>🪟</span><span class="hidden sm:inline">Windows</span><span class="sm:hidden">Windows</span>
+          </button>
+          <button id="tabGit" onclick="setTerminalPlatform('git')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
+            <span>📦</span><span class="hidden sm:inline">Git Clone</span><span class="sm:hidden">Git</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Script Select Chips -->
+      <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 text-xs font-medium no-scrollbar">
+        <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Fast Select:</span>
+        <button onclick="setScriptTarget('all')" class="script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition">All 500k+ Fonts</button>
+        <button onclick="setScriptTarget('bengali')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇧🇩 Bengali (5k)</button>
+        <button onclick="setScriptTarget('chinese')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇨🇳 Chinese (1.3k)</button>
+        <button onclick="setScriptTarget('korean')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇰🇷 Korean (1.8k)</button>
+        <button onclick="setScriptTarget('japanese')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇯🇵 Japanese (1.5k)</button>
+        <button onclick="setScriptTarget('cyrillic')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇷🇺 Cyrillic (10k)</button>
+        <button onclick="setScriptTarget('hindi')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇮🇳 Hindi (6.5k)</button>
+        <button onclick="setScriptTarget('german')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇩🇪 German (5.5k)</button>
+        <button onclick="setScriptTarget('arabic')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🕌 Arabic (13k)</button>
+        <button onclick="setScriptTarget('english')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇬🇧 English (30k)</button>
+      </div>
+
+      <!-- Command Snippet Bar with Copy Button (Responsive Stacking for small phones) -->
+      <div class="relative mt-1">
+        <div class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 sm:px-4 sm:py-3 font-mono text-xs text-indigo-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 shadow-inner">
+          <div class="overflow-x-auto no-scrollbar py-1 flex-1">
+            <code id="terminalCommandCode" class="select-all whitespace-nowrap text-[11px] sm:text-xs">curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash</code>
+          </div>
+          <button 
+            id="copyTerminalBtn"
+            onclick="copyTerminalCommand()"
+            class="w-full sm:w-auto px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold text-xs transition flex items-center justify-center gap-1.5 shadow whitespace-nowrap shrink-0 cursor-pointer"
+          >
+            <span id="copyTerminalIcon">📋</span>
+            <span id="copyTerminalText">Copy Command</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 2. LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER ==================== -->
   <main id="tester-studio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     
     <!-- Section Title -->
@@ -679,7 +760,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Hangul Sans • Modern UI</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (1,863+)</span> →
           </a>
         </div>
@@ -701,7 +782,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Hangul Myeongjo • Editorial</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (1,863+)</span> →
           </a>
         </div>
@@ -723,7 +804,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Display Heavy • Media Titles</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (1,863+)</span> →
           </a>
         </div>
@@ -745,7 +826,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Gulim / Rounded • Casual UI</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (1,863+)</span> →
           </a>
         </div>
@@ -811,7 +892,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Slavic Universal • Modern UI</span>
-          <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (10,136+)</span> →
           </a>
         </div>
@@ -833,7 +914,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Devanagari • Vedic + Modern UI</span>
-          <a href="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (6,519+)</span> →
           </a>
         </div>
@@ -855,7 +936,7 @@
         </div>
         <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
           <span class="font-mono text-[11px]">Gothic Blackletter • Historical</span>
-          <a href="https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <a href="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
             <span>Vault (5,504+)</span> →
           </a>
         </div>
@@ -865,7 +946,7 @@
 
   </main>
 
-  <!-- ==================== 2. FULL ARCHIVE DOWNLOADS (INTERNET ARCHIVE & GITHUB MIRRORS) ==================== -->
+  <!-- ==================== 3. FULL ARCHIVE DOWNLOADS (INTERNET ARCHIVE & GITHUB MIRRORS) ==================== -->
   <section id="downloads-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
     <div class="glass-card border border-amber-500/30 rounded-2xl p-5 sm:p-7 shadow-2xl relative">
       
@@ -1280,7 +1361,7 @@
               <p class="text-xs text-slate-400 mt-1 line-clamp-2">Complete 8-category historical and modern Slavic typography vault (Old Slavonic, Soviet, Modern UI).</p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+              <a href="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
                 <span>GitHub Main</span> →
               </a>
               <button onclick="quickFilterScript('cyrillic')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
@@ -1340,7 +1421,7 @@
               <p class="text-xs text-slate-400 mt-1 line-clamp-2">1,863 verified production OpenType fonts (Pretendard, Spoqa, Maru Buri, D2Coding, KCC Heritage, Webtoon, Cyberpunk Pixel).</p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+              <a href="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive" target="_blank" class="font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
                 <span>GitHub Vault</span> →
               </a>
               <button onclick="quickFilterScript('korean')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
@@ -1420,7 +1501,7 @@
               <p class="text-xs text-slate-400 mt-1 line-clamp-2">6,519 verified typefaces (KrutiDev, DevLys, CDAC, Vedic Sanskrit, Modern Unicode, and companion Oblique).</p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <a href="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+              <a href="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
                 <span>GitHub Vault</span> →
               </a>
               <button onclick="quickFilterScript('hindi')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
@@ -1440,7 +1521,7 @@
               <p class="text-xs text-slate-400 mt-1 line-clamp-2">5,504 verified typefaces (Historical Blackletter, Schwabacher, Textura, DIN Industrial, Bauhaus, Schrägfraktur).</p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <a href="https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+              <a href="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive" target="_blank" class="font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
                 <span>GitHub Vault</span> →
               </a>
               <button onclick="quickFilterScript('german')" class="text-slate-400 hover:text-emerald-400 font-medium transition flex items-center gap-1">
@@ -1471,87 +1552,6 @@
 
         </div>
 
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 3. UNIVERSAL 1-CLICK TERMINAL FAST-INSTALL BAR ==================== -->
-  <section id="terminal-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-    <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
-      
-      <!-- Top Title and Badges -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-        <div>
-          <div class="flex items-center gap-2 mb-1 flex-wrap">
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              💻 DEVELOPER & FAST-USER TOOLKIT
-            </span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              Direct Auto-Install to OS
-            </span>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-            Universal Terminal Installer Bar
-          </h3>
-          <!-- Security Mode Selector -->
-          <div class="inline-flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs mt-2">
-            <button id="modeExpressBtn" onclick="setInstallerMode('express')" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold transition flex items-center gap-1 cursor-pointer">
-              <span>⚡</span> Express 1-Liner
-            </button>
-            <button id="modeSecureBtn" onclick="setInstallerMode('secure')" class="px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer">
-              <span>🛡️</span> Verified Secure (Audit &amp; SHA-256)
-            </button>
-          </div>
-          <p class="text-xs text-slate-300 mt-0.5">
-            Download and install entire vaults directly into your OS font directory (<code>/usr/share/fonts</code> or <code>%LOCALAPPDATA%\Microsoft\Windows\Fonts</code>).
-          </p>
-        </div>
-
-        <!-- Platform Tabs (Responsive labels for mobile screens) -->
-        <div class="flex items-center gap-1 sm:gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs font-semibold w-full sm:w-auto justify-between sm:justify-start">
-          <button id="tabLinux" onclick="setTerminalPlatform('linux')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg bg-indigo-600 text-white shadow font-bold transition flex items-center justify-center gap-1 sm:gap-1.5">
-            <span>🐧</span><span class="hidden sm:inline">Linux / macOS</span><span class="sm:hidden">Linux</span>
-          </button>
-          <button id="tabWindows" onclick="setTerminalPlatform('windows')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
-            <span>🪟</span><span class="hidden sm:inline">Windows</span><span class="sm:hidden">Windows</span>
-          </button>
-          <button id="tabGit" onclick="setTerminalPlatform('git')" class="platform-tab flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center gap-1 sm:gap-1.5">
-            <span>📦</span><span class="hidden sm:inline">Git Clone</span><span class="sm:hidden">Git</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Script Select Chips -->
-      <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 text-xs font-medium no-scrollbar">
-        <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Fast Select:</span>
-        <button onclick="setScriptTarget('all')" class="script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition">All 500k+ Fonts</button>
-        <button onclick="setScriptTarget('bengali')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇧🇩 Bengali (5k)</button>
-        <button onclick="setScriptTarget('chinese')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇨🇳 Chinese (1.3k)</button>
-        <button onclick="setScriptTarget('korean')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇰🇷 Korean (1.8k)</button>
-        <button onclick="setScriptTarget('japanese')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇯🇵 Japanese (1.5k)</button>
-        <button onclick="setScriptTarget('cyrillic')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇷🇺 Cyrillic (10k)</button>
-        <button onclick="setScriptTarget('hindi')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇮🇳 Hindi (6.5k)</button>
-        <button onclick="setScriptTarget('german')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇩🇪 German (5.5k)</button>
-        <button onclick="setScriptTarget('arabic')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🕌 Arabic (13k)</button>
-        <button onclick="setScriptTarget('english')" class="script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇬🇧 English (30k)</button>
-      </div>
-
-      <!-- Command Snippet Bar with Copy Button (Responsive Stacking for small phones) -->
-      <div class="relative mt-1">
-        <div class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 sm:px-4 sm:py-3 font-mono text-xs text-indigo-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 shadow-inner">
-          <div class="overflow-x-auto no-scrollbar py-1 flex-1">
-            <code id="terminalCommandCode" class="select-all whitespace-nowrap text-[11px] sm:text-xs">curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash</code>
-          </div>
-          <button 
-            id="copyTerminalBtn"
-            onclick="copyTerminalCommand()"
-            class="w-full sm:w-auto px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold text-xs transition flex items-center justify-center gap-1.5 shadow whitespace-nowrap shrink-0 cursor-pointer"
-          >
-            <span id="copyTerminalIcon">📋</span>
-            <span id="copyTerminalText">Copy Command</span>
-          </button>
-        </div>
       </div>
 
     </div>
@@ -1703,7 +1703,7 @@
         secureBtn.className = "px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold transition flex items-center gap-1 cursor-pointer shadow";
         expressBtn.className = "px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer";
       }
-      updateTerminalCode();
+      updateTerminalCommand();
     }
 
     function loadBijoySample() {
@@ -1822,7 +1822,7 @@
     });
 
     // Terminal fast-install logic
-    function setTerminalPlatform(plat) {
+        function setTerminalPlatform(plat) {
       currentPlatform = plat;
       document.querySelectorAll('.platform-tab').forEach(t => {
         t.className = "platform-tab px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1.5";
@@ -1833,29 +1833,43 @@
       updateTerminalCommand();
     }
 
-    function setScriptTarget(target) {
+    function setScriptTarget(target, el) {
       currentTargetScript = target;
       document.querySelectorAll('.script-chip').forEach(c => {
         c.className = "script-chip px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition";
       });
-      event.target.className = "script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition";
+      if (el) {
+        el.className = "script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition";
+      } else if (typeof event !== 'undefined' && event && event.target) {
+        event.target.className = "script-chip px-2.5 py-1 rounded-lg bg-indigo-500 text-white font-bold shadow transition";
+      }
       updateTerminalCommand();
     }
 
     function updateTerminalCommand() {
       let cmd = "";
+      const shHash = "ff9cdedcb9364781bed26608da67c7becccd15feec6afb6363a0949da5dcfebb";
+      const psHash = "D49F88A38854CE66F89FAEE3C2D027B01DBC777C07F3BC9E161140AA11CC6CAF";
+
       if (currentPlatform === 'linux') {
-        if (currentTargetScript === 'all') {
-          cmd = "curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash";
+        if (currentInstallerMode === 'secure') {
+          cmd = `curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh -o install.sh && echo "${shHash}  install.sh" | sha256sum -c - && bash install.sh${currentTargetScript !== 'all' ? ' -s ' + currentTargetScript : ''}`;
         } else {
-          cmd = `curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash -s -- --script ${currentTargetScript}`;
+          if (currentTargetScript === 'all') {
+            cmd = "curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash";
+          } else {
+            cmd = `curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash -s -- --script ${currentTargetScript}`;
+          }
         }
       } else if (currentPlatform === 'windows') {
-        if (currentTargetScript === 'all') {
-          cmd = "irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex";
+        if (currentInstallerMode === 'secure') {
+          cmd = `Invoke-WebRequest -Uri "https://mohammadgolamrabbii.github.io/typography/install.ps1" -OutFile install.ps1; if ((Get-FileHash .\install.ps1 -Algorithm SHA256).Hash -eq '${psHash}') { .\install.ps1${currentTargetScript !== 'all' ? ' -TargetScript ' + currentTargetScript : ''} } else { Write-Error 'Checksum verification failed!' }`;
         } else {
-          const cap = currentTargetScript.charAt(0).toUpperCase() + currentTargetScript.slice(1);
-          cmd = `& ([scriptblock]::Create((irm https://mohammadgolamrabbii.github.io/typography/install.ps1))) -Language ${cap}`;
+          if (currentTargetScript === 'all') {
+            cmd = "irm https://mohammadgolamrabbii.github.io/typography/install.ps1 | iex";
+          } else {
+            cmd = `& ([scriptblock]::Create((irm https://mohammadgolamrabbii.github.io/typography/install.ps1))) -TargetScript ${currentTargetScript}`;
+          }
         }
       } else if (currentPlatform === 'git') {
         const repoMap = {
@@ -1863,16 +1877,18 @@
           korean: "https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git",
           icons: "https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git",
           bengali: "https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git",
-          japanese: "https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive.git",
-          cyrillic: "https://github.com/mohammadgolamrabbii/Cyrillic-Fonts-Mega-Archive.git",
+          japanese: "https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive.git",
+          cyrillic: "https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive.git",
           hindi: "https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git",
           german: "https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git",
           arabic: "https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git",
           english: "https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
         };
-        cmd = `git clone ${repoMap[currentTargetScript] || "https://github.com/Open-Typography-Foundation/11_Korean_Hangul.git"}`;
+        cmd = `git clone ${repoMap[currentTargetScript] || "https://github.com/Open-Typography-Foundation/100-Sovereign-Fonts-Vaults.git"}`;
       }
-      terminalCommandCode.textContent = cmd;
+      if (terminalCommandCode) {
+        terminalCommandCode.textContent = cmd;
+      }
     }
 
     function copyTerminalCommand() {

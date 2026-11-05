@@ -3,6 +3,7 @@
 #  🛡️ Universal Font Installer — Open Typography Foundation
 #  Curated by Mohammad Golamrabbii | 500,337+ Sovereign Fonts
 #  Usage (Express): curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash
+#  Usage (Script):  curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash -s -- --script english
 #  Usage (Secure):  curl ... -o install.sh && sha256sum install.sh && bash install.sh
 # ============================================================
 
@@ -24,13 +25,31 @@ else
     echo "→ Detected Linux. Target directory: $FONT_DIR"
 fi
 
-# Check for non-interactive bypass
+# Parse CLI arguments
 NON_INTERACTIVE=0
-for arg in "$@"; do
-    if [ "$arg" = "-y" ] || [ "$arg" = "--yes" ] || [ "$arg" = "-f" ] || [ "$arg" = "--force" ]; then
-        NON_INTERACTIVE=1
-    fi
+TARGET_SCRIPT="all"
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -y|--yes|-f|--force)
+            NON_INTERACTIVE=1
+            shift
+            ;;
+        -s|--script)
+            TARGET_SCRIPT="$(echo "$2" | tr '[:upper:]' '[:lower:]')"
+            shift 2
+            ;;
+        --script=*)
+            TARGET_SCRIPT="$(echo "${1#*=}" | tr '[:upper:]' '[:lower:]')"
+            shift
+            ;;
+        *)
+            shift
+            ;;
+    esac
 done
+
+echo "→ Target script vault: $TARGET_SCRIPT"
 
 # Interactive confirmation prompt (Security Guard)
 if [ "$NON_INTERACTIVE" -eq 0 ] && [ -t 0 ]; then
@@ -46,28 +65,47 @@ fi
 mkdir -p "$FONT_DIR"
 
 TEMP_DIR="$(mktemp -d)"
-echo "→ Cloning flagship typography repositories into temporary staging..."
+echo "→ Synchronizing open-source typography vaults into temporary staging..."
 
-REPO_BASE="https://github.com/Open-Typography-Foundation"
-VAULTS=(
-    "1_Bengali Fonts"
-    "2_English_Latin"
-    "3_Arabic_Islamic"
-    "7_Hindi_Devanagari"
-    "8_German_Deutsche_Schriften"
-    "9_Japanese_Nihongo"
-    "10_Cyrillic_Slavic"
-    "11_Korean_Hangul"
-    "12_Chinese_Hanzi"
-    "16_Developer_Coding_Monospace"
+declare -A REPO_MAP=(
+    ["bengali"]="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection.git"
+    ["english"]="https://github.com/mohammadgolamrabbii/English-Fonts-Mega-Archive.git"
+    ["arabic"]="https://github.com/mohammadgolamrabbii/Arabic-Fonts-Mega-Archive.git"
+    ["hindi"]="https://github.com/mohammadgolamrabbii/Hindi-Fonts-Mega-Archive.git"
+    ["german"]="https://github.com/mohammadgolamrabbii/German-Fonts-Mega-Archive.git"
+    ["japanese"]="https://github.com/Open-Typography-Foundation/Japanese-Fonts-Mega-Archive.git"
+    ["cyrillic"]="https://github.com/Open-Typography-Foundation/Cyrillic-Fonts-Mega-Archive.git"
+    ["korean"]="https://github.com/Open-Typography-Foundation/Korean-Hangul-Fonts-Archive.git"
+    ["chinese"]="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive.git"
+    ["dev"]="https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive.git"
+    ["icons"]="https://github.com/Open-Typography-Foundation/Icons-and-Symbols-Fonts.git"
+    ["vietnamese"]="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive.git"
+    ["thai"]="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive.git"
+    ["malay"]="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive.git"
+    ["dravidian"]="https://github.com/Open-Typography-Foundation/Dravidian-Fonts-Mega-Archive.git"
+    ["african"]="https://github.com/Open-Typography-Foundation/African-Scripts-Mega-Archive.git"
+    ["urdu"]="https://github.com/Open-Typography-Foundation/Persian-Urdu-Nastaliq-Fonts-Archive.git"
+    ["hebrew"]="https://github.com/Open-Typography-Foundation/Hebrew-Fonts-Mega-Archive.git"
+    ["greek"]="https://github.com/Open-Typography-Foundation/Greek-Hellenic-Fonts-Archive.git"
 )
 
-for vault in "${VAULTS[@]}"; do
-    echo "  → Synchronizing $vault ..."
-    git clone --depth=1 "$REPO_BASE/$vault" "$TEMP_DIR/$vault" 2>/dev/null || true
+CLONE_URLS=()
+if [ "$TARGET_SCRIPT" != "all" ] && [ -n "${REPO_MAP[$TARGET_SCRIPT]}" ]; then
+    CLONE_URLS+=("${REPO_MAP[$TARGET_SCRIPT]}")
+else
+    # Default flagship vaults
+    for url in "${REPO_MAP[@]}"; do
+        CLONE_URLS+=("$url")
+    done
+fi
+
+for repo_url in "${CLONE_URLS[@]}"; do
+    vault_name="$(basename "$repo_url" .git)"
+    echo "  → Synchronizing $vault_name ..."
+    git clone --depth=1 "$repo_url" "$TEMP_DIR/$vault_name" 2>/dev/null || true
 done
 
-echo "→ Registering font binaries (.ttf / .otf)..."
+echo "→ Registering font binaries (.ttf / .otf / .woff2)..."
 find "$TEMP_DIR" -type f \( -name "*.ttf" -o -name "*.otf" \) -exec cp -n {} "$FONT_DIR/" \;
 
 rm -rf "$TEMP_DIR"
