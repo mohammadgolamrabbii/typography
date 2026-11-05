@@ -2,7 +2,7 @@
 # ============================================================
 #  Universal Font Installer — GolamRabbii Font Mega-Collection
 #  Generated: 2026-10-30T19:37:47.512303
-#  Total: 400,237 fonts across 100 vaults
+#  Total: 500,337+ fonts across 100 vaults
 # ============================================================
 
 set -e
@@ -13,7 +13,7 @@ mkdir -p "$INSTALL_DIR"
 
 echo "╔══════════════════════════════════════════════════╗"
 echo "║  GolamRabbii Font Mega-Collection Installer      ║"
-echo "║  400,237 fonts | 100 vaults                  ║"
+echo "║  500,337+ fonts | 100 vaults                  ║"
 echo "╚══════════════════════════════════════════════════╝"
 echo ""
 
