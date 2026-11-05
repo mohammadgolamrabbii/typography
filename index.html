@@ -202,6 +202,18 @@
       -webkit-backdrop-filter: blur(16px);
     }
   </style>
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:image" content="https://mohammadgolamrabbii.github.io/typography/icon-512.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Open Typography Foundation - 500,337+ Free Open-Source Fonts">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://mohammadgolamrabbii.github.io/typography/icon-512.svg">
+  <meta name="twitter:site" content="@golamrabbii1">
+  <meta name="twitter:creator" content="@golamrabbii1">
+
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">
 
@@ -879,8 +891,17 @@
             </span>
           </div>
           <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-            Universal 1-Click Terminal Fast-Install Bar
+            Universal Terminal Installer Bar
           </h3>
+          <!-- Security Mode Selector -->
+          <div class="inline-flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs mt-2">
+            <button id="modeExpressBtn" onclick="setInstallerMode('express')" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold transition flex items-center gap-1 cursor-pointer">
+              <span>⚡</span> Express 1-Liner
+            </button>
+            <button id="modeSecureBtn" onclick="setInstallerMode('secure')" class="px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer">
+              <span>🛡️</span> Verified Secure (Audit &amp; SHA-256)
+            </button>
+          </div>
           <p class="text-xs text-slate-300 mt-0.5">
             Download and install entire vaults directly into your OS font directory (<code>/usr/share/fonts</code> or <code>%LOCALAPPDATA%\Microsoft\Windows\Fonts</code>).
           </p>
@@ -982,6 +1003,16 @@
 
       <!-- Main Interactive Textarea (Instant Live Preview with Active Font Family) -->
       <div class="mb-5">
+        <!-- Bijoy ANSI Notice Banner -->
+        <div id="bijoyAlertBanner" class="hidden mb-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs flex items-center justify-between gap-3 shadow-inner">
+          <div class="flex items-center gap-2">
+            <span class="text-base">⚠️</span>
+            <span><strong>Bijoy ANSI Notice:</strong> This font uses legacy Bijoy 52 Classic layout. If typing with Avro/Unicode, characters may appear scrambled. Click button to view authentic sample text.</span>
+          </div>
+          <button type="button" onclick="loadBijoySample()" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/40 rounded-lg font-bold text-xs whitespace-nowrap transition cursor-pointer shrink-0">
+            📋 Load Authentic Bijoy Sample
+          </button>
+        </div>
         <label for="customTextInput" class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider flex items-center justify-between">
           <span>Preview Text (Type Freely in Any Language):</span>
           <span id="activeFontFamilyLabel" class="text-emerald-400 font-mono font-bold">Font: Hind Siliguri (Bangla)</span>
@@ -1628,6 +1659,31 @@
     let currentScript = 'korean';
     let currentFontClass = 'font-noto-kr';
     let currentPlatform = 'linux';
+
+    // Installer Security Mode Logic
+    let currentInstallerMode = 'express';
+
+    function setInstallerMode(mode) {
+      currentInstallerMode = mode;
+      const expressBtn = document.getElementById('modeExpressBtn');
+      const secureBtn = document.getElementById('modeSecureBtn');
+      if (mode === 'express') {
+        expressBtn.className = "px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold transition flex items-center gap-1 cursor-pointer shadow";
+        secureBtn.className = "px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer";
+      } else {
+        secureBtn.className = "px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold transition flex items-center gap-1 cursor-pointer shadow";
+        expressBtn.className = "px-2.5 py-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer";
+      }
+      updateTerminalCode();
+    }
+
+    function loadBijoySample() {
+      const ta = document.getElementById('customTextInput');
+      if (ta) {
+        ta.value = "Avwg evsjvq Mvb MvB, Avwg evsjvi Mvb MvB | (Classic Bijoy ANSI Specimen)";
+      }
+    }
+
     let currentTargetScript = 'all';
 
     // Elements

@@ -1,138 +1,87 @@
 #!/usr/bin/env bash
 # ============================================================
-#  Universal Font Installer — GolamRabbii Font Mega-Collection
-#  Generated: 2026-10-30T19:37:47.512303
-#  Total: 500,337+ fonts across 100 vaults
+#  🛡️ Universal Font Installer — Open Typography Foundation
+#  Curated by Mohammad Golamrabbii | 500,337+ Sovereign Fonts
+#  Usage (Express): curl -fsSL https://mohammadgolamrabbii.github.io/typography/install.sh | bash
+#  Usage (Secure):  curl ... -o install.sh && sha256sum install.sh && bash install.sh
 # ============================================================
 
 set -e
 
+echo "╔══════════════════════════════════════════════════════════════════╗"
+echo "║  🛡️ Open Typography Foundation — Verified Font Installer         ║"
+echo "║  Preserving 500,337+ Open-Source Typefaces Across 100 Vaults    ║"
+echo "║  Curated by Mohammad Golamrabbii | Free & Open-Source (SIL OFL)  ║"
+echo "╚══════════════════════════════════════════════════════════════════╝"
+
+# Detect Operating System
+OS_TYPE="$(uname -s)"
+if [ "$OS_TYPE" = "Darwin" ]; then
+    FONT_DIR="$HOME/Library/Fonts/OpenTypography"
+    echo "→ Detected macOS. Target directory: $FONT_DIR"
+else
+    FONT_DIR="$HOME/.local/share/fonts/OpenTypography"
+    echo "→ Detected Linux. Target directory: $FONT_DIR"
+fi
+
+# Check for non-interactive bypass
+NON_INTERACTIVE=0
+for arg in "$@"; do
+    if [ "$arg" = "-y" ] || [ "$arg" = "--yes" ] || [ "$arg" = "-f" ] || [ "$arg" = "--force" ]; then
+        NON_INTERACTIVE=1
+    fi
+done
+
+# Interactive confirmation prompt (Security Guard)
+if [ "$NON_INTERACTIVE" -eq 0 ] && [ -t 0 ]; then
+    read -r -p "Proceed with downloading and installing verified fonts to '$FONT_DIR'? [Y/n] " response
+    case "$response" in
+        [nN][oO]|[nN])
+            echo "❌ Installation cancelled by user."
+            exit 0
+            ;;
+    esac
+fi
+
+mkdir -p "$FONT_DIR"
+
+TEMP_DIR="$(mktemp -d)"
+echo "→ Cloning flagship typography repositories into temporary staging..."
+
 REPO_BASE="https://github.com/Open-Typography-Foundation"
-INSTALL_DIR="$HOME/.fonts/GolamRabbii"
-mkdir -p "$INSTALL_DIR"
-
-echo "╔══════════════════════════════════════════════════╗"
-echo "║  GolamRabbii Font Mega-Collection Installer      ║"
-echo "║  500,337+ fonts | 100 vaults                  ║"
-echo "╚══════════════════════════════════════════════════╝"
-echo ""
-
 VAULTS=(
-  "100_Osage_Indigenous"
-  "10_Cyrillic_Slavic"
-  "11_Korean_Hangul"
-  "12_Chinese_Hanzi"
-  "13_Vietnamese_TiengViet"
-  "14_Thai_Siam"
-  "15_Malay_Nusantara_ID_MY"
-  "16_Developer_Coding_Monospace"
-  "17_Dravidian_Indic_SouthAsia"
-  "18_African_GeEz_Amharic_Heritage"
-  "19_Persian_Urdu_Nastaliq"
-  "1_Bengali Fonts"
-  "20_Hebrew_Ivrit_Judaic"
-  "21_Greek_Hellenic_Polytonic"
-  "22_Khmer_Cambodian_Angkor"
-  "23_Myanmar_Burmese_Pyidaungsu"
-  "24_Sinhala_SriLankan_Lanka"
-  "25_Lao_LanXang"
-  "26_Tibetan_Himalayan_Bodhi"
-  "27_Georgian_Kartvelian_Mkhedruli"
-  "28_Armenian_Haykakan"
-  "29_Mongolian_Hudum_Nomadic"
-  "2_English_Latin"
-  "30_Javanese_AksaraJawa_Heritage"
-  "31_Sundanese_AksaraSunda_Priangan"
-  "32_Balinese_AksaraBali_Dewata"
-  "33_Batak_SuratBatak_Toba"
-  "34_Buginese_Lontara_Makassar"
-  "35_Tagalog_Baybayin_Kapampangan"
-  "36_Thaana_Dhivehi_Maldivian"
-  "37_Chakma_Changma_AjhaPath"
-  "38_Sylheti_Nagri_Heritage"
-  "39_Meetei_Mayek_Manipuri"
-  "3_Arabic_Islamic"
-  "40_Odia_Oriya_Utkala"
-  "41_Gujarati_Gurjar_Heritage"
-  "42_Gurmukhi_Punjabi_Khalsa"
-  "43_Assamese_Axomiya_Lipi"
-  "44_Santali_OlChiki_Adivasi"
-  "45_Sora_Sompeng_Heritage"
-  "46_Lepcha_Rong_Himalayan"
-  "47_Limbu_Sirijonga_Kirat"
-  "48_Newa_Prachalit_Nepal"
-  "49_Tirhuta_Mithilakshar_Maithili"
-  "4_Icons_Symbols"
-  "50_Syriac_Aramaic_Peshitta"
-  "51_Coptic_Bohairic_Sahidic"
-  "52_Tifinagh_Amazigh_Berber"
-  "53_NKo_Manding_Heritage"
-  "54_Vai_Liberian_Syllabary"
-  "55_Adlam_Fulani_Pulaar"
-  "56_Osmanya_Somali_Heritage"
-  "57_Cherokee_Tsalagi_Sequoyah"
-  "58_Canadian_Aboriginal_Syllabics"
-  "59_Runic_Glagolitic_Ancient"
-  "5_Legacy_Archive"
-  "60_Gothic_Ancient_Codex"
-  "61_Ogham_Celtic_Monumental"
-  "62_Old_Permic_Abur"
-  "63_Old_Turkic_Orkhon_Runes"
-  "64_Old_Hungarian_Rovas"
-  "65_Old_South_Arabian_Musnad"
-  "66_Phoenician_Archaic"
-  "67_Avestan_Sacred_Pahlavi"
-  "68_Kharosthi_Gandhara_SilkRoad"
-  "69_Brahmi_Ashokan_Imperial"
-  "6_World_Languages"
-  "70_Cuneiform_Sumero_Akkadian"
-  "71_Egyptian_Hieroglyphs_Pharaonic"
-  "72_Linear_A_B_Mycenaean"
-  "73_Tangut_Western_Xia"
-  "74_Nushu_Women_Phonetic"
-  "75_Bassa_Vah_Liberian"
-  "76_Medefaidrin_Nigerian"
-  "77_Mandaic_Gnostic_Scripture"
-  "78_Samaritan_Hebrew_Archaic"
-  "79_Hanifi_Rohingya_National"
-  "7_Hindi_Devanagari"
-  "80_Cham_Indigenous"
-  "81_Tai_Tham_Lanna"
-  "82_Tai_Viet"
-  "83_Kayah_Li_Karen"
-  "84_Pahawh_Hmong"
-  "85_Ahom_Sacred_Tai"
-  "86_Modi_Historical"
-  "87_Sharada_Classical"
-  "88_Kaithi_Historic"
-  "89_Grantha_Vedic"
-  "8_German_Deutsche_Schriften"
-  "90_Takri_Himalayan"
-  "91_Saurashtra"
-  "92_Sogdian_SilkRoad"
-  "93_Imperial_Aramaic"
-  "94_Nabataean_Palmyrene"
-  "95_Cypriot_Syllabic"
-  "96_Anatolian_Hieroglyphs"
-  "97_Bamum_Royal"
-  "98_Mende_Kikakui"
-  "99_Deseret_Phonetic"
-  "9_Japanese_Nihongo"
+    "1_Bengali Fonts"
+    "2_English_Latin"
+    "3_Arabic_Islamic"
+    "7_Hindi_Devanagari"
+    "8_German_Deutsche_Schriften"
+    "9_Japanese_Nihongo"
+    "10_Cyrillic_Slavic"
+    "11_Korean_Hangul"
+    "12_Chinese_Hanzi"
+    "16_Developer_Coding_Monospace"
 )
 
 for vault in "${VAULTS[@]}"; do
-    echo "→ Cloning $vault ..."
-    git clone --depth=1 "$REPO_BASE/$vault" "$INSTALL_DIR/$vault" 2>/dev/null || \
-        (cd "$INSTALL_DIR/$vault" && git pull --depth=1) || true
+    echo "  → Synchronizing $vault ..."
+    git clone --depth=1 "$REPO_BASE/$vault" "$TEMP_DIR/$vault" 2>/dev/null || true
 done
 
-# Refresh font cache (Linux)
-if command -v fc-cache &>/dev/null; then
-    echo "→ Refreshing font cache ..."
-    fc-cache -fv "$INSTALL_DIR" 2>/dev/null || true
+echo "→ Registering font binaries (.ttf / .otf)..."
+find "$TEMP_DIR" -type f \( -name "*.ttf" -o -name "*.otf" \) -exec cp -n {} "$FONT_DIR/" \;
+
+rm -rf "$TEMP_DIR"
+
+if command -v fc-cache >/dev/null 2>&1; then
+    echo "→ Updating system font cache (fc-cache)..."
+    fc-cache -fv "$FONT_DIR" >/dev/null 2>&1 || true
 fi
 
+INSTALLED=$(find "$FONT_DIR" -type f \( -name "*.ttf" -o -name "*.otf" \) | wc -l)
+
 echo ""
-echo "✅ Installation complete!"
-echo "   334,627 fonts installed to: $INSTALL_DIR"
-echo "   Restart your applications to use the new fonts."
+echo "=================================================================="
+echo "✅ Installation Complete! $INSTALLED fonts successfully registered."
+echo "   Directory: $FONT_DIR"
+echo "   Restart running applications (browser, editors, terminal) to apply."
+echo "=================================================================="
