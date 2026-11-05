@@ -249,14 +249,14 @@
 
       <!-- Quick Platform Links (Responsive Horizontal Swiper on Mobile, Inline on Desktop) -->
       <div class="flex items-center gap-2 text-xs font-semibold overflow-x-auto no-scrollbar py-1 w-full lg:w-auto shrink-0">
+        <a href="#tester-studio" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
+          <span>🎨</span><span>Live Font Tester</span>
+        </a>
         <a href="#downloads-section" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center space-x-1.5 shadow-md">
           <span>⚡</span><span>Archive Downloads</span>
         </a>
         <a href="#terminal-section" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
           <span>💻</span><span>Terminal Fast-Install</span>
-        </a>
-        <a href="#tester-studio" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center space-x-1.5 shadow-md">
-          <span>🎨</span><span>Live Font Tester</span>
         </a>
         <a href="https://archive.org/details/open-typography-foundation" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
           <span>🏛️</span><span>Archive.org</span>
@@ -271,7 +271,601 @@
     </div>
   </header>
 
-  <!-- ==================== 1. FULL ARCHIVE DOWNLOADS (REDESIGNED FOR MAXIMUM USER FRIENDLINESS) ==================== -->
+  <!-- ==================== 1. LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER ==================== -->
+  <main id="tester-studio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    
+    <!-- Section Title -->
+    <div class="text-center mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+        <span>✨</span> LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+        Test Any Font in Real-Time
+      </h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl mx-auto">
+        Select both your desired writing system and individual font family. Type custom text or choose a preset pangram to inspect letterforms before downloading.
+      </p>
+    </div>
+
+    <!-- Live Interactive Studio Controls Card -->
+    <div class="glass-card border border-slate-800 rounded-2xl p-5 sm:p-6 mb-8 shadow-xl">
+      
+      <!-- Language Quick Selection Chips -->
+      <div class="flex items-center justify-between gap-3 pb-3 border-b border-slate-800/80 mb-4 flex-wrap">
+        <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-semibold no-scrollbar">
+          <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Quick Script:</span>
+          <button onclick="setStudioScript('dravidian')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🏛️ Dravidian (தமிழ்/తెలుగు)</button>
+          <button onclick="setStudioScript('african')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🌍 African (ግዕዝ/Amharic)</button>
+          <button onclick="setStudioScript('urdu')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">📜 Urdu & Persian (نستعلیق)</button>
+          <button onclick="setStudioScript('dev')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">💻 Code (Monospace)</button>
+          <button onclick="setStudioScript('malay')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🌺 Melayu & Nusantara</button>
+          <button onclick="setStudioScript('thai')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇹🇭 ภาษาไทย (Thai)</button>
+          <button onclick="setStudioScript('vietnamese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇻🇳 Tiếng Việt (Vietnamese)</button>
+          <button onclick="setStudioScript('chinese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇨🇳 中文 (Chinese)</button>
+          <button onclick="setStudioScript('korean')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold shadow transition">🇰🇷 한국어 (Korean)</button>
+          <button onclick="setStudioScript('bengali')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇧🇩 বাংলা (Bengali)</button>
+          <button onclick="setStudioScript('japanese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇯🇵 日本語 (Japanese)</button>
+          <button onclick="setStudioScript('cyrillic')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇷🇺 Кириллица (Cyrillic)</button>
+          <button onclick="setStudioScript('english')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇬🇧 English (Latin)</button>
+          <button onclick="setStudioScript('arabic')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🕌 العربية (Arabic)</button>
+          <button onclick="setStudioScript('hindi')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇮🇳 हिन्दी (Hindi)</button>
+          <button onclick="setStudioScript('german')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇩🇪 Deutsch (German)</button>
+        </div>
+        <button onclick="clearCustomText()" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1 font-medium">
+          <span>🗑️</span><span>Clear Text</span>
+        </button>
+      </div>
+
+      <!-- Main Interactive Textarea (Instant Live Preview with Active Font Family) -->
+      <div class="mb-5">
+        <!-- Bijoy ANSI Notice Banner -->
+        <div id="bijoyAlertBanner" class="hidden mb-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs flex items-center justify-between gap-3 shadow-inner">
+          <div class="flex items-center gap-2">
+            <span class="text-base">⚠️</span>
+            <span><strong>Bijoy ANSI Notice:</strong> This font uses legacy Bijoy 52 Classic layout. If typing with Avro/Unicode, characters may appear scrambled. Click button to view authentic sample text.</span>
+          </div>
+          <button type="button" onclick="loadBijoySample()" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/40 rounded-lg font-bold text-xs whitespace-nowrap transition cursor-pointer shrink-0">
+            📋 Load Authentic Bijoy Sample
+          </button>
+        </div>
+        <label for="customTextInput" class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider flex items-center justify-between">
+          <span>Preview Text (Type Freely in Any Language):</span>
+          <span id="activeFontFamilyLabel" class="text-emerald-400 font-mono font-bold">Font: Hind Siliguri (Bangla)</span>
+        </label>
+        <textarea 
+          id="customTextInput" 
+          rows="2" 
+          class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 rounded-xl p-3.5 text-slate-100 placeholder-slate-500 focus:outline-none transition text-base sm:text-lg shadow-inner font-hind-siliguri"
+          placeholder="Type any custom specimen text..."
+        >আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস। (Hind Siliguri Unicode)</textarea>
+      </div>
+
+      <!-- Control Toolbar: 1. Script Select | 2. Font Select | 3. Size Slider | 4. Actions -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+        
+        <!-- Control 1: Select Language / Script -->
+        <div class="md:col-span-4">
+          <label for="scriptSelector" class="block text-xs font-semibold text-slate-400 mb-1.5">
+            1. Select Language / Script:
+          </label>
+          <div class="relative">
+            <select 
+              id="scriptSelector" 
+              class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none font-semibold cursor-pointer transition"
+            >
+              <option value="dravidian">🏛️ Dravidian (Tamil, Telugu, Malayalam, Kannada)</option>
+              <option value="african">🌍 African Scripts (Ethiopic, Tifinagh, N'Ko, Adlam)</option>
+              <option value="urdu">📜 Persian & Urdu (Nastaliq, Vazirmatn)</option>
+              <option value="dev">💻 Developer & Coding Monospace (Ligatures & Nerd Fonts)</option>
+              <option value="malay">🌺 Malay & Nusantara (Indonesia / Malaysia)</option>
+              <option value="thai">🇹🇭 Thai (ภาษาไทย)</option>
+              <option value="vietnamese">🇻🇳 Vietnamese (Tiếng Việt)</option>
+              <option value="chinese">🇨🇳 Chinese (中文 / 汉字)</option>
+              <option value="korean">🇰🇷 Korean (한국어)</option>
+              <option value="bengali" selected>🇧🇩 Bengali (বাংলা)</option>
+              <option value="japanese">🇯🇵 Japanese (日本語)</option>
+              <option value="cyrillic">🇷🇺 Cyrillic (Кириллица)</option>
+              <option value="english">🇬🇧 English & Latin</option>
+              <option value="arabic">🕌 Arabic (العربية)</option>
+              <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
+              <option value="german">🇩🇪 German (Fraktur)</option>
+              <option value="icons">🎨 Icons & Symbols</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Control 2: Choose Specific Font (DYNAMICALLY POPULATED) -->
+        <div class="md:col-span-4">
+          <label for="fontFamilyFilter" class="block text-xs font-semibold text-emerald-400 mb-1.5 flex items-center justify-between">
+            <span>2. Choose Specific Font:</span>
+            <span id="fontCountBadge" class="text-[10px] text-emerald-400 font-mono font-bold">25+ SPECIMENS</span>
+          </label>
+          <div class="relative">
+            <select 
+              id="fontFamilyFilter" 
+              class="w-full bg-slate-900 border border-emerald-500/50 focus:border-emerald-400 rounded-xl px-3 py-2 text-xs text-emerald-300 focus:outline-none font-semibold cursor-pointer transition"
+            >
+              <option value="all">🌐 All Available Fonts (Grid View)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Control 3: Font Size Slider -->
+        <div class="md:col-span-2">
+          <div class="flex justify-between items-center text-xs text-slate-400 mb-1.5">
+            <label for="fontSizeSlider" class="font-semibold">3. Font Size:</label>
+            <span id="fontSizeDisplay" class="font-mono font-bold text-emerald-400">22px</span>
+          </div>
+          <input 
+            type="range" 
+            id="fontSizeSlider" 
+            min="14" 
+            max="72" 
+            value="22" 
+            class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none"
+          >
+        </div>
+
+        <!-- Control 4: Action Tools (Contrast + Reset + Random) -->
+        <div class="md:col-span-2 flex items-center gap-1.5 justify-end">
+          <button 
+            id="toggleContrastBtn" 
+            title="Toggle Light/Dark Contrast"
+            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition flex items-center justify-center gap-1 text-xs"
+          >
+            <span id="contrastIcon">☀️</span><span id="contrastText" class="hidden sm:inline">Light</span>
+          </button>
+          <button 
+            id="resetFiltersBtn" 
+            title="Reset all filters and view defaults"
+            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700 transition text-xs flex items-center gap-1"
+          >
+            <span>🔄</span><span class="hidden sm:inline">Reset</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= SPECIMENS GRID ================= -->
+    <div class="mb-4 flex items-center justify-between gap-4 flex-wrap">
+      <div class="flex items-center gap-2">
+        <h3 class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📚</span> Typography Specimens Grid
+        </h3>
+        <span id="specimenCountBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-mono font-semibold border border-emerald-500/20">
+          Showing 27 of 27 specimens
+        </span>
+      </div>
+      <p class="text-xs text-slate-400">Click any card to inspect or test in the preview canvas.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="specimensGrid">
+      
+                  <!-- Vietnamese 1: Be Vietnam Pro -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="vietnamese" data-font="Be Vietnam Pro" data-class="font-be-vietnam">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Be Vietnam Pro (National Standard UI Sans)</h4>
+              <p class="text-[11px] text-slate-400">VietAnh Nguyen & Gabriel Richter • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Vietnamese UI</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-be-vietnam text-xl transition-all border-y border-slate-800/60 my-2">
+            Tôi yêu tiếng nước tôi từ khi mới ra đời, người ơi. Rừng vàng biển bạc đất phì nhiêu.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Precision Diacritics • Modern Screen UI</span>
+          <a href="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (3,050+)</span> →
+          </a>
+        </div>
+      </div>
+
+                        <!-- Developer 1: Fira Code -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="dev" data-font="Fira Code" data-class="font-firacode">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Fira Code (Coding Ligatures)</h4>
+              <p class="text-[11px] text-slate-400">Nikita Prokopov • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">IDE Ligatures</span>
+          </div>
+          <div class="preview-text py-4 text-cyan-200 font-firacode text-lg transition-all border-y border-slate-800/60 my-2">
+            if (x !== undefined &amp;&amp; items.length &gt;= 10) return a =&gt; a.pipe(map(x =&gt; x * 2));
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Programming Standard • VS Code &amp; Neovim</span>
+          <a href="https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,170+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Malay 1: Plus Jakarta Sans -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="malay" data-font="Plus Jakarta Sans" data-class="font-jakarta">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Plus Jakarta Sans (Indo Tech Flagship)</h4>
+              <p class="text-[11px] text-slate-400">Gumpita Rahayu • Tokotype Bandung • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Nusantara Modern</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-jakarta text-xl transition-all border-y border-slate-800/60 my-2">
+            Satu Nusa, Satu Bangsa, Satu Bahasa. Memajukan peradaban digital Nusantara.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Gojek / Tokopedia / Unicorn Tech Standard</span>
+          <a href="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (2,750+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Malay 2: Tulisan Jawi (Amiri Jawi) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="malay" data-font="Amiri" data-class="font-amiri">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Tulisan Jawi (خزانة توليسن جاوي نوسنتارا)</h4>
+              <p class="text-[11px] text-slate-400">Classical Jawi Malay • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Jawi Heritage</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-amiri text-2xl transition-all border-y border-slate-800/60 my-2 text-right dir-rtl">
+            بهاس ملايو اياله بهاس كبڠسأن دان جاوي خزانة ورثن نوسنتارا
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Islamic Heritage • Royal & State Treatises</span>
+          <a href="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (2,750+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Thai 1: Prompt (Loopless Modern Sans) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="thai" data-font="Prompt" data-class="font-prompt">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Prompt (Loopless Modern UI Sans)</h4>
+              <p class="text-[11px] text-slate-400">Cadson Demak • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Thai Loopless</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-prompt text-xl transition-all border-y border-slate-800/60 my-2">
+            เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Modern Minimalist • Digital Apps & Web</span>
+          <a href="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,810+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Thai 2: Sarabun (Official Looped) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="thai" data-font="Sarabun" data-class="font-sarabun">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">TH Sarabun (Royal National Standard)</h4>
+              <p class="text-[11px] text-slate-400">Suppasit & SIPA • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Thai Official</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-sarabun text-xl transition-all border-y border-slate-800/60 my-2">
+            จงฝ่าฟันพัฒนาวิชาการ อย่าล้างผลาญฤๅเข่นฆ่าบีฑาใคร
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Government Decree • Official Press</span>
+          <a href="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,810+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 1: Noto Sans SC (Hei) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Sans SC" data-class="font-noto-sc">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Sans SC (Modern Hei / 黑体)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Hei</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-sc text-xl transition-all border-y border-slate-800/60 my-2">
+            天地玄黄，宇宙洪荒。日月盈昃，辰宿列张。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Simplified Hei • UI & Clean Screen</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 2: Noto Serif SC (Song) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Serif SC" data-class="font-noto-serif-sc">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Serif SC (Classical Song / 宋体)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Song</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-serif-sc text-xl transition-all border-y border-slate-800/60 my-2">
+            寒来暑往，秋收冬藏。闰余成岁，律吕调阳。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Classical Song • Editorial & Literature</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 3: ZCOOL KuaiLe (Playful Cinema Display) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="ZCOOL KuaiLe" data-class="font-zcool">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">ZCOOL KuaiLe (Playful Cinema Display / 快乐体)</h4>
+              <p class="text-[11px] text-slate-400">ZCOOL Network • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Display</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-zcool text-2xl transition-all border-y border-slate-800/60 my-2">
+            云腾致雨，露结为霜。金生丽水，玉出昆冈。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Display Playful • Gaming & Cartoons</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Chinese 4: Ma Shan Zheng (Brush Calligraphy) -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Ma Shan Zheng" data-class="font-mashan">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Ma Shan Zheng (Expressive Brush / 毛笔楷体)</h4>
+              <p class="text-[11px] text-slate-400">Ma Shan-zheng • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Brush</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-mashan text-2xl transition-all border-y border-slate-800/60 my-2">
+            剑号巨阙，珠称夜光。果珍李柰，菜重芥姜。
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Calligraphic Ink • Cultural Poetry</span>
+          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,351+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Korean 1: Noto Sans KR -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Noto Sans KR" data-class="font-noto-kr">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Sans KR (Modern UI Sans)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Sans</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-kr text-xl transition-all border-y border-slate-800/60 my-2">
+            다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Hangul Sans • Modern UI</span>
+          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,863+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Korean 2: Noto Serif KR -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Noto Serif KR" data-class="font-noto-serif-kr">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Serif KR (Literary Myeongjo)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Serif</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-serif-kr text-xl transition-all border-y border-slate-800/60 my-2">
+            별 하나에 추억과, 별 하나에 사랑과, 별 하나에 쓸쓸함과, 별 하나에 동경.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Hangul Myeongjo • Editorial</span>
+          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,863+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Korean 3: Do Hyeon -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Do Hyeon" data-class="font-dohyeon">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Do Hyeon (High-CTR Webtoon Display)</h4>
+              <p class="text-[11px] text-slate-400">Woowa Brothers • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Display</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-dohyeon text-2xl transition-all border-y border-slate-800/60 my-2">
+            다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Display Heavy • Media Titles</span>
+          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,863+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Korean 4: Jua -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Jua" data-class="font-jua">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Jua (Friendly Rounded Gothic)</h4>
+              <p class="text-[11px] text-slate-400">Woowa Brothers • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Rounded</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-jua text-xl transition-all border-y border-slate-800/60 my-2">
+            좋은 음식이 있는 곳에 언제나 우리가 있습니다.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Gulim / Rounded • Casual UI</span>
+          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,863+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Bengali 1: Noto Sans Bengali -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="bengali" data-font="Noto Sans Bengali" data-class="font-noto-bangla">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Sans Bengali (Modern UI Sans)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts / Monotype • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Bengali Sans</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-bangla text-xl transition-all border-y border-slate-800/60 my-2">
+            আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Unicode + 1_Unicode</span>
+          <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (5,020+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Japanese 1: Shippori Mincho -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="japanese" data-font="Shippori Mincho" data-class="font-shippori">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Shippori Mincho (Classical Literary Serif)</h4>
+              <p class="text-[11px] text-slate-400">FontDASU / Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Japanese Mincho</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-shippori text-xl transition-all border-y border-slate-800/60 my-2">
+            色は匂へど 散りぬるを 我が世誰ぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Kanji + Hiragana + Katakana</span>
+          <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (1,509+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Cyrillic 1: PT Sans -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="cyrillic" data-font="PT Sans" data-class="font-pt-sans">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">PT Sans (Modern Grotesque Sans)</h4>
+              <p class="text-[11px] text-slate-400">ParaType • Free ParaType License / SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Cyrillic Sans</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-pt-sans text-xl transition-all border-y border-slate-800/60 my-2">
+            Съешь же ещё этих мягких французских булок, да выпей чаю.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Slavic Universal • Modern UI</span>
+          <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (10,136+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Hindi 1: Noto Sans Devanagari -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="hindi" data-font="Noto Sans Devanagari" data-class="font-noto-devanagari">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">Noto Sans Devanagari (Modern Indian UI)</h4>
+              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Hindi Sans</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-noto-devanagari text-xl transition-all border-y border-slate-800/60 my-2">
+            सभी मनुष्यों को गौरव और अधिकारों के मामले में जन्मजात स्वतन्त्रता और समानता प्राप्त है।
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Devanagari • Vedic + Modern UI</span>
+          <a href="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (6,519+)</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- German 1: UnifrakturMaguntia -->
+      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="german" data-font="UnifrakturMaguntia" data-class="font-unifraktur">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-white text-base">UnifrakturMaguntia (Historical Fraktur)</h4>
+              <p class="text-[11px] text-slate-400">J. 'Mach' Wust • SIL OFL 1.1</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">German Blackletter</span>
+          </div>
+          <div class="preview-text py-4 text-slate-100 font-unifraktur text-2xl transition-all border-y border-slate-800/60 my-2">
+            Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
+          <span class="font-mono text-[11px]">Gothic Blackletter • Historical</span>
+          <a href="https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            <span>Vault (5,504+)</span> →
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== 2. FULL ARCHIVE DOWNLOADS (INTERNET ARCHIVE & GITHUB MIRRORS) ==================== -->
   <section id="downloads-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
     <div class="glass-card border border-amber-500/30 rounded-2xl p-5 sm:p-7 shadow-2xl relative">
       
@@ -882,7 +1476,7 @@
     </div>
   </section>
 
-  <!-- ==================== 2. UNIVERSAL 1-CLICK TERMINAL FAST-INSTALL BAR ==================== -->
+  <!-- ==================== 3. UNIVERSAL 1-CLICK TERMINAL FAST-INSTALL BAR ==================== -->
   <section id="terminal-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
     <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
       
@@ -962,600 +1556,6 @@
 
     </div>
   </section>
-
-  <!-- ==================== 3. LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER ==================== -->
-  <main id="tester-studio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    
-    <!-- Section Title -->
-    <div class="text-center mb-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
-        <span>✨</span> LIVE INTERACTIVE MULTI-SCRIPT SPECIMEN TESTER
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-        Test Any Font in Real-Time
-      </h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl mx-auto">
-        Select both your desired writing system and individual font family. Type custom text or choose a preset pangram to inspect letterforms before downloading.
-      </p>
-    </div>
-
-    <!-- Live Interactive Studio Controls Card -->
-    <div class="glass-card border border-slate-800 rounded-2xl p-5 sm:p-6 mb-8 shadow-xl">
-      
-      <!-- Language Quick Selection Chips -->
-      <div class="flex items-center justify-between gap-3 pb-3 border-b border-slate-800/80 mb-4 flex-wrap">
-        <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-semibold no-scrollbar">
-          <span class="text-slate-400 text-[11px] font-semibold mr-1 uppercase tracking-wider">Quick Script:</span>
-          <button onclick="setStudioScript('dravidian')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🏛️ Dravidian (தமிழ்/తెలుగు)</button>
-          <button onclick="setStudioScript('african')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🌍 African (ግዕዝ/Amharic)</button>
-          <button onclick="setStudioScript('urdu')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">📜 Urdu & Persian (نستعلیق)</button>
-          <button onclick="setStudioScript('dev')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">💻 Code (Monospace)</button>
-          <button onclick="setStudioScript('malay')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🌺 Melayu & Nusantara</button>
-          <button onclick="setStudioScript('thai')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇹🇭 ภาษาไทย (Thai)</button>
-          <button onclick="setStudioScript('vietnamese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇻🇳 Tiếng Việt (Vietnamese)</button>
-          <button onclick="setStudioScript('chinese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇨🇳 中文 (Chinese)</button>
-          <button onclick="setStudioScript('korean')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold shadow transition">🇰🇷 한국어 (Korean)</button>
-          <button onclick="setStudioScript('bengali')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇧🇩 বাংলা (Bengali)</button>
-          <button onclick="setStudioScript('japanese')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇯🇵 日本語 (Japanese)</button>
-          <button onclick="setStudioScript('cyrillic')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇷🇺 Кириллица (Cyrillic)</button>
-          <button onclick="setStudioScript('english')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇬🇧 English (Latin)</button>
-          <button onclick="setStudioScript('arabic')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🕌 العربية (Arabic)</button>
-          <button onclick="setStudioScript('hindi')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇮🇳 हिन्दी (Hindi)</button>
-          <button onclick="setStudioScript('german')" class="studio-lang-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">🇩🇪 Deutsch (German)</button>
-        </div>
-        <button onclick="clearCustomText()" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1 font-medium">
-          <span>🗑️</span><span>Clear Text</span>
-        </button>
-      </div>
-
-      <!-- Main Interactive Textarea (Instant Live Preview with Active Font Family) -->
-      <div class="mb-5">
-        <!-- Bijoy ANSI Notice Banner -->
-        <div id="bijoyAlertBanner" class="hidden mb-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs flex items-center justify-between gap-3 shadow-inner">
-          <div class="flex items-center gap-2">
-            <span class="text-base">⚠️</span>
-            <span><strong>Bijoy ANSI Notice:</strong> This font uses legacy Bijoy 52 Classic layout. If typing with Avro/Unicode, characters may appear scrambled. Click button to view authentic sample text.</span>
-          </div>
-          <button type="button" onclick="loadBijoySample()" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/40 rounded-lg font-bold text-xs whitespace-nowrap transition cursor-pointer shrink-0">
-            📋 Load Authentic Bijoy Sample
-          </button>
-        </div>
-        <label for="customTextInput" class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider flex items-center justify-between">
-          <span>Preview Text (Type Freely in Any Language):</span>
-          <span id="activeFontFamilyLabel" class="text-emerald-400 font-mono font-bold">Font: Hind Siliguri (Bangla)</span>
-        </label>
-        <textarea 
-          id="customTextInput" 
-          rows="2" 
-          class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 rounded-xl p-3.5 text-slate-100 placeholder-slate-500 focus:outline-none transition text-base sm:text-lg shadow-inner font-hind-siliguri"
-          placeholder="Type any custom specimen text..."
-        >আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস। (Hind Siliguri Unicode)</textarea>
-      </div>
-
-      <!-- Control Toolbar: 1. Script Select | 2. Font Select | 3. Size Slider | 4. Actions -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
-        
-        <!-- Control 1: Select Language / Script -->
-        <div class="md:col-span-4">
-          <label for="scriptSelector" class="block text-xs font-semibold text-slate-400 mb-1.5">
-            1. Select Language / Script:
-          </label>
-          <div class="relative">
-            <select 
-              id="scriptSelector" 
-              class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none font-semibold cursor-pointer transition"
-            >
-              <option value="dravidian">🏛️ Dravidian (Tamil, Telugu, Malayalam, Kannada)</option>
-              <option value="african">🌍 African Scripts (Ethiopic, Tifinagh, N'Ko, Adlam)</option>
-              <option value="urdu">📜 Persian & Urdu (Nastaliq, Vazirmatn)</option>
-              <option value="dev">💻 Developer & Coding Monospace (Ligatures & Nerd Fonts)</option>
-              <option value="malay">🌺 Malay & Nusantara (Indonesia / Malaysia)</option>
-              <option value="thai">🇹🇭 Thai (ภาษาไทย)</option>
-              <option value="vietnamese">🇻🇳 Vietnamese (Tiếng Việt)</option>
-              <option value="chinese">🇨🇳 Chinese (中文 / 汉字)</option>
-              <option value="korean">🇰🇷 Korean (한국어)</option>
-              <option value="bengali" selected>🇧🇩 Bengali (বাংলা)</option>
-              <option value="japanese">🇯🇵 Japanese (日本語)</option>
-              <option value="cyrillic">🇷🇺 Cyrillic (Кириллица)</option>
-              <option value="english">🇬🇧 English & Latin</option>
-              <option value="arabic">🕌 Arabic (العربية)</option>
-              <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
-              <option value="german">🇩🇪 German (Fraktur)</option>
-              <option value="icons">🎨 Icons & Symbols</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Control 2: Choose Specific Font (DYNAMICALLY POPULATED) -->
-        <div class="md:col-span-4">
-          <label for="fontFamilyFilter" class="block text-xs font-semibold text-emerald-400 mb-1.5 flex items-center justify-between">
-            <span>2. Choose Specific Font:</span>
-            <span id="fontCountBadge" class="text-[10px] text-emerald-400 font-mono font-bold">25+ SPECIMENS</span>
-          </label>
-          <div class="relative">
-            <select 
-              id="fontFamilyFilter" 
-              class="w-full bg-slate-900 border border-emerald-500/50 focus:border-emerald-400 rounded-xl px-3 py-2 text-xs text-emerald-300 focus:outline-none font-semibold cursor-pointer transition"
-            >
-              <option value="all">🌐 All Available Fonts (Grid View)</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Control 3: Font Size Slider -->
-        <div class="md:col-span-2">
-          <div class="flex justify-between items-center text-xs text-slate-400 mb-1.5">
-            <label for="fontSizeSlider" class="font-semibold">3. Font Size:</label>
-            <span id="fontSizeDisplay" class="font-mono font-bold text-emerald-400">22px</span>
-          </div>
-          <input 
-            type="range" 
-            id="fontSizeSlider" 
-            min="14" 
-            max="72" 
-            value="22" 
-            class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none"
-          >
-        </div>
-
-        <!-- Control 4: Action Tools (Contrast + Reset + Random) -->
-        <div class="md:col-span-2 flex items-center gap-1.5 justify-end">
-          <button 
-            id="toggleContrastBtn" 
-            title="Toggle Light/Dark Contrast"
-            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition flex items-center justify-center gap-1 text-xs"
-          >
-            <span id="contrastIcon">☀️</span><span id="contrastText" class="hidden sm:inline">Light</span>
-          </button>
-          <button 
-            id="resetFiltersBtn" 
-            title="Reset all filters and view defaults"
-            class="px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700 transition text-xs flex items-center gap-1"
-          >
-            <span>🔄</span><span class="hidden sm:inline">Reset</span>
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ================= SPECIMENS GRID ================= -->
-    <div class="mb-4 flex items-center justify-between gap-4 flex-wrap">
-      <div class="flex items-center gap-2">
-        <h3 class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-          <span>📚</span> Typography Specimens Grid
-        </h3>
-        <span id="specimenCountBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-mono font-semibold border border-emerald-500/20">
-          Showing 27 of 27 specimens
-        </span>
-      </div>
-      <p class="text-xs text-slate-400">Click any card to inspect or test in the preview canvas.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="specimensGrid">
-      
-                  <!-- Vietnamese 1: Be Vietnam Pro -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="vietnamese" data-font="Be Vietnam Pro" data-class="font-be-vietnam">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Be Vietnam Pro (National Standard UI Sans)</h4>
-              <p class="text-[11px] text-slate-400">VietAnh Nguyen & Gabriel Richter • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Vietnamese UI</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-be-vietnam text-xl transition-all border-y border-slate-800/60 my-2">
-            Tôi yêu tiếng nước tôi từ khi mới ra đời, người ơi. Rừng vàng biển bạc đất phì nhiêu.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Precision Diacritics • Modern Screen UI</span>
-          <a href="https://github.com/Open-Typography-Foundation/Vietnamese-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (3,050+)</span> →
-          </a>
-        </div>
-      </div>
-
-                        <!-- Developer 1: Fira Code -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="dev" data-font="Fira Code" data-class="font-firacode">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Fira Code (Coding Ligatures)</h4>
-              <p class="text-[11px] text-slate-400">Nikita Prokopov • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">IDE Ligatures</span>
-          </div>
-          <div class="preview-text py-4 text-cyan-200 font-firacode text-lg transition-all border-y border-slate-800/60 my-2">
-            if (x !== undefined &amp;&amp; items.length &gt;= 10) return a =&gt; a.pipe(map(x =&gt; x * 2));
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Programming Standard • VS Code &amp; Neovim</span>
-          <a href="https://github.com/Open-Typography-Foundation/Developer-Coding-Fonts-Archive" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,170+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Malay 1: Plus Jakarta Sans -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="malay" data-font="Plus Jakarta Sans" data-class="font-jakarta">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Plus Jakarta Sans (Indo Tech Flagship)</h4>
-              <p class="text-[11px] text-slate-400">Gumpita Rahayu • Tokotype Bandung • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Nusantara Modern</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-jakarta text-xl transition-all border-y border-slate-800/60 my-2">
-            Satu Nusa, Satu Bangsa, Satu Bahasa. Memajukan peradaban digital Nusantara.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Gojek / Tokopedia / Unicorn Tech Standard</span>
-          <a href="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (2,750+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Malay 2: Tulisan Jawi (Amiri Jawi) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="malay" data-font="Amiri" data-class="font-amiri">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Tulisan Jawi (خزانة توليسن جاوي نوسنتارا)</h4>
-              <p class="text-[11px] text-slate-400">Classical Jawi Malay • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Jawi Heritage</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-amiri text-2xl transition-all border-y border-slate-800/60 my-2 text-right dir-rtl">
-            بهاس ملايو اياله بهاس كبڠسأن دان جاوي خزانة ورثن نوسنتارا
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Islamic Heritage • Royal & State Treatises</span>
-          <a href="https://github.com/Open-Typography-Foundation/Malay-Nusantara-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (2,750+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Thai 1: Prompt (Loopless Modern Sans) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="thai" data-font="Prompt" data-class="font-prompt">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Prompt (Loopless Modern UI Sans)</h4>
-              <p class="text-[11px] text-slate-400">Cadson Demak • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Thai Loopless</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-prompt text-xl transition-all border-y border-slate-800/60 my-2">
-            เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Modern Minimalist • Digital Apps & Web</span>
-          <a href="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,810+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Thai 2: Sarabun (Official Looped) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="thai" data-font="Sarabun" data-class="font-sarabun">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">TH Sarabun (Royal National Standard)</h4>
-              <p class="text-[11px] text-slate-400">Suppasit & SIPA • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Thai Official</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-sarabun text-xl transition-all border-y border-slate-800/60 my-2">
-            จงฝ่าฟันพัฒนาวิชาการ อย่าล้างผลาญฤๅเข่นฆ่าบีฑาใคร
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Government Decree • Official Press</span>
-          <a href="https://github.com/Open-Typography-Foundation/Thai-Fonts-Mega-Archive" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,810+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Chinese 1: Noto Sans SC (Hei) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Sans SC" data-class="font-noto-sc">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Sans SC (Modern Hei / 黑体)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Hei</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-sc text-xl transition-all border-y border-slate-800/60 my-2">
-            天地玄黄，宇宙洪荒。日月盈昃，辰宿列张。
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Simplified Hei • UI & Clean Screen</span>
-          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,351+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Chinese 2: Noto Serif SC (Song) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Noto Serif SC" data-class="font-noto-serif-sc">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Serif SC (Classical Song / 宋体)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Song</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-serif-sc text-xl transition-all border-y border-slate-800/60 my-2">
-            寒来暑往，秋收冬藏。闰余成岁，律吕调阳。
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Classical Song • Editorial & Literature</span>
-          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,351+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Chinese 3: ZCOOL KuaiLe (Playful Cinema Display) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="ZCOOL KuaiLe" data-class="font-zcool">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">ZCOOL KuaiLe (Playful Cinema Display / 快乐体)</h4>
-              <p class="text-[11px] text-slate-400">ZCOOL Network • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Display</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-zcool text-2xl transition-all border-y border-slate-800/60 my-2">
-            云腾致雨，露结为霜。金生丽水，玉出昆冈。
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Display Playful • Gaming & Cartoons</span>
-          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,351+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Chinese 4: Ma Shan Zheng (Brush Calligraphy) -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="chinese" data-font="Ma Shan Zheng" data-class="font-mashan">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Ma Shan Zheng (Expressive Brush / 毛笔楷体)</h4>
-              <p class="text-[11px] text-slate-400">Ma Shan-zheng • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Chinese Brush</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-mashan text-2xl transition-all border-y border-slate-800/60 my-2">
-            剑号巨阙，珠称夜光。果珍李柰，菜重芥姜。
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Calligraphic Ink • Cultural Poetry</span>
-          <a href="https://github.com/Open-Typography-Foundation/Chinese-Hanzi-Fonts-Archive" target="_blank" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,351+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Korean 1: Noto Sans KR -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Noto Sans KR" data-class="font-noto-kr">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Sans KR (Modern UI Sans)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Sans</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-kr text-xl transition-all border-y border-slate-800/60 my-2">
-            다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Hangul Sans • Modern UI</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,863+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Korean 2: Noto Serif KR -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Noto Serif KR" data-class="font-noto-serif-kr">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Serif KR (Literary Myeongjo)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Serif</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-serif-kr text-xl transition-all border-y border-slate-800/60 my-2">
-            별 하나에 추억과, 별 하나에 사랑과, 별 하나에 쓸쓸함과, 별 하나에 동경.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Hangul Myeongjo • Editorial</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,863+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Korean 3: Do Hyeon -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Do Hyeon" data-class="font-dohyeon">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Do Hyeon (High-CTR Webtoon Display)</h4>
-              <p class="text-[11px] text-slate-400">Woowa Brothers • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Display</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-dohyeon text-2xl transition-all border-y border-slate-800/60 my-2">
-            다람쥐 헌 쳇바퀴에 타고파. 모든 인간은 태어날 때부터 자유롭고 존엄하다.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Display Heavy • Media Titles</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,863+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Korean 4: Jua -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="korean" data-font="Jua" data-class="font-jua">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Jua (Friendly Rounded Gothic)</h4>
-              <p class="text-[11px] text-slate-400">Woowa Brothers • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Korean Rounded</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-jua text-xl transition-all border-y border-slate-800/60 my-2">
-            좋은 음식이 있는 곳에 언제나 우리가 있습니다.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Gulim / Rounded • Casual UI</span>
-          <a href="https://github.com/Open-Typography-Foundation/11_Korean_Hangul" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,863+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Bengali 1: Noto Sans Bengali -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="bengali" data-font="Noto Sans Bengali" data-class="font-noto-bangla">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Sans Bengali (Modern UI Sans)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts / Monotype • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Bengali Sans</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-bangla text-xl transition-all border-y border-slate-800/60 my-2">
-            আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, তোমার বাতাস।
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Unicode + 1_Unicode</span>
-          <a href="https://github.com/mohammadgolamrabbii/Bangla-Fonts-Mega-Collection" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (5,020+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Japanese 1: Shippori Mincho -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="japanese" data-font="Shippori Mincho" data-class="font-shippori">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Shippori Mincho (Classical Literary Serif)</h4>
-              <p class="text-[11px] text-slate-400">FontDASU / Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Japanese Mincho</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-shippori text-xl transition-all border-y border-slate-800/60 my-2">
-            色は匂へど 散りぬるを 我が世誰ぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Kanji + Hiragana + Katakana</span>
-          <a href="https://github.com/mohammadgolamrabbii/Japanese-Fonts-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (1,509+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Cyrillic 1: PT Sans -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="cyrillic" data-font="PT Sans" data-class="font-pt-sans">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">PT Sans (Modern Grotesque Sans)</h4>
-              <p class="text-[11px] text-slate-400">ParaType • Free ParaType License / SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Cyrillic Sans</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-pt-sans text-xl transition-all border-y border-slate-800/60 my-2">
-            Съешь же ещё этих мягких французских булок, да выпей чаю.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Slavic Universal • Modern UI</span>
-          <a href="https://github.com/mohammadgolamrabbii/Cyrillic-Slavic-Mega-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (10,136+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- Hindi 1: Noto Sans Devanagari -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="hindi" data-font="Noto Sans Devanagari" data-class="font-noto-devanagari">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">Noto Sans Devanagari (Modern Indian UI)</h4>
-              <p class="text-[11px] text-slate-400">Google Fonts • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Hindi Sans</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-noto-devanagari text-xl transition-all border-y border-slate-800/60 my-2">
-            सभी मनुष्यों को गौरव और अधिकारों के मामले में जन्मजात स्वतन्त्रता और समानता प्राप्त है।
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Devanagari • Vedic + Modern UI</span>
-          <a href="https://github.com/mohammadgolamrabbii/Hindi-Devanagari-Fonts-Archive" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (6,519+)</span> →
-          </a>
-        </div>
-      </div>
-
-      <!-- German 1: UnifrakturMaguntia -->
-      <div class="specimen-card bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 transition-all duration-200 hover:shadow-xl flex flex-col justify-between" data-script="german" data-font="UnifrakturMaguntia" data-class="font-unifraktur">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h4 class="font-bold text-white text-base">UnifrakturMaguntia (Historical Fraktur)</h4>
-              <p class="text-[11px] text-slate-400">J. 'Mach' Wust • SIL OFL 1.1</p>
-            </div>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">German Blackletter</span>
-          </div>
-          <div class="preview-text py-4 text-slate-100 font-unifraktur text-2xl transition-all border-y border-slate-800/60 my-2">
-            Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-2 text-slate-400">
-          <span class="font-mono text-[11px]">Gothic Blackletter • Historical</span>
-          <a href="https://github.com/Open-Typography-Foundation/8_German_Deutsche_Schriften" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
-            <span>Vault (5,504+)</span> →
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
